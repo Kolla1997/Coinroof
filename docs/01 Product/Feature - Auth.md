@@ -28,7 +28,7 @@ Every API call that touches family data comes from a person who signed in with e
 - Set up 2FA after first log-in: scan a QR code or type the secret, then confirm a code
 - Log in: email + password, then the 6-digit code
 - Sign out
-- **Lost authenticator** ([#23](https://github.com/Kolla1997/Tallyn/issues/23), Dinesh picked A, [[0013-backup-codes-and-supabase-admin-key|ADR 0013]]):
+- **Lost authenticator** ([#23](https://github.com/Kolla1997/Coinroof/issues/23), Dinesh picked A, [[0013-backup-codes-and-supabase-admin-key|ADR 0013]]):
   - **More than one authenticator:** add, name and remove them in Settings, never the last. Any of them gives a valid code.
   - **Ten backup codes:** shown once after setting up 2FA, or once for existing accounts. New ones from Settings with a fresh code.
   - **Lost your phone:** password → "Can't get a code?" → "Use a backup code" → the lost authenticator is removed → set up a new one → a new set of codes. Never without a second factor: the backup code is it.
@@ -36,17 +36,17 @@ Every API call that touches family data comes from a person who signed in with e
     - Codes on paper can be stolen like a phone.
     - The server holds Supabase's admin key, used only to remove authenticators.
     - Families with kids who won't keep codes need #120.
-- Password reset ([#22](https://github.com/Kolla1997/Tallyn/issues/22), Dinesh picked A): "Forgot password?" by the Password label → email → link → **the 2FA code first** (Supabase needs it to change the password of an account with 2FA, so a reset never skips 2FA) → a new password of at least 8 characters → Home, signed out on other devices. "Check your email" reads the same whether or not the account exists. An expired or used link offers a new one
+- Password reset ([#22](https://github.com/Kolla1997/Coinroof/issues/22), Dinesh picked A): "Forgot password?" by the Password label → email → link → **the 2FA code first** (Supabase needs it to change the password of an account with 2FA, so a reset never skips 2FA) → a new password of at least 8 characters → Home, signed out on other devices. "Check your email" reads the same whether or not the account exists. An expired or used link offers a new one
 - `internal/auth`: verify the Supabase access token on every `/api/` request and require 2FA (`aal2`)
 - `GET /api/me`: the signed-in person's profile and households, read through `AsUser` so RLS applies
 - Bare-bones screens using `design-tokens.json`
 
 **Out:**
-- Styled sign-in screens (the comps don't have them yet; see [[Design System]]): [#25](https://github.com/Kolla1997/Tallyn/issues/25)
+- Styled sign-in screens (the comps don't have them yet; see [[Design System]]): [#25](https://github.com/Kolla1997/Coinroof/issues/25)
 - Changing email: not ticketed yet
-- A family owner resetting a member's 2FA: [#120](https://github.com/Kolla1997/Tallyn/issues/120)
+- A family owner resetting a member's 2FA: [#120](https://github.com/Kolla1997/Coinroof/issues/120)
 - SMS 2FA (a paid Supabase add-on), social and SSO log-in
-- Invitations and finer role rules ([#12](https://github.com/Kolla1997/Tallyn/issues/12))
+- Invitations and finer role rules ([#12](https://github.com/Kolla1997/Coinroof/issues/12))
 
 ## Design
 Screens, in order: **Sign in / Create account** → **Check your email** → **Set up your authenticator app** (QR code, secret, code field) → **Enter your code** (on later log-ins) → home (shows `/api/me`, Sign out).
@@ -78,5 +78,5 @@ Dev Supabase project first: run migrations 0001–0003, apply the settings above
 
 ## Open questions
 - Kids' logins: is 2FA right for young children, or should a parent's device cover them? For now everyone needs it. #12 can relax it.
-- Content-Security-Policy header in the Go server, to cut the XSS risk of keeping the token in the browser: [#24](https://github.com/Kolla1997/Tallyn/issues/24)
+- Content-Security-Policy header in the Go server, to cut the XSS risk of keeping the token in the browser: [#24](https://github.com/Kolla1997/Coinroof/issues/24)
 - Pass `aal` into `AsUser`'s claims, so RLS can also require 2FA as a second line of defence?

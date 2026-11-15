@@ -21,7 +21,7 @@ Open Home and see, in one card, how much of today's cash is already spoken for a
 - As a partner, I want the split to count only money I'm allowed to see.
 
 ## Scope
-**In** (agreed with Dinesh 2026-11-15, [#33](https://github.com/Kolla1997/Tallyn/issues/33)):
+**In** (agreed with Dinesh 2026-11-15, [#33](https://github.com/Kolla1997/Coinroof/issues/33)):
 - **Cash:** the available balance of checking accounts (Plaid `available`, else `current`) the viewer may see, following the sharing rules ([[Feature - Sharing]]). Owners only, as with Bills.
 - **The waterfall, in order. Each step shows its sum:**
   1. **Due before next payday:** unpaid bills ([[Feature - Bills]]), card minimums and loan payments due from today to the day before next payday.

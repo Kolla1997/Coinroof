@@ -47,8 +47,8 @@ tags: [home]
 - [[0001-record-architecture-decisions|ADRs]]: decision records
 
 ## Work
-- [[Board]]: Tallyn Board, committed work
-- [[Ideas Board]]: Tallyn Ideas, the idea pipeline (log with `/i`)
+- [[Board]]: Coinroof Board, committed work
+- [[Ideas Board]]: Coinroof Ideas, the idea pipeline (log with `/i`)
 - `06 Ideas/`: idea notes, one per idea
 - [[Log]]: dated session and decision log
 

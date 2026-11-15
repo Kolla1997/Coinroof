@@ -9,7 +9,7 @@ tags: [spec, plaid, home]
 
 # Feature — Credit Cards
 
-Part of [#27](https://github.com/Kolla1997/Tallyn/issues/27) (debt details). Loans and mortgages come later.
+Part of [#27](https://github.com/Kolla1997/Coinroof/issues/27) (debt details). Loans and mortgages come later.
 
 ## Problem
 Families want every card in one place: how much of their limits they use, what each card charges, and what's due when.

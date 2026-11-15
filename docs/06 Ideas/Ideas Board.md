@@ -8,31 +8,31 @@ kanban-plugin: board
 
 ## New
 
-- [ ] [#2 Test idea, please ignore](https://github.com/Kolla1997/Tallyn/issues/2) #type/idea
-- [ ] [#131 Send Coinroof emails through our own provider](https://github.com/Kolla1997/Tallyn/issues/131) #type/idea #area/infra
-- [ ] [#132 Messaging between household members](https://github.com/Kolla1997/Tallyn/issues/132) #type/idea #area/backend
-- [ ] [#270 Push notifications on phones](https://github.com/Kolla1997/Tallyn/issues/270) #type/idea
-- [ ] [#292 Weekly AI-written money and markets newsletter](https://github.com/Kolla1997/Tallyn/issues/292) #type/idea #area/backend #priority/p3
+- [ ] [#2 Test idea, please ignore](https://github.com/Kolla1997/Coinroof/issues/2) #type/idea
+- [ ] [#131 Send Tallyn emails through our own provider](https://github.com/Kolla1997/Coinroof/issues/131) #type/idea #area/infra
+- [ ] [#132 Messaging between household members](https://github.com/Kolla1997/Coinroof/issues/132) #type/idea #area/backend
+- [ ] [#270 Push notifications on phones](https://github.com/Kolla1997/Coinroof/issues/270) #type/idea
+- [ ] [#292 Weekly AI-written money and markets newsletter](https://github.com/Kolla1997/Coinroof/issues/292) #type/idea #area/backend #priority/p3
 
 
 ## Exploring
 
-- [ ] [#136 Ask Coinroof AI about spending from Discord](https://github.com/Kolla1997/Tallyn/issues/136) #type/idea #area/backend
+- [ ] [#136 Ask Tallyn AI about spending from Discord](https://github.com/Kolla1997/Coinroof/issues/136) #type/idea #area/backend
 
 
 ## Promoted
 
-- [x] [#4 Test idea, please ignore](https://github.com/Kolla1997/Tallyn/issues/4) #type/feature
-- [x] [#33 Give every dollar of available cash a job (Home card)](https://github.com/Kolla1997/Tallyn/issues/33) #type/feature #area/frontend #area/backend #priority/p1
-- [x] [#111 Detailed test plan for unit and integration testing](https://github.com/Kolla1997/Tallyn/issues/111) #type/docs #area/infra
-- [x] [#126 Bill reminders: pop-up to record bills due](https://github.com/Kolla1997/Tallyn/issues/126) #type/feature #area/frontend
-- [x] [#127 Bills and recurring payments Plaid can't see](https://github.com/Kolla1997/Tallyn/issues/127) #type/feature #area/frontend #area/backend
+- [x] [#4 Test idea, please ignore](https://github.com/Kolla1997/Coinroof/issues/4) #type/feature
+- [x] [#33 Give every dollar of available cash a job (Home card)](https://github.com/Kolla1997/Coinroof/issues/33) #type/feature #area/frontend #area/backend #priority/p1
+- [x] [#111 Detailed test plan for unit and integration testing](https://github.com/Kolla1997/Coinroof/issues/111) #type/docs #area/infra
+- [x] [#126 Bill reminders: pop-up to record bills due](https://github.com/Kolla1997/Coinroof/issues/126) #type/feature #area/frontend
+- [x] [#127 Bills and recurring payments Plaid can't see](https://github.com/Kolla1997/Coinroof/issues/127) #type/feature #area/frontend #area/backend
 
 
 ## Parked
 
-- [ ] [#15 AI assistant (pgvector RAG)](https://github.com/Kolla1997/Tallyn/issues/15) #type/idea #area/backend
-- [ ] [#323 Connect Splitwise to Coinroof](https://github.com/Kolla1997/Tallyn/issues/323) #type/idea #area/backend
+- [ ] [#15 AI assistant (pgvector RAG)](https://github.com/Kolla1997/Coinroof/issues/15) #type/idea #area/backend
+- [ ] [#323 Connect Splitwise to Coinroof](https://github.com/Kolla1997/Coinroof/issues/323) #type/idea #area/backend
 
 
 ## Rejected

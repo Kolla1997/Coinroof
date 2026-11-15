@@ -57,8 +57,8 @@ This repo is also an Obsidian vault: open the repo folder in Obsidian and start 
     /docs             Product, brand, design and tech guides (Obsidian)
     /scripts          GitHub board setup and sync
 
-Work is tracked in GitHub Issues and the "Tallyn Board" project. One-time setup:
-`gh auth refresh -s project && scripts/setup_github.sh Kolla1997/Tallyn`, then `python3 scripts/sync_board.py` to mirror the board into `docs/05 Board/Board.md`.
+Work is tracked in GitHub Issues and the "Coinroof Board" project. One-time setup:
+`gh auth refresh -s project && scripts/setup_github.sh Kolla1997/Coinroof`, then `python3 scripts/sync_board.py` to mirror the board into `docs/05 Board/Board.md`.
 
 ## Status
 

@@ -118,7 +118,7 @@ Coinroof has a solid base of tests, but nothing says which use cases they cover 
 | Unlink a bank, and who may | P0 | — | Yes | No | `TestUnlink` (db, api), `TestUnlinkRules` |
 | Scheduled sync: transactions, cards, loans; one bad bank doesn't stop the others | P1 | Yes | Yes | — | `sync_test.go` (9), `plaid/transactions_test.go`, `liabilities_test.go`, `system_test.go` |
 | The sync login can't reach what it shouldn't | P0 | — | Yes | — | `logins_test.go`, `system_test.go` (`TestSyncRoleLimits`) |
-| Connect a bank isn't blocked by the Plaid rate limit after normal browsing | P1 | Yes | — | No | `Banks.test.jsx` (#115: no token until clicked, one per click, closing Plaid and retrying, rate-limit message); fixed in [#115](https://github.com/Kolla1997/Tallyn/issues/115) |
+| Connect a bank isn't blocked by the Plaid rate limit after normal browsing | P1 | Yes | — | No | `Banks.test.jsx` (#115: no token until clicked, one per click, closing Plaid and retrying, rate-limit message); fixed in [#115](https://github.com/Kolla1997/Coinroof/issues/115) |
 
 ### Money, transactions and debts
 | Use case | P | Unit | Integration | End-to-end | Tests today |
@@ -227,11 +227,11 @@ Coinroof has a solid base of tests, but nothing says which use cases they cover 
 - Load and penetration testing: separate tickets, closer to launch.
 
 ## Gap tickets (agreed 2026-10-12)
-1. [#113](https://github.com/Kolla1997/Tallyn/issues/113) **Browser end-to-end tests** for the P0 paths: sign-in with 2FA, Home totals, connecting a sandbox bank, inviting a member, sharing. They use a separate Supabase test project, with keys in GitHub secrets and never in the repo. **Done (2026-10-23):** `web/e2e-full/`, nightly (`.github/workflows/e2e.yml`); all five paths green against the `tallyn-e2e` test project.
-2. [#114](https://github.com/Kolla1997/Tallyn/issues/114) **Tests for the untested screens:** Home, Accounts, Family and sharing, Settings, ConsentGate, IdleGuard, SetUp2FA. Plus a `PUT /api/me` handler test. **Done (2026-10-16).** `PUT /api/me` already had a success test; #114 added its failure cases.
-3. [#115](https://github.com/Kolla1997/Tallyn/issues/115) **Fix the Plaid link-token bug** (ask only on Connect a bank), with a test.
-4. [#116](https://github.com/Kolla1997/Tallyn/issues/116) **Automatic sign-outs end only this device:** tests for `scope: 'local'`. **Done (2026-10-16).**
-5. [#117](https://github.com/Kolla1997/Tallyn/issues/117) **Layout checks in the browser:** phone and desktop width, no sideways scroll, no hidden content. These would have caught #94 and #97. **Done (2026-10-16):** runs on every PR with fake data, so it doesn't wait for #113.
+1. [#113](https://github.com/Kolla1997/Coinroof/issues/113) **Browser end-to-end tests** for the P0 paths: sign-in with 2FA, Home totals, connecting a sandbox bank, inviting a member, sharing. They use a separate Supabase test project, with keys in GitHub secrets and never in the repo. **Done (2026-10-23):** `web/e2e-full/`, nightly (`.github/workflows/e2e.yml`); all five paths green against the `tallyn-e2e` test project.
+2. [#114](https://github.com/Kolla1997/Coinroof/issues/114) **Tests for the untested screens:** Home, Accounts, Family and sharing, Settings, ConsentGate, IdleGuard, SetUp2FA. Plus a `PUT /api/me` handler test. **Done (2026-10-16).** `PUT /api/me` already had a success test; #114 added its failure cases.
+3. [#115](https://github.com/Kolla1997/Coinroof/issues/115) **Fix the Plaid link-token bug** (ask only on Connect a bank), with a test.
+4. [#116](https://github.com/Kolla1997/Coinroof/issues/116) **Automatic sign-outs end only this device:** tests for `scope: 'local'`. **Done (2026-10-16).**
+5. [#117](https://github.com/Kolla1997/Coinroof/issues/117) **Layout checks in the browser:** phone and desktop width, no sideways scroll, no hidden content. These would have caught #94 and #97. **Done (2026-10-16):** runs on every PR with fake data, so it doesn't wait for #113.
 
 ## Release checklist (manual, before each release)
 - [ ] **Monthly payments step (#307):** create a new account and household. The step shows once, with no site footer; add rent and a car loan, **Save and continue**, then check both on Bills and the loan under Debts → Other loans. A second new account: **Skip for now** goes straight to Home.

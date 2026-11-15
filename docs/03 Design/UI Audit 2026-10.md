@@ -10,7 +10,7 @@ tags: [audit, accessibility, motion, design]
 # UI Audit 2026-10
 
 ## Purpose
-A one-off audit of every screen and component in `web/` using the outside skills from [#141](https://github.com/Kolla1997/Tallyn/issues/141), for [#145](https://github.com/Kolla1997/Tallyn/issues/145). It records what's wrong and proposes follow-up tickets; it changes no code. Fixes go in their own tickets, and anything people will see gets a draft first (CLAUDE.md §0).
+A one-off audit of every screen and component in `web/` using the outside skills from [#141](https://github.com/Kolla1997/Coinroof/issues/141), for [#145](https://github.com/Kolla1997/Coinroof/issues/145). It records what's wrong and proposes follow-up tickets; it changes no code. Fixes go in their own tickets, and anything people will see gets a draft first (CLAUDE.md §0).
 
 **How it was done (2026-10-23)**
 - Four read-only code audits, one per area: sign-in and onboarding, money screens and charts, family/settings/shell, app-wide CSS.
@@ -34,8 +34,8 @@ About 110 findings. Most are invisible. Glass and contrast hold up well: every m
 - #154 (2026-11-05): long words in the redesign's panels and the bell's list break instead of running out.
 - #153 rechecked 2026-11-05: every finding still holds. New since the audit and fixed: faint grey focus rings on the newer components, the notification bell's focus (Escape, Tab out, closing an alert), and goal, budget and alert-amount errors not tied to their fields.
 - #153, #154, #155 (2026-10-30, one PR): the keyboard, worst-case data and glass/motion findings below. M8 and M9 went with the redesign (those chart files no longer exist); M10 was fixed in #253; A10 was gone already.
-- [#146](https://github.com/Kolla1997/Tallyn/issues/146): budget amounts with a comma decimal saved 100× too big ("12,50" → 1,250.00). PR #148.
-- [#147](https://github.com/Kolla1997/Tallyn/issues/147): Home's this-month figure only counted recent transactions. Now "spent this month" from the month summary. PR #149.
+- [#146](https://github.com/Kolla1997/Coinroof/issues/146): budget amounts with a comma decimal saved 100× too big ("12,50" → 1,250.00). PR #148.
+- [#147](https://github.com/Kolla1997/Coinroof/issues/147): Home's this-month figure only counted recent transactions. Now "spent this month" from the month summary. PR #149.
 
 **Worst of what's left**
 1. A failed load leaves the error and an endless loader on Home, Accounts, Transactions, Budgets, Debts and Family, with no Try again (M1, F5).
@@ -51,16 +51,16 @@ Agreed with Dinesh and created 2026-10-23. Ordered by what to do first.
 
 | Ticket | What | Findings | Kind | P |
 |---|---|---|---|---|
-| [#151](https://github.com/Kolla1997/Tallyn/issues/151) | Stuck and failed states: Try again instead of endless loaders, backup-code dead end, code form lock, Join keeps the invite | M1, F5, A1, A4, A14 | inv + small vis (Try again button) | p1 |
-| [#152](https://github.com/Kolla1997/Tallyn/issues/152) | Calm error messages: map raw Supabase and network errors to Coinroof copy, neutral sign-up message | A7, A12, M11 | inv (copy from Voice and Tone) | p1 |
-| [#153](https://github.com/Kolla1997/Tallyn/issues/153) | Keyboard and screen readers: page titles, focus on navigation and view changes, dialog focus return, visible focus rings, ARIA fixes | L1, A8–A11, F1–F4, F7–F12, M7–M9, G1, G10, G13 | inv | p1 |
-| [#154](https://github.com/Kolla1997/Tallyn/issues/154) | Worst-case data: long text, emoji initials, blank names, double submits, races, Markdown hang, 0% rates, money edge cases | A5, A6, A13, F6, F13–F21, M4–M6, M10, L4 | inv | p1 |
-| [#155](https://github.com/Kolla1997/Tallyn/issues/155) | Glass fallbacks and reduced motion gaps, plus page basics (`color-scheme`, background before JS, `100dvh`, safe area) | G2, G3, G12, G14 | inv | p1 |
-| [#156](https://github.com/Kolla1997/Tallyn/issues/156) | Other currencies made visible: say what's left out instead of $0 or "Nothing spent" | M3, M12, M13, F22 | vis (copy) | p2 |
-| [#157](https://github.com/Kolla1997/Tallyn/issues/157) | Motion that's cheaper and calmer: transforms instead of layout properties, Debts ring replay, sidebar collapse | G4, G15, F23, M14 | inv if it looks the same | p2 |
-| [#158](https://github.com/Kolla1997/Tallyn/issues/158) | Touch and control contrast: tap areas, small buttons, input borders, disabled states, avatar contrast, press states | A2, A3, L2, L6, G6, G7, G11, F24 | vis | p2 |
-| [#159](https://github.com/Kolla1997/Tallyn/issues/159) | Load speed: consent → profile → page data run one after another (about 11s for Home on a dev reload) | L3 | inv (needs a look first) | p2 |
-| [#160](https://github.com/Kolla1997/Tallyn/issues/160) | CSS cleanup and tokens: off-token colours, duplicate rules, z-index scale, off-scale sizes | G5, G8, G9 | inv; some need a rule change | p3 |
+| [#151](https://github.com/Kolla1997/Coinroof/issues/151) | Stuck and failed states: Try again instead of endless loaders, backup-code dead end, code form lock, Join keeps the invite | M1, F5, A1, A4, A14 | inv + small vis (Try again button) | p1 |
+| [#152](https://github.com/Kolla1997/Coinroof/issues/152) | Calm error messages: map raw Supabase and network errors to Coinroof copy, neutral sign-up message | A7, A12, M11 | inv (copy from Voice and Tone) | p1 |
+| [#153](https://github.com/Kolla1997/Coinroof/issues/153) | Keyboard and screen readers: page titles, focus on navigation and view changes, dialog focus return, visible focus rings, ARIA fixes | L1, A8–A11, F1–F4, F7–F12, M7–M9, G1, G10, G13 | inv | p1 |
+| [#154](https://github.com/Kolla1997/Coinroof/issues/154) | Worst-case data: long text, emoji initials, blank names, double submits, races, Markdown hang, 0% rates, money edge cases | A5, A6, A13, F6, F13–F21, M4–M6, M10, L4 | inv | p1 |
+| [#155](https://github.com/Kolla1997/Coinroof/issues/155) | Glass fallbacks and reduced motion gaps, plus page basics (`color-scheme`, background before JS, `100dvh`, safe area) | G2, G3, G12, G14 | inv | p1 |
+| [#156](https://github.com/Kolla1997/Coinroof/issues/156) | Other currencies made visible: say what's left out instead of $0 or "Nothing spent" | M3, M12, M13, F22 | vis (copy) | p2 |
+| [#157](https://github.com/Kolla1997/Coinroof/issues/157) | Motion that's cheaper and calmer: transforms instead of layout properties, Debts ring replay, sidebar collapse | G4, G15, F23, M14 | inv if it looks the same | p2 |
+| [#158](https://github.com/Kolla1997/Coinroof/issues/158) | Touch and control contrast: tap areas, small buttons, input borders, disabled states, avatar contrast, press states | A2, A3, L2, L6, G6, G7, G11, F24 | vis | p2 |
+| [#159](https://github.com/Kolla1997/Coinroof/issues/159) | Load speed: consent → profile → page data run one after another (about 11s for Home on a dev reload) | L3 | inv (needs a look first) | p2 |
+| [#160](https://github.com/Kolla1997/Coinroof/issues/160) | CSS cleanup and tokens: off-token colours, duplicate rules, z-index scale, off-scale sizes | G5, G8, G9 | inv; some need a rule change | p3 |
 
 > [!todo] Dark mode stays its own piece of work, with drafts. It isn't part of these tickets.
 
