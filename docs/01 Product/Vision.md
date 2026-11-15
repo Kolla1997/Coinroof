@@ -15,7 +15,7 @@ tags: [product]
 Families connect their bank accounts and cards, see one total balance, track spending and savings in real time, and open joint accounts for partners, kids and parents.
 
 > [!warning] US first (Dinesh, 2026-10-30)
-> For now Coinroof is US only: US banks, in US dollars. Multi-currency (one total across currencies, converted to the home currency) comes later; see [#11](https://github.com/Kolla1997/Tallyn/issues/11).
+> For now Coinroof is US only: US banks, in US dollars. Multi-currency (one total across currencies, converted to the home currency) comes later; see [#11](https://github.com/Kolla1997/Coinroof/issues/11).
 
 ## Who it's for
 | Persona | Need | Today's workaround |

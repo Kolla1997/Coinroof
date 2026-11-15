@@ -28,7 +28,7 @@ An owner can invite someone in under a minute, and only the invited person can u
 **Out:**
 - **Children's logins (under 13)**: not until a legal check on US COPPA parental consent (decided 2026-10-09). Teens, adults and viewers can be invited.
 - Coinroof sending the invite email itself (link only for now).
-- Spending limits: split to [#34](https://github.com/Kolla1997/Tallyn/issues/34).
+- Spending limits: split to [#34](https://github.com/Kolla1997/Coinroof/issues/34).
 
 ## Rules (decided 2026-10-09)
 - Only **owners** invite, change roles and remove others. Anyone can leave; a household always keeps at least one owner.

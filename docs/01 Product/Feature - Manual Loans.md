@@ -9,7 +9,7 @@ tags: [spec, debts, loans]
 
 # Feature — Manual Loans
 
-Loans Plaid can't see, like a car loan from Toyota Financial. [#306](https://github.com/Kolla1997/Tallyn/issues/306). Related: [[Feature - Bills]], [[Feature - Debts]].
+Loans Plaid can't see, like a car loan from Toyota Financial. [#306](https://github.com/Kolla1997/Coinroof/issues/306). Related: [[Feature - Bills]], [[Feature - Debts]].
 
 ## Problem
 Plaid Liabilities covers credit cards, student loans and mortgages, not car loans. Families want to see what's left, where each payment goes and when it's paid off.

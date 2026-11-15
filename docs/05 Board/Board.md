@@ -8,19 +8,19 @@ kanban-plugin: board
 
 ## Backlog
 
-- [ ] [#11 Multi-currency total balance](https://github.com/Kolla1997/Tallyn/issues/11) #type/feature #area/backend #priority/p3
-- [ ] [#156 Say what other currencies are left out](https://github.com/Kolla1997/Tallyn/issues/156) #type/design #area/design #area/frontend #priority/p3
-- [ ] [#255 Turn on the transaction map where the app is hosted](https://github.com/Kolla1997/Tallyn/issues/255) #type/feature #area/infra #priority/p2
-- [ ] [#127 Bills and recurring payments Plaid can't see](https://github.com/Kolla1997/Tallyn/issues/127) #type/feature #area/frontend #area/backend
-- [ ] [#306 Loans and debts with monthly payments and payoff tracking](https://github.com/Kolla1997/Tallyn/issues/306) #type/feature #area/frontend #area/backend
-- [ ] [#307 Onboarding step: monthly commitments (bills and loans)](https://github.com/Kolla1997/Tallyn/issues/307) #type/feature #area/frontend
-- [ ] [#126 Bill reminders: pop-up to record bills due](https://github.com/Kolla1997/Tallyn/issues/126) #type/feature #area/frontend
-- [ ] [#33 Give every dollar of available cash a job (Home card)](https://github.com/Kolla1997/Tallyn/issues/33) #type/feature #area/frontend #area/backend #priority/p1
+- [ ] [#11 Multi-currency total balance](https://github.com/Kolla1997/Coinroof/issues/11) #type/feature #area/backend #priority/p3
+- [ ] [#156 Say what other currencies are left out](https://github.com/Kolla1997/Coinroof/issues/156) #type/design #area/design #area/frontend #priority/p3
+- [ ] [#255 Turn on the transaction map where the app is hosted](https://github.com/Kolla1997/Coinroof/issues/255) #type/feature #area/infra #priority/p2
+- [ ] [#127 Bills and recurring payments Plaid can't see](https://github.com/Kolla1997/Coinroof/issues/127) #type/feature #area/frontend #area/backend
+- [ ] [#306 Loans and debts with monthly payments and payoff tracking](https://github.com/Kolla1997/Coinroof/issues/306) #type/feature #area/frontend #area/backend
+- [ ] [#307 Onboarding step: monthly commitments (bills and loans)](https://github.com/Kolla1997/Coinroof/issues/307) #type/feature #area/frontend
+- [ ] [#126 Bill reminders: pop-up to record bills due](https://github.com/Kolla1997/Coinroof/issues/126) #type/feature #area/frontend
+- [ ] [#33 Give every dollar of available cash a job (Home card)](https://github.com/Kolla1997/Coinroof/issues/33) #type/feature #area/frontend #area/backend #priority/p1
 
 
 ## In Progress
 
-- [ ] [#1 Housekeeping: small docs and config fixes](https://github.com/Kolla1997/Tallyn/issues/1) #type/docs
+- [ ] [#1 Housekeeping: small docs and config fixes](https://github.com/Kolla1997/Coinroof/issues/1) #type/docs
 
 
 ## Review
@@ -29,95 +29,95 @@ kanban-plugin: board
 
 ## Blocked
 
-- [ ] [#203 Rename the repo, docs and outside services to Coinroof](https://github.com/Kolla1997/Tallyn/issues/203) #type/tech-debt #area/infra #priority/p2 #blocker
+- [ ] [#203 Rename the repo, docs and outside services to Coinroof](https://github.com/Kolla1997/Coinroof/issues/203) #type/tech-debt #area/infra #priority/p2 #blocker
 
 
 ## Done
 
 **Complete**
-- [x] [#4 Test idea, please ignore](https://github.com/Kolla1997/Tallyn/issues/4) #type/feature
-- [x] [#5 Repo scaffold: Go server, Vite React app, Dockerfile](https://github.com/Kolla1997/Tallyn/issues/5) #type/feature #area/infra #priority/p0
-- [x] [#6 Supabase schema and RLS](https://github.com/Kolla1997/Tallyn/issues/6) #type/feature #area/backend #priority/p0
-- [x] [#7 Auth: email + 2FA with Supabase Auth](https://github.com/Kolla1997/Tallyn/issues/7) #type/feature #area/backend #priority/p0
-- [x] [#8 Plaid Link and encrypted token storage](https://github.com/Kolla1997/Tallyn/issues/8) #type/feature #area/backend #priority/p0
-- [x] [#9 Scheduled bank sync (transactions and balances)](https://github.com/Kolla1997/Tallyn/issues/9) #type/feature #area/backend #priority/p0
-- [x] [#10 Brand: logo and design tokens](https://github.com/Kolla1997/Tallyn/issues/10) #type/design #area/brand #priority/p0
-- [x] [#12 Household members: invitations and roles](https://github.com/Kolla1997/Tallyn/issues/12) #type/feature #area/backend #priority/p1
-- [x] [#13 Budgets: for the household or one person](https://github.com/Kolla1997/Tallyn/issues/13) #type/feature #area/frontend #priority/p1
-- [x] [#14 Savings goals](https://github.com/Kolla1997/Tallyn/issues/14) #type/feature #area/frontend #priority/p2
-- [x] [#16 Automate board sync with a GitHub Action](https://github.com/Kolla1997/Tallyn/issues/16) #type/feature #area/infra #priority/p2
-- [x] [#22 Password reset](https://github.com/Kolla1997/Tallyn/issues/22) #type/feature #area/frontend #priority/p1
-- [x] [#23 Recovery when someone loses their authenticator app](https://github.com/Kolla1997/Tallyn/issues/23) #type/feature #area/frontend #priority/p1
-- [x] [#24 Content-Security-Policy and security headers](https://github.com/Kolla1997/Tallyn/issues/24) #type/feature #area/backend #priority/p1
-- [x] [#25 Styled sign-in and 2FA screens](https://github.com/Kolla1997/Tallyn/issues/25) #type/design #area/design #priority/p2
-- [x] [#27 Debt details: interest rates, due dates and minimum payments (Plaid Liabilities)](https://github.com/Kolla1997/Tallyn/issues/27) #type/feature #area/backend #priority/p0
-- [x] [#28 Sharing settings: choose what each household member can see](https://github.com/Kolla1997/Tallyn/issues/28) #type/feature #area/backend #priority/p1
-- [x] [#30 Separate database logins for the API and the bank sync](https://github.com/Kolla1997/Tallyn/issues/30) #type/tech-debt #area/backend #priority/p1
-- [x] [#34 Spending limits per member, with progress and alerts](https://github.com/Kolla1997/Tallyn/issues/34) #type/feature #area/backend #priority/p1
-- [x] [#36 Terms of Service and Privacy Policy pages, with consent at sign-up](https://github.com/Kolla1997/Tallyn/issues/36) #type/feature #area/frontend #priority/p0
-- [x] [#37 Show shared money separately from your own](https://github.com/Kolla1997/Tallyn/issues/37) #type/design #area/frontend #priority/p1
-- [x] [#38 Confirmation dialog before removing members, leaving or unlinking](https://github.com/Kolla1997/Tallyn/issues/38) #type/feature #area/frontend #priority/p1
-- [x] [#39 Build the app screens from the comps, for phone and web](https://github.com/Kolla1997/Tallyn/issues/39) #type/design #area/frontend #priority/p1
-- [x] [#42 Transactions page with person switcher, search and merchant logos](https://github.com/Kolla1997/Tallyn/issues/42) #type/feature #area/frontend #priority/p1
-- [x] [#51 Reconnect a bank that needs sign-in (Plaid update mode)](https://github.com/Kolla1997/Tallyn/issues/51) #type/feature #area/frontend #area/backend #priority/p1
-- [x] [#53 Rename a household](https://github.com/Kolla1997/Tallyn/issues/53) #type/feature #area/frontend #area/backend #priority/p2
-- [x] [#54 Download your data](https://github.com/Kolla1997/Tallyn/issues/54) #type/feature #area/frontend #area/backend #priority/p1
-- [x] [#55 Notifications](https://github.com/Kolla1997/Tallyn/issues/55) #type/feature #area/frontend #area/backend #priority/p2
-- [x] [#56 Close your Coinroof account](https://github.com/Kolla1997/Tallyn/issues/56) #type/feature #area/frontend #area/backend #priority/p1
-- [x] [#58 Transactions: summary and details panel](https://github.com/Kolla1997/Tallyn/issues/58) #type/feature #area/frontend #area/backend #priority/p1
-- [x] [#60 Maps: choose a provider and show purchase locations on a map](https://github.com/Kolla1997/Tallyn/issues/60) #type/feature #area/frontend #area/infra #priority/p2
-- [x] [#61 Frosted glass finish on every card](https://github.com/Kolla1997/Tallyn/issues/61) #type/design #area/design #area/frontend #priority/p2
-- [x] [#63 Floating rounded sidebar, darker secondary text, soft card shade](https://github.com/Kolla1997/Tallyn/issues/63) #type/design #area/design #area/frontend #priority/p2
-- [x] [#64 Floating rounded sidebar, darker secondary text and a soft shade under cards](https://github.com/Kolla1997/Tallyn/issues/64) #type/design #area/design #area/frontend #priority/p2
-- [x] [#66 Gear settings icon and Coinroof loading animation](https://github.com/Kolla1997/Tallyn/issues/66) #type/design #area/design #area/frontend #priority/p2
-- [x] [#68 Home shows your own money first, with a Yours / Everyone switch](https://github.com/Kolla1997/Tallyn/issues/68) #type/feature #area/frontend #priority/p1
-- [x] [#72 Sidebar: one profile card with a menu, Collapse by the logo](https://github.com/Kolla1997/Tallyn/issues/72) #type/design #area/frontend #priority/p2
-- [x] [#75 Transactions: a year of spending as dots, with a day overview on hover](https://github.com/Kolla1997/Tallyn/issues/75) #type/feature #area/frontend #area/backend #priority/p2
-- [x] [#77 Count loan payments as transfers, not spending](https://github.com/Kolla1997/Tallyn/issues/77) #type/feature #area/frontend #area/backend
-- [x] [#80 Accounts: filter by bank](https://github.com/Kolla1997/Tallyn/issues/80) #type/feature #area/frontend
-- [x] [#81 Transactions: filter by bank and show the bank on every transaction](https://github.com/Kolla1997/Tallyn/issues/81) #type/feature #area/frontend #area/backend
-- [x] [#83 Transactions: filter by bank and show the bank on each transaction](https://github.com/Kolla1997/Tallyn/issues/83) #type/feature #area/frontend #area/backend
-- [x] [#84 Accounts: filter by bank](https://github.com/Kolla1997/Tallyn/issues/84) #type/feature #area/frontend
-- [x] [#87 Smooth loading effect when filters change](https://github.com/Kolla1997/Tallyn/issues/87) #type/feature #area/design #area/frontend
-- [x] [#91 Sign out after 30 minutes of inactivity](https://github.com/Kolla1997/Tallyn/issues/91) #type/feature #area/frontend #priority/p1
-- [x] [#92 Maximum session length: sign in again after a set time](https://github.com/Kolla1997/Tallyn/issues/92) #type/feature #area/frontend #priority/p2
-- [x] [#96 Plaid Link is set up more than once on a page](https://github.com/Kolla1997/Tallyn/issues/96) #type/bug #area/frontend #priority/p1
-- [x] [#97 Phone layout fixes from the audit](https://github.com/Kolla1997/Tallyn/issues/97) #type/design #area/frontend #priority/p1
-- [x] [#98 Keyboard access for the spending dots](https://github.com/Kolla1997/Tallyn/issues/98) #type/feature #area/frontend #priority/p2
-- [x] [#99 Faster loading: compressed fonts and a split bundle](https://github.com/Kolla1997/Tallyn/issues/99) #type/tech-debt #area/frontend #priority/p2
-- [x] [#100 Lint, web tests and checks on every PR](https://github.com/Kolla1997/Tallyn/issues/100) #type/tech-debt #area/infra #priority/p2
-- [x] [#108 Make the 2FA code screen clearer](https://github.com/Kolla1997/Tallyn/issues/108) #type/design #area/frontend
-- [x] [#111 Detailed test plan for unit and integration testing](https://github.com/Kolla1997/Tallyn/issues/111) #type/docs #area/infra
-- [x] [#113 Browser end-to-end tests for the P0 paths](https://github.com/Kolla1997/Tallyn/issues/113) #type/tech-debt #area/infra #priority/p1
-- [x] [#114 Tests for the untested screens and PUT /api/me](https://github.com/Kolla1997/Tallyn/issues/114) #type/tech-debt #area/frontend #priority/p2
-- [x] [#115 Connect a bank can hit the Plaid rate limit](https://github.com/Kolla1997/Tallyn/issues/115) #type/bug #area/frontend #priority/p1
-- [x] [#116 Test that automatic sign-outs end only this device](https://github.com/Kolla1997/Tallyn/issues/116) #type/tech-debt #area/frontend #priority/p2
-- [x] [#117 Layout checks in the browser at phone and desktop width](https://github.com/Kolla1997/Tallyn/issues/117) #type/tech-debt #area/frontend #priority/p2
-- [x] [#120 Family owner can reset a member's 2FA](https://github.com/Kolla1997/Tallyn/issues/120) #type/feature #area/backend #priority/p2
-- [x] [#122 Tidy the sidebar: new collapse icon, smaller menu and profile card, legal links in the profile menu](https://github.com/Kolla1997/Tallyn/issues/122) #type/design #area/frontend
-- [x] [#133 Plan from your income with templates (e.g. 55/5/10/15/15)](https://github.com/Kolla1997/Tallyn/issues/133) #type/feature #area/frontend #area/backend #priority/p1
-- [x] [#145 Full UI audit with the outside skills](https://github.com/Kolla1997/Tallyn/issues/145) #type/design #area/design #area/frontend #priority/p1
-- [x] [#146 Budget amounts with a comma decimal save 100x too big](https://github.com/Kolla1997/Tallyn/issues/146) #type/bug #area/frontend #priority/p1
-- [x] [#147 Home's this-month figure only counts recent transactions](https://github.com/Kolla1997/Tallyn/issues/147) #type/bug #area/frontend #priority/p1
-- [x] [#151 Stuck and failed states: Try again instead of endless loaders](https://github.com/Kolla1997/Tallyn/issues/151) #type/bug #area/design #area/frontend #priority/p1
-- [x] [#152 Calm error messages instead of raw Supabase and network text](https://github.com/Kolla1997/Tallyn/issues/152) #type/bug #area/frontend #priority/p1
-- [x] [#153 Keyboard and screen readers: page titles, focus and ARIA fixes](https://github.com/Kolla1997/Tallyn/issues/153) #type/bug #area/frontend #priority/p1
-- [x] [#154 Worst-case data: long text, emoji, blank names, double submits, races](https://github.com/Kolla1997/Tallyn/issues/154) #type/bug #area/frontend #priority/p1
-- [x] [#155 Glass fallbacks, reduced motion gaps and page basics](https://github.com/Kolla1997/Tallyn/issues/155) #type/bug #area/frontend #priority/p1
-- [x] [#157 Cheaper and calmer motion](https://github.com/Kolla1997/Tallyn/issues/157) #type/tech-debt #area/frontend #priority/p2
-- [x] [#158 Tap areas and control contrast](https://github.com/Kolla1997/Tallyn/issues/158) #type/design #area/design #area/frontend #priority/p2
-- [x] [#159 Load speed: requests wait on each other](https://github.com/Kolla1997/Tallyn/issues/159) #type/tech-debt #area/frontend #area/backend #priority/p2
-- [x] [#160 CSS cleanup and tokens](https://github.com/Kolla1997/Tallyn/issues/160) #type/tech-debt #area/design #area/frontend #priority/p3
-- [x] [#180 Coinroof design skill: Coinroof rules plus taste-skill's app-screen method](https://github.com/Kolla1997/Tallyn/issues/180) #type/docs #area/design #priority/p2
-- [x] [#182 Home: explore bolder directions with taste-skill](https://github.com/Kolla1997/Tallyn/issues/182) #type/design #area/design #priority/p2
-- [x] [#183 Add shadcn, Bklit charts, Kokonut UI (free) and anime.js to web/ for drafts](https://github.com/Kolla1997/Tallyn/issues/183) #type/tech-debt #area/frontend #priority/p2
-- [x] [#185 Calm redesign drafts for all screens](https://github.com/Kolla1997/Tallyn/issues/185) #type/design #area/design #priority/p2
-- [x] [#200 Rename the app people see to Coinroof](https://github.com/Kolla1997/Tallyn/issues/200) #type/feature #area/brand #area/frontend #priority/p1
-- [x] [#201 Coinroof colours in the app](https://github.com/Kolla1997/Tallyn/issues/201) #type/design #area/design #priority/p1
-- [x] [#202 Rename Terms and Privacy to Coinroof](https://github.com/Kolla1997/Tallyn/issues/202) #type/docs #area/backend #priority/p1
-- [x] [#209 Focus ring shows around page headings after a keyboard sign-in](https://github.com/Kolla1997/Tallyn/issues/209) #type/bug #area/frontend #priority/p2
-- [x] [#253 Transactions: By category shows honest shares of the month](https://github.com/Kolla1997/Tallyn/issues/253) #type/feature #area/frontend #priority/p2
-- [x] [#263 Measure the cost of the card blur on a mid-range phone](https://github.com/Kolla1997/Tallyn/issues/263) #type/tech-debt #area/frontend #priority/p2
+- [x] [#4 Test idea, please ignore](https://github.com/Kolla1997/Coinroof/issues/4) #type/feature
+- [x] [#5 Repo scaffold: Go server, Vite React app, Dockerfile](https://github.com/Kolla1997/Coinroof/issues/5) #type/feature #area/infra #priority/p0
+- [x] [#6 Supabase schema and RLS](https://github.com/Kolla1997/Coinroof/issues/6) #type/feature #area/backend #priority/p0
+- [x] [#7 Auth: email + 2FA with Supabase Auth](https://github.com/Kolla1997/Coinroof/issues/7) #type/feature #area/backend #priority/p0
+- [x] [#8 Plaid Link and encrypted token storage](https://github.com/Kolla1997/Coinroof/issues/8) #type/feature #area/backend #priority/p0
+- [x] [#9 Scheduled bank sync (transactions and balances)](https://github.com/Kolla1997/Coinroof/issues/9) #type/feature #area/backend #priority/p0
+- [x] [#10 Brand: logo and design tokens](https://github.com/Kolla1997/Coinroof/issues/10) #type/design #area/brand #priority/p0
+- [x] [#12 Household members: invitations and roles](https://github.com/Kolla1997/Coinroof/issues/12) #type/feature #area/backend #priority/p1
+- [x] [#13 Budgets: for the household or one person](https://github.com/Kolla1997/Coinroof/issues/13) #type/feature #area/frontend #priority/p1
+- [x] [#14 Savings goals](https://github.com/Kolla1997/Coinroof/issues/14) #type/feature #area/frontend #priority/p2
+- [x] [#16 Automate board sync with a GitHub Action](https://github.com/Kolla1997/Coinroof/issues/16) #type/feature #area/infra #priority/p2
+- [x] [#22 Password reset](https://github.com/Kolla1997/Coinroof/issues/22) #type/feature #area/frontend #priority/p1
+- [x] [#23 Recovery when someone loses their authenticator app](https://github.com/Kolla1997/Coinroof/issues/23) #type/feature #area/frontend #priority/p1
+- [x] [#24 Content-Security-Policy and security headers](https://github.com/Kolla1997/Coinroof/issues/24) #type/feature #area/backend #priority/p1
+- [x] [#25 Styled sign-in and 2FA screens](https://github.com/Kolla1997/Coinroof/issues/25) #type/design #area/design #priority/p2
+- [x] [#27 Debt details: interest rates, due dates and minimum payments (Plaid Liabilities)](https://github.com/Kolla1997/Coinroof/issues/27) #type/feature #area/backend #priority/p0
+- [x] [#28 Sharing settings: choose what each household member can see](https://github.com/Kolla1997/Coinroof/issues/28) #type/feature #area/backend #priority/p1
+- [x] [#30 Separate database logins for the API and the bank sync](https://github.com/Kolla1997/Coinroof/issues/30) #type/tech-debt #area/backend #priority/p1
+- [x] [#34 Spending limits per member, with progress and alerts](https://github.com/Kolla1997/Coinroof/issues/34) #type/feature #area/backend #priority/p1
+- [x] [#36 Terms of Service and Privacy Policy pages, with consent at sign-up](https://github.com/Kolla1997/Coinroof/issues/36) #type/feature #area/frontend #priority/p0
+- [x] [#37 Show shared money separately from your own](https://github.com/Kolla1997/Coinroof/issues/37) #type/design #area/frontend #priority/p1
+- [x] [#38 Confirmation dialog before removing members, leaving or unlinking](https://github.com/Kolla1997/Coinroof/issues/38) #type/feature #area/frontend #priority/p1
+- [x] [#39 Build the app screens from the comps, for phone and web](https://github.com/Kolla1997/Coinroof/issues/39) #type/design #area/frontend #priority/p1
+- [x] [#42 Transactions page with person switcher, search and merchant logos](https://github.com/Kolla1997/Coinroof/issues/42) #type/feature #area/frontend #priority/p1
+- [x] [#51 Reconnect a bank that needs sign-in (Plaid update mode)](https://github.com/Kolla1997/Coinroof/issues/51) #type/feature #area/frontend #area/backend #priority/p1
+- [x] [#53 Rename a household](https://github.com/Kolla1997/Coinroof/issues/53) #type/feature #area/frontend #area/backend #priority/p2
+- [x] [#54 Download your data](https://github.com/Kolla1997/Coinroof/issues/54) #type/feature #area/frontend #area/backend #priority/p1
+- [x] [#55 Notifications](https://github.com/Kolla1997/Coinroof/issues/55) #type/feature #area/frontend #area/backend #priority/p2
+- [x] [#56 Close your Tallyn account](https://github.com/Kolla1997/Coinroof/issues/56) #type/feature #area/frontend #area/backend #priority/p1
+- [x] [#58 Transactions: summary and details panel](https://github.com/Kolla1997/Coinroof/issues/58) #type/feature #area/frontend #area/backend #priority/p1
+- [x] [#60 Maps: choose a provider and show purchase locations on a map](https://github.com/Kolla1997/Coinroof/issues/60) #type/feature #area/frontend #area/infra #priority/p2
+- [x] [#61 Frosted glass finish on every card](https://github.com/Kolla1997/Coinroof/issues/61) #type/design #area/design #area/frontend #priority/p2
+- [x] [#63 Floating rounded sidebar, darker secondary text, soft card shade](https://github.com/Kolla1997/Coinroof/issues/63) #type/design #area/design #area/frontend #priority/p2
+- [x] [#64 Floating rounded sidebar, darker secondary text and a soft shade under cards](https://github.com/Kolla1997/Coinroof/issues/64) #type/design #area/design #area/frontend #priority/p2
+- [x] [#66 Gear settings icon and Tallyn loading animation](https://github.com/Kolla1997/Coinroof/issues/66) #type/design #area/design #area/frontend #priority/p2
+- [x] [#68 Home shows your own money first, with a Yours / Everyone switch](https://github.com/Kolla1997/Coinroof/issues/68) #type/feature #area/frontend #priority/p1
+- [x] [#72 Sidebar: one profile card with a menu, Collapse by the logo](https://github.com/Kolla1997/Coinroof/issues/72) #type/design #area/frontend #priority/p2
+- [x] [#75 Transactions: a year of spending as dots, with a day overview on hover](https://github.com/Kolla1997/Coinroof/issues/75) #type/feature #area/frontend #area/backend #priority/p2
+- [x] [#77 Count loan payments as transfers, not spending](https://github.com/Kolla1997/Coinroof/issues/77) #type/feature #area/frontend #area/backend
+- [x] [#80 Accounts: filter by bank](https://github.com/Kolla1997/Coinroof/issues/80) #type/feature #area/frontend
+- [x] [#81 Transactions: filter by bank and show the bank on every transaction](https://github.com/Kolla1997/Coinroof/issues/81) #type/feature #area/frontend #area/backend
+- [x] [#83 Transactions: filter by bank and show the bank on each transaction](https://github.com/Kolla1997/Coinroof/issues/83) #type/feature #area/frontend #area/backend
+- [x] [#84 Accounts: filter by bank](https://github.com/Kolla1997/Coinroof/issues/84) #type/feature #area/frontend
+- [x] [#87 Smooth loading effect when filters change](https://github.com/Kolla1997/Coinroof/issues/87) #type/feature #area/design #area/frontend
+- [x] [#91 Sign out after 30 minutes of inactivity](https://github.com/Kolla1997/Coinroof/issues/91) #type/feature #area/frontend #priority/p1
+- [x] [#92 Maximum session length: sign in again after a set time](https://github.com/Kolla1997/Coinroof/issues/92) #type/feature #area/frontend #priority/p2
+- [x] [#96 Plaid Link is set up more than once on a page](https://github.com/Kolla1997/Coinroof/issues/96) #type/bug #area/frontend #priority/p1
+- [x] [#97 Phone layout fixes from the audit](https://github.com/Kolla1997/Coinroof/issues/97) #type/design #area/frontend #priority/p1
+- [x] [#98 Keyboard access for the spending dots](https://github.com/Kolla1997/Coinroof/issues/98) #type/feature #area/frontend #priority/p2
+- [x] [#99 Faster loading: compressed fonts and a split bundle](https://github.com/Kolla1997/Coinroof/issues/99) #type/tech-debt #area/frontend #priority/p2
+- [x] [#100 Lint, web tests and checks on every PR](https://github.com/Kolla1997/Coinroof/issues/100) #type/tech-debt #area/infra #priority/p2
+- [x] [#108 Make the 2FA code screen clearer](https://github.com/Kolla1997/Coinroof/issues/108) #type/design #area/frontend
+- [x] [#111 Detailed test plan for unit and integration testing](https://github.com/Kolla1997/Coinroof/issues/111) #type/docs #area/infra
+- [x] [#113 Browser end-to-end tests for the P0 paths](https://github.com/Kolla1997/Coinroof/issues/113) #type/tech-debt #area/infra #priority/p1
+- [x] [#114 Tests for the untested screens and PUT /api/me](https://github.com/Kolla1997/Coinroof/issues/114) #type/tech-debt #area/frontend #priority/p2
+- [x] [#115 Connect a bank can hit the Plaid rate limit](https://github.com/Kolla1997/Coinroof/issues/115) #type/bug #area/frontend #priority/p1
+- [x] [#116 Test that automatic sign-outs end only this device](https://github.com/Kolla1997/Coinroof/issues/116) #type/tech-debt #area/frontend #priority/p2
+- [x] [#117 Layout checks in the browser at phone and desktop width](https://github.com/Kolla1997/Coinroof/issues/117) #type/tech-debt #area/frontend #priority/p2
+- [x] [#120 Family owner can reset a member's 2FA](https://github.com/Kolla1997/Coinroof/issues/120) #type/feature #area/backend #priority/p2
+- [x] [#122 Tidy the sidebar: new collapse icon, smaller menu and profile card, legal links in the profile menu](https://github.com/Kolla1997/Coinroof/issues/122) #type/design #area/frontend
+- [x] [#133 Plan from your income with templates (e.g. 55/5/10/15/15)](https://github.com/Kolla1997/Coinroof/issues/133) #type/feature #area/frontend #area/backend #priority/p1
+- [x] [#145 Full UI audit with the outside skills](https://github.com/Kolla1997/Coinroof/issues/145) #type/design #area/design #area/frontend #priority/p1
+- [x] [#146 Budget amounts with a comma decimal save 100x too big](https://github.com/Kolla1997/Coinroof/issues/146) #type/bug #area/frontend #priority/p1
+- [x] [#147 Home's this-month figure only counts recent transactions](https://github.com/Kolla1997/Coinroof/issues/147) #type/bug #area/frontend #priority/p1
+- [x] [#151 Stuck and failed states: Try again instead of endless loaders](https://github.com/Kolla1997/Coinroof/issues/151) #type/bug #area/design #area/frontend #priority/p1
+- [x] [#152 Calm error messages instead of raw Supabase and network text](https://github.com/Kolla1997/Coinroof/issues/152) #type/bug #area/frontend #priority/p1
+- [x] [#153 Keyboard and screen readers: page titles, focus and ARIA fixes](https://github.com/Kolla1997/Coinroof/issues/153) #type/bug #area/frontend #priority/p1
+- [x] [#154 Worst-case data: long text, emoji, blank names, double submits, races](https://github.com/Kolla1997/Coinroof/issues/154) #type/bug #area/frontend #priority/p1
+- [x] [#155 Glass fallbacks, reduced motion gaps and page basics](https://github.com/Kolla1997/Coinroof/issues/155) #type/bug #area/frontend #priority/p1
+- [x] [#157 Cheaper and calmer motion](https://github.com/Kolla1997/Coinroof/issues/157) #type/tech-debt #area/frontend #priority/p2
+- [x] [#158 Tap areas and control contrast](https://github.com/Kolla1997/Coinroof/issues/158) #type/design #area/design #area/frontend #priority/p2
+- [x] [#159 Load speed: requests wait on each other](https://github.com/Kolla1997/Coinroof/issues/159) #type/tech-debt #area/frontend #area/backend #priority/p2
+- [x] [#160 CSS cleanup and tokens](https://github.com/Kolla1997/Coinroof/issues/160) #type/tech-debt #area/design #area/frontend #priority/p3
+- [x] [#180 Tallyn design skill: Tallyn rules plus taste-skill's app-screen method](https://github.com/Kolla1997/Coinroof/issues/180) #type/docs #area/design #priority/p2
+- [x] [#182 Home: explore bolder directions with taste-skill](https://github.com/Kolla1997/Coinroof/issues/182) #type/design #area/design #priority/p2
+- [x] [#183 Add shadcn, Bklit charts, Kokonut UI (free) and anime.js to web/ for drafts](https://github.com/Kolla1997/Coinroof/issues/183) #type/tech-debt #area/frontend #priority/p2
+- [x] [#185 Calm redesign drafts for all screens](https://github.com/Kolla1997/Coinroof/issues/185) #type/design #area/design #priority/p2
+- [x] [#200 Rename the app people see to Coinroof](https://github.com/Kolla1997/Coinroof/issues/200) #type/feature #area/brand #area/frontend #priority/p1
+- [x] [#201 Coinroof colours in the app](https://github.com/Kolla1997/Coinroof/issues/201) #type/design #area/design #priority/p1
+- [x] [#202 Rename Terms and Privacy to Coinroof](https://github.com/Kolla1997/Coinroof/issues/202) #type/docs #area/backend #priority/p1
+- [x] [#209 Focus ring shows around page headings after a keyboard sign-in](https://github.com/Kolla1997/Coinroof/issues/209) #type/bug #area/frontend #priority/p2
+- [x] [#253 Transactions: By category shows honest shares of the month](https://github.com/Kolla1997/Coinroof/issues/253) #type/feature #area/frontend #priority/p2
+- [x] [#263 Measure the cost of the card blur on a mid-range phone](https://github.com/Kolla1997/Coinroof/issues/263) #type/tech-debt #area/frontend #priority/p2
 
 
 %% kanban:settings

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Promote ideas from Tallyn Ideas to Tallyn Board (Backlog).
+"""Promote ideas from Coinroof Ideas to Coinroof Board (Backlog).
 
   python3 scripts/promote.py 23            promote idea #23 as a feature
   python3 scripts/promote.py 23 design     promote as type:design (feature|bug|design|docs|tech-debt)
 
-What promotion does: Ideas Stage → Promoted, add to Tallyn Board with Stage = Backlog,
+What promotion does: Ideas Stage → Promoted, add to Coinroof Board with Stage = Backlog,
 swap label type:idea → type:<kind>, and comment on the issue. sync_board.py calls
 auto_promote() so cards dragged to "Promoted" on GitHub are moved on the next sync.
 """
@@ -55,7 +55,7 @@ def move_to_board(e, url, number, labels, kind="feature"):
         edit += ["--remove-label", "type:idea"]
     gh(*edit)
     gh("issue", "comment", number, "--body",
-       f"Promoted to **Tallyn Board** (Backlog) on {datetime.date.today()}. "
+       f"Promoted to **Coinroof Board** (Backlog) on {datetime.date.today()}. "
        f"Label `type:idea` → `type:{kind}`.")
 
 
@@ -64,7 +64,7 @@ def board_urls(e):
 
 
 def add_missing_ideas(e=None):
-    """Put every open type:idea issue that isn't on Tallyn Ideas yet under Stage 'New'. Returns added numbers."""
+    """Put every open type:idea issue that isn't on Coinroof Ideas yet under Stage 'New'. Returns added numbers."""
     e = e or load_env()
     if "IDEAS_NUMBER" not in e:
         return []
@@ -80,12 +80,12 @@ def add_missing_ideas(e=None):
                   "--format", "json", as_json=True)["id"]
         set_stage(item, e["IDEAS_NUMBER"], owner, "New")
         done.append(issue["number"])
-        print(f"+ added #{issue['number']} {issue['title']} → Tallyn Ideas (New)")
+        print(f"+ added #{issue['number']} {issue['title']} → Coinroof Ideas (New)")
     return done
 
 
 def auto_promote(e=None):
-    """Move every idea in Stage 'Promoted' that isn't on Tallyn Board yet. Returns promoted numbers."""
+    """Move every idea in Stage 'Promoted' that isn't on Coinroof Board yet. Returns promoted numbers."""
     e = e or load_env()
     if "IDEAS_NUMBER" not in e:
         return []
@@ -96,7 +96,7 @@ def auto_promote(e=None):
         if stage == "Promoted" and c.get("url") and c["url"] not in on_board:
             move_to_board(e, c["url"], c["number"], it.get("labels"))
             done.append(c["number"])
-            print(f"↑ promoted #{c['number']} {c.get('title', '')} → Tallyn Board (Backlog)")
+            print(f"↑ promoted #{c['number']} {c.get('title', '')} → Coinroof Board (Backlog)")
     return done
 
 
@@ -111,14 +111,14 @@ def main():
     idea = next((i for i in items(e["IDEAS_NUMBER"], e["BOARD_OWNER"])
                  if (i.get("content") or {}).get("number") == number), None)
     if not idea:
-        sys.exit(f"#{number} is not on Tallyn Ideas")
+        sys.exit(f"#{number} is not on Coinroof Ideas")
     set_stage(idea["id"], e["IDEAS_NUMBER"], e["BOARD_OWNER"], "Promoted")
     url = idea["content"]["url"]
     if url in board_urls(e):
-        print(f"#{number} is already on Tallyn Board. Ideas Stage set to Promoted")
+        print(f"#{number} is already on Coinroof Board. Ideas Stage set to Promoted")
         return
     move_to_board(e, url, number, idea.get("labels"), kind)
-    print(f"✓ #{number} {idea['content'].get('title', '')} → Tallyn Board (Backlog) as type:{kind}")
+    print(f"✓ #{number} {idea['content'].get('title', '')} → Coinroof Board (Backlog) as type:{kind}")
 
 
 if __name__ == "__main__":

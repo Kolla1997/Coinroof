@@ -9,7 +9,7 @@ tags: [spec, bills]
 
 # Feature — Bills
 
-Record bills and payments Plaid can't see: rent, electricity, gas, water, internet, insurance, childcare, cash payments. [#127](https://github.com/Kolla1997/Tallyn/issues/127). Loans: [#306](https://github.com/Kolla1997/Tallyn/issues/306). Onboarding step: [#307](https://github.com/Kolla1997/Tallyn/issues/307). Reminders: [#126](https://github.com/Kolla1997/Tallyn/issues/126).
+Record bills and payments Plaid can't see: rent, electricity, gas, water, internet, insurance, childcare, cash payments. [#127](https://github.com/Kolla1997/Coinroof/issues/127). Loans: [#306](https://github.com/Kolla1997/Coinroof/issues/306). Onboarding step: [#307](https://github.com/Kolla1997/Coinroof/issues/307). Reminders: [#126](https://github.com/Kolla1997/Coinroof/issues/126).
 
 ## Problem
 Rent and utilities are often a family's biggest costs. Paid in cash, by cheque or from an account that isn't linked, they never reach Coinroof, so spending looks smaller than it is.

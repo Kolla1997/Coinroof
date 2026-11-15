@@ -11,6 +11,7 @@ tags: [log]
 Newest first. One entry per working session or decision.
 
 ## 2026-11-15
+- #324 GitHub renamed with Dinesh's OK: repo `Kolla1997/Coinroof` (the old URL redirects), Projects "Coinroof Board" and "Coinroof Ideas" (same numbers, 1 and 2). Docs, scripts and issue links updated; board mirrors regenerated.
 - #324 Go module path is now `github.com/Kolla1997/Coinroof` (it builds before the GitHub repo is renamed; GitHub redirects the old URL). Database roles `tallyn_api`/`tallyn_sync` keep their names for now: renaming them with `ALTER ROLE` breaks the database tests, because each test database re-runs 0005/0006, which make a fresh `tallyn_*` role without the grants. Needs its own design (open question on #324).
 - #324 Rename phase C: server log prefix `coinroof:`, `COINROOF_TEST_DATABASE_URL` (the old name still read as a fallback), `coinroof-web` package, Android colour names. The Go module path waits for the GitHub rename (phase E); Supabase project names (`tallyn-dev`, `tallyn-e2e`) are changed in Supabase by Dinesh.
 - #324 Rename phase B: browser storage keys `tallyn.*` → `coinroof.*`, moved once at start-up (`lib/storage-move.js`) so nobody loses their theme, household or terms-agreed.
@@ -202,12 +203,12 @@ Newest first. One entry per working session or decision.
 - Open: local lint and tests stall in `~/Desktop` (iCloud Drive). Fresh clones outside the Desktop run them in seconds; moving the repo to `~/Code/Tallyn` is planned (Dinesh, later).
 
 ## 2026-10-23
-- #1 Board sync now adds any open `type:idea` issue missing from Tallyn Ideas under **New** (`add_missing_ideas` in `scripts/promote.py`, run by `scripts/sync_board.py` before auto-promote). Ideas logged where the project API isn't available (cloud sessions, #132 and #136) or made outside `/i` now reach the board on the next sync, which the Action runs when an issue is opened or labelled. Checked against a fake `gh`; first real proof is the Action run after merge.
+- #1 Board sync now adds any open `type:idea` issue missing from Coinroof Ideas under **New** (`add_missing_ideas` in `scripts/promote.py`, run by `scripts/sync_board.py` before auto-promote). Ideas logged where the project API isn't available (cloud sessions, #132 and #136) or made outside `/i` now reach the board on the next sync, which the Action runs when an issue is opened or labelled. Checked against a fake `gh`; first real proof is the Action run after merge.
 - #141 Outside design skills (Dinesh): six skills from emilkowalski/skills copied into `.claude/skills/`, pinned at `2d22863`, with sources in `SOURCES.md`: emil-design-eng, animate, animation-performance, break-ui, improve-animations, and review-animations (manual only). CLAUDE.md §6: Coinroof's own rules win over outside skills. Skipped shadcn (no Tailwind or shadcn in `web/`). Also added hallmark (`7ec8682`) and ui-ux-pro-max (`d14efff`) after reading their scripts (Dinesh): used for checks only, never for Coinroof's look; theme deal, scaffold, photo library, `--persist` and Together AI images are off (CLAUDE.md §6). `.hallmark/` is gitignored.
 - #113 Browser end-to-end tests written (`web/e2e-full/`, `npm run test:e2e`, nightly workflow `.github/workflows/e2e.yml`, never on PRs): sign-in with 2FA, Home total, connecting a sandbox bank through the real Plaid Link screen (Dinesh picked A), invite and accept, share and unshare. Each test makes fresh test people with 2FA and deletes them after, so no TOTP secret is stored. Not run yet: waiting for the Supabase test project and its `E2E_*` secrets (Dev Setup). Test Plan rows say Planned (#113) until the first green run.
 - #113 First real runs against the `tallyn-e2e` project: fixed the secrets (project URL, pooler host), moved the workflow to Node 22, and fixed the tests (screen-reader copy of the total, sign-in lands on Home, Plaid's phone-number, related-banks and save screens, the hidden sharing checkbox). All five P0 paths green; Test Plan rows now Yes.
 - #136 TallyX open questions parked for later (Dinesh).
-- #136 TallyX AI idea note (`docs/06 Ideas/Idea - TallyX AI.md`): the model picks tools and the backend does the maths, same privacy rules as the app, one low-cost model first (Model Routing Playbook), a measurement set before launch, legal and consent open. Added #136 to Tallyn Ideas and moved it to Exploring.
+- #136 TallyX AI idea note (`docs/06 Ideas/Idea - TallyX AI.md`): the model picks tools and the backend does the maths, same privacy rules as the app, one low-cost model first (Model Routing Playbook), a measurement set before launch, legal and consent open. Added #136 to Coinroof Ideas and moved it to Exploring.
 - #1 Session handoff and usage rules (Dinesh): sessions start by reading `PROGRESS.md` and end by updating it; it holds only the handoff (branch, next steps, open problems), is gitignored and hidden from Obsidian. Added "Keeping usage low" rules; required checks are never skipped (CLAUDE.md §3).
 
 ## 2026-10-21
@@ -413,22 +414,22 @@ Newest first. One entry per working session or decision.
 - #16 Board sync is automated: the GitHub Action `sync-board.yml` runs `sync_board.py` hourly, on issue changes and on demand, and commits changed mirrors as `Sync board mirrors (#1)`. `sync_board.py` skips rewrites that would only change the date stamp.
 - Decision: automated mirror commits go under Housekeeping #1, not #16, because they're ongoing upkeep.
 - Open: Dinesh to add the `BOARD_TOKEN` repo secret (classic PAT, `repo` + `project`). The Action fails with a clear error until then.
-- #1 Tallyn Board has a new **Blocked** column (added on GitHub). `sync_board.py` now mirrors it and warns about any Stage it doesn't know instead of quietly showing the card under Backlog. Updated `setup_github.sh` and CLAUDE.md to match.
+- #1 Coinroof Board has a new **Blocked** column (added on GitHub). `sync_board.py` now mirrors it and warns about any Stage it doesn't know instead of quietly showing the card under Backlog. Updated `setup_github.sh` and CLAUDE.md to match.
 - #1 Added the `blocker` label (red) for tickets that can't move. It's a label, not a column, so blocked tickets keep their Stage. Backlog stays as is.
-- #1 Filled Tallyn Board from the Roadmap: #5–#10 (Now, p0) and #11–#14 (Next, p1/p2) in Backlog. Each has Problem, Definition of done and related docs. Numbers added to [[Roadmap]].
-- #15 AI assistant (Roadmap "Later") logged on Tallyn Ideas as Parked, not on Tallyn Board.
+- #1 Filled Coinroof Board from the Roadmap: #5–#10 (Now, p0) and #11–#14 (Next, p1/p2) in Backlog. Each has Problem, Definition of done and related docs. Numbers added to [[Roadmap]].
+- #15 AI assistant (Roadmap "Later") logged on Coinroof Ideas as Parked, not on Coinroof Board.
 - #1 Reopened Housekeeping (PR #3 had closed it) and set it to In Progress. PRs under it should say `Part of #1`, not `Closes #1`.
 - #4 Tested `/i` → `/promote` end to end: board, label swap, comment and Ideas Stage all passed. Closed as a test.
 - Decision: priorities follow the roadmap horizon (Now p0, Next p1, savings goals p2). One area label per issue.
-- Open: closed #4 stayed in Backlog on Tallyn Board. Check the "Item closed → Done" workflow. Unknowns in the issues: data model, sync frequency, FX rate source, member roles, logo concept.
-- #1 Auto-promotion: ideas dragged to Promoted move to Tallyn Board (Backlog) on the next sync, with a `type:idea` → `type:feature` label swap and an issue comment. Added `/promote <N>` and `scripts/promote.py`. `/i` and `/promote` now sync automatically.
-- #1 Added Housekeeping to Tallyn Board under Backlog and re-synced both board mirrors.
-- #2 Tested `/i` end to end. The test idea landed only on Tallyn Ideas (New), not on Tallyn Board. Closed as not planned.
+- Open: closed #4 stayed in Backlog on Coinroof Board. Check the "Item closed → Done" workflow. Unknowns in the issues: data model, sync frequency, FX rate source, member roles, logo concept.
+- #1 Auto-promotion: ideas dragged to Promoted move to Coinroof Board (Backlog) on the next sync, with a `type:idea` → `type:feature` label swap and an issue comment. Added `/promote <N>` and `scripts/promote.py`. `/i` and `/promote` now sync automatically.
+- #1 Added Housekeeping to Coinroof Board under Backlog and re-synced both board mirrors.
+- #2 Tested `/i` end to end. The test idea landed only on Coinroof Ideas (New), not on Coinroof Board. Closed as not planned.
 - Rule: think before building. Claude shares its understanding, approach, alternatives, improvements and risks, then waits for an OK (`CLAUDE.md` §0).
-- Added a separate **Tallyn Ideas** board (New → Exploring → Promoted / Parked / Rejected) and the `/i <idea>` command. Tallyn Board now holds committed work only.
+- Added a separate **Coinroof Ideas** board (New → Exploring → Promoted / Parked / Rejected) and the `/i <idea>` command. Coinroof Board now holds committed work only.
 - Rule: every change has a ticket number (GitHub issue `#N`) in its branch, commits, PR, notes and Log. A commit-msg hook enforces it (`CLAUDE.md` §5).
 - Set up docs in `docs/` (repo root is the Obsidian vault), `CLAUDE.md`, GitHub issue forms, labels and board scripts.
 - Filled Vision, Roadmap, Tech Stack, Architecture and Dev Setup from the README.
-- Decision: GitHub Issues + Project "Tallyn Board" are the source of truth for work. `05 Board/Board.md` is a generated mirror.
+- Decision: GitHub Issues + Project "Coinroof Board" are the source of truth for work. `05 Board/Board.md` is a generated mirror.
 - Decision: `design-tokens.json` holds token values and `brand/` holds logo files. Docs explain how to use them.
 - Open: personas, logo concept, token values, hosting choice (Render vs Railway).

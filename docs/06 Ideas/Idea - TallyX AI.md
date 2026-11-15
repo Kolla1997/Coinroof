@@ -11,7 +11,7 @@ tags: [idea, ai]
 
 **One-liner:** Ask Coinroof about your money in plain words ("what did I spend on food this month?"), first from Discord, later in the app.
 
-Tickets: [#136](https://github.com/Kolla1997/Tallyn/issues/136) (TallyX on Discord), building on [#15](https://github.com/Kolla1997/Tallyn/issues/15) (AI assistant). Related: [#132](https://github.com/Kolla1997/Tallyn/issues/132) (messaging between household members).
+Tickets: [#136](https://github.com/Kolla1997/Coinroof/issues/136) (TallyX on Discord), building on [#15](https://github.com/Kolla1997/Coinroof/issues/15) (AI assistant). Related: [#132](https://github.com/Kolla1997/Coinroof/issues/132) (messaging between household members).
 
 > [!todo] Name not final
 > "TallyX" is a working name. Dinesh is open to others.

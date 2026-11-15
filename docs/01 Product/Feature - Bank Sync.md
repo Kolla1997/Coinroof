@@ -31,8 +31,8 @@ Every active linked bank is synced at least every 6 hours, and within minutes of
 - Web: spending by category this month, recent transactions, last-updated time per bank
 
 **Out:**
-- Debt details: interest rates, due dates, minimum payments ([#27](https://github.com/Kolla1997/Tallyn/issues/27))
-- Choosing what each member shares, e.g. partners seeing each other's everything ([#28](https://github.com/Kolla1997/Tallyn/issues/28))
+- Debt details: interest rates, due dates, minimum payments ([#27](https://github.com/Kolla1997/Coinroof/issues/27))
+- Choosing what each member shares, e.g. partners seeing each other's everything ([#28](https://github.com/Kolla1997/Coinroof/issues/28))
 - The reconnect flow (Link update mode) and Plaid webhooks: follow-ups
 - Map view of transactions (coordinates are stored for it)
 - Budgets (#13), currency conversion (#11)

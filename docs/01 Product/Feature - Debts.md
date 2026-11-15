@@ -9,7 +9,7 @@ tags: [spec, plaid, debts]
 
 # Feature — Debts
 
-Everything you owe in one place: credit cards, student loans, mortgages and other loans. [#27](https://github.com/Kolla1997/Tallyn/issues/27). Card details: [[Feature - Credit Cards]].
+Everything you owe in one place: credit cards, student loans, mortgages and other loans. [#27](https://github.com/Kolla1997/Coinroof/issues/27). Card details: [[Feature - Credit Cards]].
 
 ## Problem
 Debt was spread over Home (credit cards) and Accounts (You owe balances). Families want rates, payments, payoff and overdue warnings together.

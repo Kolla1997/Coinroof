@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# One-time setup: labels + "Tallyn Board" GitHub Project with a Stage field.
+# One-time setup: labels + "Coinroof Board" GitHub Project with a Stage field.
 # Usage: scripts/setup_github.sh OWNER/REPO
 # Needs: gh CLI logged in with project scope →  gh auth refresh -s project
 set -euo pipefail
@@ -24,8 +24,8 @@ for n, c, d in re.findall(r'name: "(.*?)"\n  color: "(.*?)"\n  description: "(.*
     print("  ✓", n)
 PY
 
-echo "→ Creating project 'Tallyn Board'"
-NUM=$(gh project create --owner "$OWNER" --title "Tallyn Board" --format json --jq .number)
+echo "→ Creating project 'Coinroof Board'"
+NUM=$(gh project create --owner "$OWNER" --title "Coinroof Board" --format json --jq .number)
 gh project field-create "$NUM" --owner "$OWNER" --name "Stage" \
   --data-type SINGLE_SELECT --single-select-options "Backlog,In Progress,Review,Blocked,Done"
 gh project link "$NUM" --owner "$OWNER" --repo "$REPO"

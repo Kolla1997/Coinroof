@@ -22,7 +22,7 @@ Soft, friendly, frosted. Cards and the sidebar are frosted glass over a soft glo
 | Breakpoints | 640 / 768 / 1024 / 1280 / 1440 |
 
 ## Glass finish
-Every card in Coinroof ([#61](https://github.com/Kolla1997/Tallyn/issues/61)): `.panel` in the app and `.card` on the sign-in screens. Values live in `design-tokens.json` under `effect`.
+Every card in Coinroof ([#61](https://github.com/Kolla1997/Coinroof/issues/61)): `.panel` in the app and `.card` on the sign-in screens. Values live in `design-tokens.json` under `effect`.
 
 | Part | Rule |
 |---|---|
@@ -40,7 +40,7 @@ Every card in Coinroof ([#61](https://github.com/Kolla1997/Tallyn/issues/61)): `
 **Fallbacks.** Cards turn solid white and the glow is hidden when the browser can't blur (`@supports`) or the person asks for reduced transparency (`prefers-reduced-transparency`).
 
 ## App type and density
-The web app uses two densities ([#39](https://github.com/Kolla1997/Tallyn/issues/39)). Phones (under 1024px) stay **comfortable** for reading and tapping. From 1024px the app is **compact**, so more fits at a glance. `brand/typography/type-scale.css` is the brand and marketing scale; this table is for app screens.
+The web app uses two densities ([#39](https://github.com/Kolla1997/Coinroof/issues/39)). Phones (under 1024px) stay **comfortable** for reading and tapping. From 1024px the app is **compact**, so more fits at a glance. `brand/typography/type-scale.css` is the brand and marketing scale; this table is for app screens.
 
 | Item | Phone (comfortable) | Web, 1024px and up (compact) |
 |---|---|---|
@@ -100,7 +100,7 @@ Patterns already in the app, to reuse before inventing new ones:
 Rules: each effect plays once per load, not on every re-render; switching a filter or person uses the quicker UI transition; reduced motion shows the finished state with no movement (or a short plain fade).
 
 ## Designing a screen
-How to design or redesign any Coinroof screen ([#180](https://github.com/Kolla1997/Tallyn/issues/180)). It borrows the app-screen method from taste-skill (`.claude/skills/design-taste-frontend/`, `references/app-screens.md`) but keeps Coinroof's look. Follow the steps in order; when they disagree, the earlier step wins.
+How to design or redesign any Coinroof screen ([#180](https://github.com/Kolla1997/Coinroof/issues/180)). It borrows the app-screen method from taste-skill (`.claude/skills/design-taste-frontend/`, `references/app-screens.md`) but keeps Coinroof's look. Follow the steps in order; when they disagree, the earlier step wins.
 
 **1. Coinroof decides the look.** Colours, type, spacing and shape come from `design-tokens.json`, this note (glass finish, density, components), the [[Brand Guide]], the [[Logo Guide]], [[Voice and Tone]] and [[UI Patterns]]. Nothing from an outside skill changes them.
 

@@ -138,7 +138,7 @@ The P0 paths (sign-in with 2FA, Home totals, connecting a sandbox bank, inviting
 | Sync board into docs | Automatic (GitHub Action every 6 hours and on issue changes, `git pull` to get it). By hand: `python3 scripts/sync_board.py` |
 | Test | `go test ./...` (database tests skip unless `COINROOF_TEST_DATABASE_URL` is set) |
 | Browser end-to-end tests | `cd web && npm run test:e2e` (needs the `E2E_*` values, above) |
-| Test the schema and RLS | Start a throwaway Postgres: `docker run --rm -d -p 5433:5432 -e POSTGRES_PASSWORD=postgres postgres:16`, then `COINROOF_TEST_DATABASE_URL=postgres://postgres:postgres@localhost:5433/postgres go test ./internal/db`. Without Docker, Homebrew `postgresql@16` works too (steps in [PR #20](https://github.com/Kolla1997/Tallyn/pull/20)) |
+| Test the schema and RLS | Start a throwaway Postgres: `docker run --rm -d -p 5433:5432 -e POSTGRES_PASSWORD=postgres postgres:16`, then `COINROOF_TEST_DATABASE_URL=postgres://postgres:postgres@localhost:5433/postgres go test ./internal/db`. Without Docker, Homebrew `postgresql@16` works too (steps in [PR #20](https://github.com/Kolla1997/Coinroof/pull/20)) |
 | Lint | `go vet ./...` and `gofmt -l cmd internal`; web: `cd web && npm run lint` (ESLint, #100) |
 | Format the web app | `cd web && npm run format` (Prettier: single quotes, no semicolons; check with `npm run format:check`) |
 | Test the web app | `cd web && npm test` (Vitest; tests sit next to the code as `*.test.js(x)`) |

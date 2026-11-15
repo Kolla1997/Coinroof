@@ -45,8 +45,8 @@ The **repo root is the Obsidian vault**. Notes live in `docs/`. Code folders are
 | `brand/` | Logo masters, icons, exported assets | Yes, for asset files |
 | `docs/04 Tech/` | Architecture, stack, dev setup, ADRs | Yes, for tech decisions |
 | `legal/` | Terms of Service and Privacy Policy, with `version` and `effective` in their frontmatter (#36). Shown at `/terms` and `/privacy`; versions must match `internal/api/consent.go` | Yes, for legal text. Lawyer-reviewed before changes go live |
-| `docs/05 Board/Board.md` | Mirror of **Tallyn Board** (committed work) | **No.** It's generated, so never edit it |
-| `docs/06 Ideas/Ideas Board.md` | Mirror of **Tallyn Ideas** (idea pipeline) | **No.** It's generated, so never edit it |
+| `docs/05 Board/Board.md` | Mirror of **Coinroof Board** (committed work) | **No.** It's generated, so never edit it |
+| `docs/06 Ideas/Ideas Board.md` | Mirror of **Coinroof Ideas** (idea pipeline) | **No.** It's generated, so never edit it |
 | `docs/06 Ideas/` | Longer write-ups of ideas, one note each, with `issue: N` | Yes, for idea detail |
 | `.claude/commands/` | Claude Code slash commands (`/i`). Source copies live in `scripts/claude-commands/` | — |
 | `.claude/skills/` | Outside Claude Code skills, pinned copies; sources in `SOURCES.md` (#141) | No. Advice only, Coinroof rules win (§6) |
@@ -55,7 +55,7 @@ The **repo root is the Obsidian vault**. Notes live in `docs/`. Code folders are
 | `cmd/`, `internal/` | Go backend (API + scheduled bank sync) | Code |
 | `web/` | React app (Vite) | Code |
 | `migrations/` | Supabase SQL schema | Code |
-| GitHub Issues + Projects **Tallyn Board** (#1) and **Tallyn Ideas** | All tickets: work on one board, ideas on the other | **Yes, for tracking** |
+| GitHub Issues + Projects **Coinroof Board** (#1) and **Coinroof Ideas** | All tickets: work on one board, ideas on the other | **Yes, for tracking** |
 
 ## 3. Session routine
 
@@ -134,26 +134,26 @@ A **ticket number is the GitHub issue number**, written `#12`. Every piece of wo
 | Meeting action items | number after the task | `- [ ] @Dinesh: set up RLS policies (#15)` |
 
 - A commit without `#N` is rejected by `scripts/hooks/commit-msg` (enabled with `git config core.hooksPath scripts/hooks`). Never bypass it with `--no-verify`.
-- In note bodies, a bare `#12` isn't clickable (and Obsidian doesn't treat number-only tags as tags). When a link helps, write `[#12](https://github.com/Kolla1997/Tallyn/issues/12)`.
+- In note bodies, a bare `#12` isn't clickable (and Obsidian doesn't treat number-only tags as tags). When a link helps, write `[#12](https://github.com/Kolla1997/Coinroof/issues/12)`.
 - One ticket covers one outcome. If a task grows, split it into new tickets and link them ("Part of #12").
 
 **Two boards:**
 
 | Board | What's on it | Columns (`Stage`) |
 |---|---|---|
-| **Tallyn Ideas** | Every `type:idea` issue: things that *might* be built | New → Exploring → Promoted · Parked · Rejected |
-| **Tallyn Board** | Committed work: features, bugs, design, docs, tech debt | Backlog → In Progress → Review → Done, plus **Blocked** |
+| **Coinroof Ideas** | Every `type:idea` issue: things that *might* be built | New → Exploring → Promoted · Parked · Rejected |
+| **Coinroof Board** | Committed work: features, bugs, design, docs, tech debt | Backlog → In Progress → Review → Done, plus **Blocked** |
 
 The Ideas board also has **Impact** (High/Medium/Low) and **Effort** (S/M/L) fields for triage.
 
 **From idea to done:**
-1. **Capture:** `/i <idea>` in Claude Code (or `scripts/idea.sh "Title"` in Terminal, or the GitHub app's Idea form). It creates a `type:idea` issue on Tallyn Ideas under **New**.
+1. **Capture:** `/i <idea>` in Claude Code (or `scripts/idea.sh "Title"` in Terminal, or the GitHub app's Idea form). It creates a `type:idea` issue on Coinroof Ideas under **New**.
 2. **Explore (optional):** write it up in `docs/06 Ideas/` from `Templates/Idea.md` with `issue: N`, and move it to **Exploring**.
 3. **Promote:** keep the **same issue number**. Either:
-   - drag the card to **Promoted** on Tallyn Ideas, and the next sync moves it automatically, or
+   - drag the card to **Promoted** on Coinroof Ideas, and the next sync moves it automatically, or
    - run `/promote <N> [type]` in Claude Code, or `python3 scripts/promote.py <N> [type]` in Terminal.
 
-   Promotion adds the issue to Tallyn Board under **Backlog**, swaps the label `type:idea` → `type:feature` (or the type given), and comments on the issue with the date. Write a Feature Spec if it's bigger than about a day's work.
+   Promotion adds the issue to Coinroof Board under **Backlog**, swaps the label `type:idea` → `type:feature` (or the type given), and comments on the issue with the date. Write a Feature Spec if it's bigger than about a day's work.
 4. **Build:** move it to In Progress when work starts and to Review when a PR is open. If it can't move, put it in **Blocked**, add the `blocker` label and say what blocks it in a comment. Merging a PR with `Closes #N` closes it. Then add a Log entry starting with `#N`.
    - **Test Plan (#111):** every ticket that adds or changes a feature, and every bug fix, updates `docs/04 Tech/Test Plan.md` in the same PR:
      - add or update its use-case rows (priority, coverage at each level, test names);
@@ -162,7 +162,7 @@ The Ideas board also has **Impact** (High/Medium/Low) and **Effort** (S/M/L) fie
 
      For P0 features, write the rows when the scope is agreed, before the code. The PR description says which rows were added or updated.
 5. **Park or reject** ideas you won't do now, with a one-line reason in a comment. Don't delete them.
-6. **Sync:** `python3 scripts/sync_board.py` first adds any open `type:idea` issue missing from Tallyn Ideas under **New** (so ideas made without the board, like from a cloud session or another tool, still land there), then auto-promotes cards in **Promoted**, then regenerates both board notes in Obsidian. Edit on GitHub, not in the mirrors. It runs:
+6. **Sync:** `python3 scripts/sync_board.py` first adds any open `type:idea` issue missing from Coinroof Ideas under **New** (so ideas made without the board, like from a cloud session or another tool, still land there), then auto-promotes cards in **Promoted**, then regenerates both board notes in Obsidian. Edit on GitHub, not in the mirrors. It runs:
    - automatically, via the GitHub Action `.github/workflows/sync-board.yml`: every 6 hours (card moves send no events, so allow up to 6 hours; run it by hand to see one sooner), when an issue is opened, closed, reopened or labelled, and from Actions → "Sync board mirrors" → Run workflow. It commits changed mirrors to `main` as `Sync board mirrors (#1)`, so `git pull` before reading them
    - at the start of every Claude session (§3)
    - after every `/i` and `/promote`
