@@ -11,6 +11,8 @@ tags: [log]
 Newest first. One entry per working session or decision.
 
 ## 2026-11-15
+- #319 Paused bills: Dinesh picked A of `drafts/319-paused-bills.html`: a Paused list under Left to pay with Resume (from this month) and Edit; the calendar shows only bills that count. Edit's icon now follows the chip name, so Water, Gas and Internet no longer show Electric's bolt. Found while checking the #315 form signed in on the sandbox (several at once, loan payment, edit and pause all saved fine).
+- #290 Already built in #291; #318 added the export README line and closed it.
 - #315 Loan icon: the Loan chip is a bank (lucide Landmark); a loan's row shows its kind once picked (Car, HandCoins for Personal, GraduationCap for Education, Landmark for Other). Dinesh picked the mix.
 - #315 Bills tab: Add a bill now opens the onboarding form (shared `PaymentsForm.jsx`): several at once, More options for how often and start month, Edit in the same form. Dinesh picked 3 · Mix and asked for any loan: a Loan chip (Car, Personal, Education, Other) replaces Car loan here and in onboarding. No backend change.
 

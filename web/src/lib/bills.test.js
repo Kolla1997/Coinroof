@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { byDay, cardDues, monthGrid, shiftMonth, totals } from './bills.js'
+import { byDay, cardDues, monthGrid, pausedBills, resumeBody, shiftMonth, totals } from './bills.js'
 
 // Bills (#127). Amounts are made up.
 const dues = [
@@ -74,5 +74,27 @@ describe('cardDues', () => {
     ])
     expect(d[0].statement_minor).toBe(120000)
     expect(totals(d.slice(0, 3))).toEqual({ total: 10000, paid: 3500, left: 6500, late: 1 })
+  })
+})
+
+describe('paused bills (#319)', () => {
+  const b = {
+    id: 'w',
+    name: 'Water',
+    category: 'utilities',
+    amount_minor: 5200,
+    varies: true,
+    frequency: 'monthly',
+    due_day: 20,
+    starts_on: '2026-08',
+    paused: true,
+    note: null,
+  }
+  it('lists paused bills but not loans', () => {
+    expect(pausedBills([b, { ...b, id: 'l', category: 'loan' }, { ...b, id: 'on', paused: false }]).map((x) => x.id)).toEqual(['w'])
+  })
+  it('resumes from this month, or keeps a later start', () => {
+    expect(resumeBody(b, '2026-11')).toMatchObject({ paused: false, starts_on: '2026-11', category: 'utilities', note: '' })
+    expect(resumeBody({ ...b, starts_on: '2027-01' }, '2026-11').starts_on).toBe('2027-01')
   })
 })

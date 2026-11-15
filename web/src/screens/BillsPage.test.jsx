@@ -246,4 +246,17 @@ describe('BillsPage', () => {
     expect(screen.getByRole('heading', { name: 'Bills are for household owners' })).toBeInTheDocument()
     expect(screen.queryByRole('button', { name: 'Add a bill' })).not.toBeInTheDocument()
   })
+
+  it('lists paused bills under Left to pay and resumes one from this month (#319)', async () => {
+    const water = bill('water', 'Water', 20, 5200, { category: 'utilities', varies: true, starts_on: '2026-08', paused: true })
+    answers([...BILLS, water])
+    await open()
+    const paused = within(screen.getByRole('region', { name: /Paused/ }))
+    expect(paused.getByText('Water')).toBeInTheDocument()
+    expect(paused.getByText('Due on the 20th · not counted')).toBeInTheDocument()
+    expect(screen.getByText('3 bills · $1,634.90 this month')).toBeInTheDocument() // not counted
+    await act(async () => fireEvent.click(paused.getByRole('button', { name: 'Resume' })))
+    const [put] = callsTo(api, '/api/bills/water', 'PUT')
+    expect(put[1].body).toMatchObject({ paused: false, starts_on: '2026-11', amount_minor: 5200, category: 'utilities' })
+  })
 })

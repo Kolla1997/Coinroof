@@ -49,8 +49,23 @@ export const ord = (d) => d + (d % 10 === 1 && d !== 11 ? 'st' : d % 10 === 2 &&
 const isLoan = (it) => it.k === 'loan'
 // A loan shows its kind once picked (Dinesh, #315): the chip itself is a bank, as Bills marks loan payments.
 const LOAN_ICON = { car: Car, personal: HandCoins, education: GraduationCap, other: Landmark }
+// A saved bill's icon (#319): a name that matches a chip ("Water") keeps that chip's icon, since
+// Electric, Gas, Water and Internet all save as utilities; anything else goes by its category.
+const BY_NAME = Object.fromEntries(
+  Object.values(KINDS)
+    .filter((k) => !k.multi)
+    .map((k) => [k.name.toLowerCase(), k.icon]),
+)
+export const billIcon = (name, category) =>
+  BY_NAME[
+    String(name ?? '')
+      .trim()
+      .toLowerCase()
+  ] ??
+  CATEGORY_ICON[category] ??
+  Receipt
 const iconOf = (it) =>
-  it.k === 'bill' || it.k === 'other' ? (CATEGORY_ICON[it.category] ?? Receipt) : isLoan(it) ? (LOAN_ICON[it.loanKind] ?? Landmark) : KINDS[it.k].icon
+  it.k === 'bill' || it.k === 'other' ? billIcon(it.name, it.category) : isLoan(it) ? (LOAN_ICON[it.loanKind] ?? Landmark) : KINDS[it.k].icon
 
 const KindIcon = ({ it }) => createElement(iconOf(it), { className: 'size-4' })
 
