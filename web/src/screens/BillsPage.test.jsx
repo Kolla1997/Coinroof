@@ -22,7 +22,7 @@ const bill = (id, name, day, amount, extra = {}) => ({
   note: null,
   ...extra,
 })
-const BILLS = [bill('rent', 'Rent', 1, 150000), bill('net', 'Internet', 3, 7000), bill('gas', 'Gas', 9, 6490, { varies: true })]
+const BILLS = [bill('rent', 'Rent', 1, 150000), bill('net', 'Internet', 3, 7000), bill('gas', 'Gas', 9, 6490, { varies: true, note: 'Meter 4412' })]
 const DUES = [
   { bill_id: 'rent', due: '2026-11-01', status: 'paid', expected_minor: 150000, paid_minor: 150000, paid_on: '2026-11-01', match: null },
   { bill_id: 'net', due: '2026-11-03', status: 'late', expected_minor: 7000, paid_minor: null, paid_on: null, match: null },
@@ -194,7 +194,7 @@ describe('BillsPage', () => {
     fireEvent.click(dialog.getByLabelText('Paused (it stops showing as due)'))
     await act(async () => fireEvent.click(dialog.getByRole('button', { name: 'Save' })))
     const [[, put]] = callsTo(api, '/api/bills/gas', 'PUT')
-    expect(put.body).toMatchObject({ name: 'Gas', amount_minor: 7000, varies: true, due_day: 9, starts_on: '2026-11', paused: true })
+    expect(put.body).toMatchObject({ name: 'Gas', amount_minor: 7000, varies: true, due_day: 9, starts_on: '2026-11', paused: true, note: 'Meter 4412' })
     expect(put.body.household_id).toBeUndefined()
 
     await act(async () => fireEvent.click(screen.getAllByRole('button', { name: /^Gas, edit$/ })[0]))
