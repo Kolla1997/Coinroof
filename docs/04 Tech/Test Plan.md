@@ -164,6 +164,8 @@ Tallyn has a solid base of tests, but nothing says which use cases they cover an
 | Paid bills count in Transactions, Spending and household budgets for owners only, never twice when paid from a matched bank transaction, never in bank balances; shown under the owner's own Yours, left out when filtering to another person or a bank | P1 | Yes | Yes | — | `db/bills_test.go` (`TestBillsInSpending`), `api/bills_test.go` (transaction_id), `TxIcon.test.jsx` (bill icon), `BillsPage.test.jsx` (match sends transaction_id). Alerts stay on bank spending (decided) |
 | Bills visible and editable by household owners only (RLS); adults, kids and other households see nothing; Bills hidden from their menus | P0 | — | Yes | — | `db/bills_test.go` (`TestBills/only_owners`), `BillsPage.test.jsx` (non-owner message) |
 | "Paid from your bank?" hint when a Plaid transaction matches an unpaid bill (±10% amount, ±5 days); opens the paid dialog filled in, never applied on its own | P1 | Yes | Yes | — | `db/bills_test.go` (`TestBills/possible_match_from_the_bank`), `BillsPage.test.jsx`. Gap: a real bank month on the sandbox is a release-checklist item |
+| Cash jobs (#33): cash is the visible checking accounts' available balance (else current), owners only, under the sharing rules; the waterfall takes dues before next payday, then the everyday buffer, then splits the rest by the rule; each step's sum adds up to the cash; owners only (settings forbidden to others) | P1 | Yes | Yes | — | `cashJobs.test.js` (cash, dues, debt, waterfall, shortfall), `CashJobs.test.jsx` (tape and split, hidden for others), `db/cashjobs_test.go`, `api/cashjobs_test.go`, `db/export_test.go` |
+| Cash jobs (#33): next payday guessed from 3 months of income, and a payday set by hand wins; nothing spare shows the shortfall in calm copy; jobs turned off drop out of the split; the split dialog saves payday, share and goals | P1 | Yes | — | — | `cashJobs.test.js` (payday guess, jobs off), `CashJobs.test.jsx` (saves the split) |
 
 ### App-wide
 | Use case | P | Unit | Integration | End-to-end | Tests today |
@@ -232,6 +234,7 @@ Tallyn has a solid base of tests, but nothing says which use cases they cover an
 
 ## Release checklist (manual, before each release)
 - [ ] **Monthly payments step (#307):** create a new account and household. The step shows once, with no site footer; add rent and a car loan, **Save and continue**, then check both on Bills and the loan under Debts → Other loans. A second new account: **Skip for now** goes straight to Home.
+- [ ] **Cash card (#33):** as an owner on Home, check Today's cash adds up (checking − due − buffer = free, jobs = free) against Accounts and Bills; change payday and the split and see it update; sign in as an adult and see no card.
 - [ ] **Bills tab form (#315):** Bills → **Add a bill**: add Water, an Insurance every 3 months (More options) and a Personal loan in one go, **Save 3**; check the calendar, the loan in Debts → Other loans, then edit one bill and pause it. It shows under **Paused** in the side card (not counted); **Resume** brings it back this month (#319).
 - [ ] Sign up with a new email, confirm it, set up 2FA with a real authenticator app.
 - [ ] Sign in with the code; reset the password from a real email (#22).

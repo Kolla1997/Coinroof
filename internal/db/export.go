@@ -31,6 +31,8 @@ type Export struct {
 	// saved in each household (#268).
 	ProductNews   []ExportNewsChoice   `json:"product_news"`
 	Notifications []ExportNotification `json:"notification_settings"`
+	// The cash card's payday and split on Home (#33).
+	CashJobs []ExportCashJobs `json:"cash_job_settings"`
 }
 
 type ExportProfile struct {
@@ -192,6 +194,14 @@ type ExportNotification struct {
 	TimeZone           *string  `json:"time_zone"`
 }
 
+// ExportCashJobs is one household's payday and split for the cash card (#33).
+type ExportCashJobs struct {
+	Household   string  `json:"household"`
+	Payday      *string `json:"payday"`
+	DebtPercent int     `json:"debt_percent"`
+	Goals       bool    `json:"goals"`
+}
+
 type ExportBackupCodes struct {
 	Left   int        `json:"left"`
 	MadeAt *time.Time `json:"made_at"`
@@ -303,6 +313,12 @@ func (d *DB) Export(ctx context.Context, userID string) (Export, error) {
 			from public.notification_settings n
 			join public.households h on h.id = n.household_id
 			where n.user_id = $1 order by h.name`, userID)); err != nil {
+			return err
+		}
+		if e.CashJobs, err = collect[ExportCashJobs](tx.Query(ctx, `
+			select h.name, c.payday::text, c.debt_percent::int, c.goals
+			from public.cash_job_settings c join public.households h on h.id = c.household_id
+			where c.user_id = $1 order by h.name`, userID)); err != nil {
 			return err
 		}
 		return tx.QueryRow(ctx, `

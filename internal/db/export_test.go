@@ -26,6 +26,7 @@ func TestExportOnlyYours(t *testing.T) {
 	mustExec(t, f.admin, `update profiles set display_name = 'Carl' where id = $1`, carl)
 	mustExec(t, f.admin, `insert into news_choices (user_id, subscribed, source, privacy_version) values ($1, true, 'signup', 'v1'), ($1, false, 'stop_link', 'v1'), ($2, true, 'settings', 'v1')`, alice, carl)
 	mustExec(t, f.admin, `insert into notification_settings (household_id, user_id, big_purchase_minor, email_weekly, email_kid_reconnect) values ($1, $2, 75000, true, array[$3::uuid])`, f.testHH, alice, carl)
+	mustExec(t, f.admin, `insert into cash_job_settings (household_id, user_id, payday, debt_percent) values ($1, $2, '2026-12-01', 40)`, f.testHH, alice)
 	mustExec(t, f.admin, `insert into goals (household_id, owner_user_id, name, target_minor, currency, visibility, saved_minor) values ($1, $2, 'Beach trip', 500000, 'USD', 'everyone', 340000), ($1, $3, 'Carl''s laptop', 90000, 'USD', 'me', 0)`, f.testHH, alice, carl)
 
 	if n := f.count(t, alice, `select count(*) from transactions`); n != 2 {
@@ -64,6 +65,9 @@ func TestExportOnlyYours(t *testing.T) {
 	if n := e.Notifications; len(n) != 1 || n[0].Household != "Test household" || n[0].BigPurchaseMinor != 75000 || !n[0].EmailWeekly ||
 		len(n[0].EmailKidReconnect) != 1 || n[0].EmailKidReconnect[0] != "Carl" {
 		t.Errorf("notification settings = %+v", n)
+	}
+	if c := e.CashJobs; len(c) != 1 || c[0].Household != "Test household" || c[0].Payday == nil || *c[0].Payday != "2026-12-01" || c[0].DebtPercent != 40 || !c[0].Goals {
+		t.Errorf("cash job settings = %+v", c)
 	}
 
 	// Nothing secret or internal: no tokens, Plaid ids or cursors.
