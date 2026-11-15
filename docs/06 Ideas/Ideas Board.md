@@ -13,7 +13,6 @@ kanban-plugin: board
 - [ ] [#132 Messaging between household members](https://github.com/Kolla1997/Tallyn/issues/132) #type/idea #area/backend
 - [ ] [#270 Push notifications on phones](https://github.com/Kolla1997/Tallyn/issues/270) #type/idea
 - [ ] [#292 Weekly AI-written money and markets newsletter](https://github.com/Kolla1997/Tallyn/issues/292) #type/idea #area/backend #priority/p3
-- [ ] [#323 Connect Splitwise to Coinroof](https://github.com/Kolla1997/Tallyn/issues/323) #type/idea #area/backend
 
 
 ## Exploring
@@ -33,6 +32,7 @@ kanban-plugin: board
 ## Parked
 
 - [ ] [#15 AI assistant (pgvector RAG)](https://github.com/Kolla1997/Tallyn/issues/15) #type/idea #area/backend
+- [ ] [#323 Connect Splitwise to Coinroof](https://github.com/Kolla1997/Tallyn/issues/323) #type/idea #area/backend
 
 
 ## Rejected
