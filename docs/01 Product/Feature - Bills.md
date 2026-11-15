@@ -2,7 +2,7 @@
 type: spec
 status: active
 owner: Dinesh
-updated: 2026-11-11
+updated: 2026-11-15
 issue: 127
 tags: [spec, bills]
 ---
@@ -57,6 +57,14 @@ Straight after **Create household**, once, the owner who created it is asked "Wh
 What is saved: rent, utilities, internet and Other as monthly bills (Electric, Gas and Water as an amount that changes); a car loan as a manual loan (#306) from its amount, APR, length and first payment. A bill whose day has already passed this month starts next month, so a new household doesn't open on a late bill. Everything can be changed later on Bills and Debts.
 
 Loading effect: the card fades in (`.calm-card`), chips rise 50ms apart (`.calm-rise`), a new row or editor rises once (`.mc-new`, 300ms), due-day notches pop (`.calm-pop`) and the total counts to its new value. Reduced motion: drawn at once.
+
+### Add and edit form (#315)
+The Bills tab's **Add a bill** opens **Add bills and loans**, the onboarding form (#307) in a dialog (`web/src/components/PaymentsForm.jsx`, shared by both). Dinesh picked **3 · Mix** of `drafts/315-bills-add-form.html` (2026-11-11):
+- Chips: Rent / Mortgage, Electric, Gas, Water, Internet, Insurance, Other, **Loan**. Add one or several; the total of the next payments; **Save N**.
+- **More options** in the sentence: how often, start month, kind, and whether the amount changes. A new bill starts in the month on screen.
+- **Loan**: any loan, not only a car loan (Dinesh). Car, Personal, Education or Other names it (renamable); amount borrowed, APR, months and first payment; saved as a manual loan (#306). Loans have no kind column, so the kind is only the name.
+- **Edit** a bill: the same form, options open, with Paused and Delete. Loans are still edited in Debts. The old Add a bill dialog is gone.
+- Onboarding's Car loan chip is now the same Loan chip.
 
 ## Tech notes
 - **Migration `0029_bills.sql`:**

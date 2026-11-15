@@ -2,8 +2,8 @@
 type: spec
 status: draft
 owner: Dinesh
-updated: 2026-11-11
-issues: [111, 113, 153, 154, 155, 158, 159, 200, 201, 209, 267, 268, 269, 273, 274, 307]
+updated: 2026-11-15
+issues: [111, 113, 153, 154, 155, 158, 159, 200, 201, 209, 267, 268, 269, 273, 274, 307, 315]
 tags: [spec, tech, testing]
 ---
 
@@ -155,6 +155,7 @@ Tallyn has a solid base of tests, but nothing says which use cases they cover an
 | Loans Plaid can't see (#306): monthly payment from amount, APR and length ($25,000 at 4.9% over 60 months = $470.64); each payment pays the month's interest first; extra payments go straight to the balance; a correction resets the balance from its date; next due and payoff date; owners only | P1 | Yes | Yes | — | `db/loans_test.go` (`TestLoanMaths`, `TestManualLoans`), `api/loans_test.go`, `ManualLoan.test.jsx` |
 | Monthly payments step (#307): shown once, straight after Create household, to the owner who created it; skippable with nothing saved | P1 | Yes | — | Gap: no layout check yet (the layout fixtures always have a household); checked by hand at 375 and 1280px | `Home.test.jsx`, `MonthlyCommitments.test.jsx` (can be skipped) |
 | Monthly payments step (#307): chips add rent, utilities, internet and Other as monthly bills (utilities as an amount that changes), a car loan as a manual loan; total and due days follow; a bill whose day has passed starts next month; a half-filled payment blocks saving; a payment that saved is never sent twice, and you can continue without one that failed | P1 | Yes | — | — | `MonthlyCommitments.test.jsx` (bills, car loan, Other, remove, finish first, try again, continue without it, `startsOn`, `monthlyOf`) |
+| Bills tab: Add bills and loans (#315): the onboarding form in a dialog; chips add one or several; More options sets how often, start month and kind; a new bill starts in the month on screen; Loan (Car, Personal, Education, Other) names the loan and saves it as a manual loan; Edit uses the same form with options open, Paused and Delete | P1 | Yes | — | — | `BillsPage.test.jsx` (adds a bill, adds several, edits and deletes), `MonthlyCommitments.test.jsx` (Loan chip) |
 | Every due date on the Bills calendar: bills, manual loans, credit cards and Plaid student loans and mortgages (read-only, overdue as late) | P1 | Yes | — | — | `lib/bills.test.js` (`cardDues`) |
 | A manual loan's payment is a monthly bill (calendar, reminder), a loan payment not spending, and shows in Debts → Other loans with "Added by you"; its detail shows left to pay, payoff date, payment, interest paid and the last payment's split | P1 | Yes | Yes | — | `TestManualLoans` (bill, not spending, delete), `ManualLoan.test.jsx` (detail, add form). Gap: Debts page screen test with a loan |
 | Linked credit cards' next payments on the Bills calendar: read-only, minimum in Left to pay, paid when the bank's last payment covers the minimum after the last statement, overdue as late | P1 | Yes | — | — | `lib/bills.test.js` (`cardDues`), `BillsPage.test.jsx` (card on its due day). Checked on the sandbox (May 2020 cards) |
@@ -229,6 +230,7 @@ Tallyn has a solid base of tests, but nothing says which use cases they cover an
 
 ## Release checklist (manual, before each release)
 - [ ] **Monthly payments step (#307):** create a new account and household. The step shows once, with no site footer; add rent and a car loan, **Save and continue**, then check both on Bills and the loan under Debts → Other loans. A second new account: **Skip for now** goes straight to Home.
+- [ ] **Bills tab form (#315):** Bills → **Add a bill**: add Water, an Insurance every 3 months (More options) and a Personal loan in one go, **Save 3**; check the calendar, the loan in Debts → Other loans, then edit one bill and pause it.
 - [ ] Sign up with a new email, confirm it, set up 2FA with a real authenticator app.
 - [ ] Sign in with the code; reset the password from a real email (#22).
 - [ ] **Second authenticator (#23):** Settings → Sign-in and security → **+ Add another**: a name, scan the QR code, enter its code. Sign out and in with a code from the new one, then **Remove** it (asks for a fresh code). Your last one can't be removed.
