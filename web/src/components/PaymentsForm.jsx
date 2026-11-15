@@ -146,6 +146,7 @@ export function fromBill(b, cur) {
     category: b.category ?? '',
     varies: b.varies,
     paused: b.paused,
+    note: b.note ?? '', // no screen shows notes yet; editing must not wipe one
     more: true,
   }
 }
@@ -219,6 +220,7 @@ export default function PaymentsForm({ household, variant, bill, startMonth, chi
       starts_on: /^\d{4}-\d{2}$/.test(it.starts) ? it.starts : startMonth(day),
       category: it.category,
       paused: it.paused,
+      ...(it.billId && { note: it.note ?? '' }), // an edit keeps the bill's note
     }
     return it.billId ? [`/api/bills/${it.billId}`, 'PUT', body] : ['/api/bills', 'POST', { household_id: household.id, ...body }]
   }
