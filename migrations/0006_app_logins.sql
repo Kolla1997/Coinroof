@@ -28,5 +28,5 @@ $$;
 grant authenticated to tallyn_api with inherit false, set true;
 
 -- Nothing else is granted to tallyn_api. It only has what every role gets
--- through PUBLIC (connect, and usage of the public schema), and Tallyn's
+-- through PUBLIC (connect, and usage of the public schema), and Coinroof's
 -- tables and checked functions grant nothing to PUBLIC. Tests check it.

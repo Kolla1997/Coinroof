@@ -8,7 +8,7 @@ tags: [brand, copy]
 ---
 # Voice and Tone
 
-Tallyn is a money app for families. Be clear and calm, never pushy.
+Coinroof is a money app for families. Be clear and calm, never pushy.
 
 ## We are
 * Clear and calm about money

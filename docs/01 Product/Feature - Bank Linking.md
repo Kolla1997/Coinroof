@@ -10,16 +10,16 @@ tags: [spec, plaid, security]
 # Feature — Bank Linking (Plaid)
 
 ## Problem
-Tallyn adds up a family's money, so people need to connect their banks and cards. A Plaid access token gives full read access to someone's bank data, so it must be protected like a password.
+Coinroof adds up a family's money, so people need to connect their banks and cards. A Plaid access token gives full read access to someone's bank data, so it must be protected like a password.
 
 ## Goal and success metric
-An owner or adult connects a US bank through Plaid Link, sees its accounts and balances in Tallyn, and can disconnect it again. Success: no access token is ever stored, logged or sent to the browser in plain text, and disconnecting really revokes it at Plaid.
+An owner or adult connects a US bank through Plaid Link, sees its accounts and balances in Coinroof, and can disconnect it again. Success: no access token is ever stored, logged or sent to the browser in plain text, and disconnecting really revokes it at Plaid.
 
 ## User stories
-- As a parent, I want to link my bank so that Tallyn can show my accounts.
-- As a parent, I want to unlink a bank so that Tallyn (and Plaid) stop having access to it.
+- As a parent, I want to link my bank so that Coinroof can show my accounts.
+- As a parent, I want to unlink a bank so that Coinroof (and Plaid) stop having access to it.
 - As a child in a household, I see only my own accounts and can't link banks.
-- As Tallyn, we want a database leak on its own to expose no bank access.
+- As Coinroof, we want a database leak on its own to expose no bank access.
 
 ## Scope
 **In:**

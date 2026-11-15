@@ -13,7 +13,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { cn } from '@/lab/utils'
 
 /** The order the flaps are printed in. A tile can only flip forward. */
-// Tallyn edit (#182): $ and , so amounts flip in full
+// Coinroof edit (#182): $ and , so amounts flip in full
 const CHARSET = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:.-/&!?$,'
 /** One flap falling, in ms. Quick, so long trips round the drum still feel brisk. */
 const FLIP = 56
@@ -38,7 +38,7 @@ function Half({ char, half, className, ref, style }) {
   )
 }
 
-// Tallyn edit (#221): fromZero starts digits at 0, so a figure flips up to its value on load.
+// Coinroof edit (#221): fromZero starts digits at 0, so a figure flips up to its value on load.
 function Tile({ target, delay, reduceMotion, className, fromZero = false }) {
   const start = fromZero && /\d/.test(target) ? '0' : target
   const [shown, setShown] = useState(start)

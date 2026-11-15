@@ -14,7 +14,7 @@ tags: [adr, security]
 - **Ticket:** #92
 
 ## Context
-Signing out after 30 minutes without activity (#91) doesn't stop a session that keeps being used, or a copied access token, from lasting forever: Supabase refreshes it indefinitely. Supabase's "Time-box user sessions" setting would end it on the server, but only on paid plans, and Tallyn is on the free plan.
+Signing out after 30 minutes without activity (#91) doesn't stop a session that keeps being used, or a copied access token, from lasting forever: Supabase refreshes it indefinitely. Supabase's "Time-box user sessions" setting would end it on the server, but only on paid plans, and Coinroof is on the free plan.
 
 Every Supabase access token carries an `amr` list of how and when the session authenticated: the password sign-in, then each 2FA code. The API already reads it for step-up checks ([[0009-step-up-2fa-for-member-changes]]).
 
@@ -24,7 +24,7 @@ Every Supabase access token carries an `amr` list of how and when the session au
 3. **Wait for Supabase's paid setting.** It costs money, and we can have the same protection now.
 
 ## Decision
-Option 1, with **12 hours** (Dinesh, 2026-10-12): long enough for a family using Tallyn through the day, and short enough that a session doesn't last overnight.
+Option 1, with **12 hours** (Dinesh, 2026-10-12): long enough for a family using Coinroof through the day, and short enough that a session doesn't last overnight.
 
 - **API** (`internal/auth`):
   - When it verifies a token, it rejects one whose sign-in (the oldest `amr` entry) is more than 12 hours and 1 minute old. The answer is a 401 with `session_expired`.
@@ -32,7 +32,7 @@ Option 1, with **12 hours** (Dinesh, 2026-10-12): long enough for a family using
   - A 2FA step-up adds a newer entry, so it doesn't restart the clock.
 - **Web** (`web/src/lib/session.js`, `components/SessionLimit.jsx`):
   - The app checks every minute, and when the tab comes back into view.
-  - At 12 hours it signs out and the sign-in page says: "For your security, Tallyn asks you to sign in again every 12 hours."
+  - At 12 hours it signs out and the sign-in page says: "For your security, Coinroof asks you to sign in again every 12 hours."
   - A `session_expired` answer from the API does the same.
 - **Automatic sign-outs end only this device's session.** That covers 12 hours and also 30 minutes without activity (#91). Supabase's default sign-out ends every device, so stepping away from a laptop also signed out the phone. The Sign out button still ends every session.
 

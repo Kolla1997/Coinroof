@@ -16,6 +16,6 @@ describe('LegalPage', () => {
   })
 
   it('makes readable ids from numbered headings', () => {
-    expect(slug('2. Who can use Tallyn')).toBe('who-can-use-tallyn')
+    expect(slug('2. Who can use Coinroof')).toBe('who-can-use-coinroof')
   })
 })

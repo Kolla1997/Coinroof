@@ -3,7 +3,7 @@
 --
 -- A goal belongs to one person (owner_user_id) and fills one of two ways:
 -- it follows one of that person's accounts (progress = its balance) or it's
--- updated by hand. Tallyn never moves money.
+-- updated by hand. Coinroof never moves money.
 --
 -- Who sees a goal is its own setting: only the owner, the owner and one
 -- chosen member, or everyone in the household. Owners and adults also see

@@ -6,12 +6,12 @@ updated: 2026-10-24
 tags: [home]
 ---
 
-# Tallyn — Home
+# Coinroof — Home
 
 **Family finance app. It all adds up.**
 
 > [!note] Start here
-> This vault is the single home for everything Tallyn: product, brand, design and tech. Claude's working rules are in `CLAUDE.md` at the repo root.
+> This vault is the single home for everything Coinroof: product, brand, design and tech. Claude's working rules are in `CLAUDE.md` at the repo root.
 
 ## Product
 - [[Vision]]: what we're building and why
@@ -22,7 +22,7 @@ tags: [home]
 - [[Feature - Bank Sync]]: transactions, spending by category, time and location
 - [[Feature - Sharing]]: who sees whose money, by choice
 - [[Feature - Household Members]]: invitations, roles, leaving
-- [[Feature - Your Data]]: download everything Tallyn holds about you (#54)
+- [[Feature - Your Data]]: download everything Coinroof holds about you (#54)
 - [[Feature - Close Account]]: close your account; what goes and what's kept (#56)
 - [[Feature - Budgets]]: category budgets and the plan from your income (#13, #133)
 - [[Feature - Goals]]: savings goals that follow an account or are updated by hand (#14)
@@ -30,7 +30,7 @@ tags: [home]
 ## Brand
 - [[Brand Guide]]: positioning, personality, brand basics
 - [[Logo Guide]]: logo variants, clear space, misuse
-- [[Voice and Tone]]: how Tallyn sounds
+- [[Voice and Tone]]: how Coinroof sounds
 - [[Animation Guide]]: logo and UI motion
 
 ## Design

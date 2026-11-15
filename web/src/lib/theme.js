@@ -2,7 +2,7 @@ import { useSyncExternalStore } from 'react'
 import { applyTokens } from './tokens.js'
 
 // Light and dark (#187, the #185 drafts' sun and moon). Your choice is kept on this device; until
-// you choose, Tallyn follows the device's setting. The theme is a `dark` class on <html> (the
+// you choose, Coinroof follows the device's setting. The theme is a `dark` class on <html> (the
 // `dark:` variants in app.css) plus the token values for that theme.
 const KEY = 'tallyn.theme'
 const listeners = new Set()

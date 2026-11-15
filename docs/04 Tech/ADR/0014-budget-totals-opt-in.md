@@ -14,7 +14,7 @@ tags: [adr, privacy, budgets]
 - **Ticket:** #13
 
 ## Context
-A household budget ("the family spends up to $600 a month on food") adds up several people's spending. In Tallyn, nobody sees another person's money unless they share it ([[0007-consent-based-visibility]]). So whose spending a shared budget may count is a privacy question, not just maths.
+A household budget ("the family spends up to $600 a month on food") adds up several people's spending. In Coinroof, nobody sees another person's money unless they share it ([[0007-consent-based-visibility]]). So whose spending a shared budget may count is a privacy question, not just maths.
 
 ## Options considered
 - **A. Count what each viewer can see.** Different people see different numbers for the same budget.

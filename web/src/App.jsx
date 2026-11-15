@@ -12,7 +12,7 @@ import { ChoosePassword } from './screens/ResetPassword.jsx'
 import { BackupCodesGate } from './screens/BackupCodes.jsx'
 import Verify2FA from './screens/Verify2FA.jsx'
 import Home from './screens/Home.jsx'
-import TallynLoader from './components/TallynLoader.jsx'
+import CoinroofLoader from './components/CoinroofLoader.jsx'
 import ConsentGate from './components/ConsentGate.jsx'
 import { usePath } from './lib/router.jsx'
 import Heading from './components/Heading.jsx'
@@ -31,7 +31,7 @@ export default function App() {
   if (path === '/terms' || path === '/privacy') {
     return (
       <AuthPage wide>
-        <Suspense fallback={<TallynLoader />}>
+        <Suspense fallback={<CoinroofLoader />}>
           <LegalPage doc={path.slice(1)} />
         </Suspense>
       </AuthPage>
@@ -41,7 +41,7 @@ export default function App() {
   if (path === '/unsubscribe') {
     return (
       <AuthPage centred bare>
-        <Suspense fallback={<TallynLoader />}>
+        <Suspense fallback={<CoinroofLoader />}>
           <Unsubscribe />
         </Suspense>
       </AuthPage>
@@ -144,7 +144,7 @@ function AuthFlow() {
   if (session === undefined || (session && !aal))
     return (
       <main className="calm-page grid min-h-svh place-items-center">
-        <TallynLoader />
+        <CoinroofLoader />
       </main>
     )
   let screen
@@ -164,7 +164,7 @@ function AuthFlow() {
   // Every auth screen opens in the same card slot beside the product video (#220, Dinesh picked C).
   return (
     <LaunchPage>
-      <Suspense fallback={<TallynLoader />}>{screen}</Suspense>
+      <Suspense fallback={<CoinroofLoader />}>{screen}</Suspense>
     </LaunchPage>
   )
 }

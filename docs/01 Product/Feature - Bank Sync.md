@@ -10,13 +10,13 @@ tags: [spec, plaid, sync]
 # Feature — Bank Sync
 
 ## Problem
-Tallyn adds up a family's money, so linked banks must stay up to date on their own: new transactions, changed ones, removed ones, and current balances.
+Coinroof adds up a family's money, so linked banks must stay up to date on their own: new transactions, changed ones, removed ones, and current balances.
 
 ## Goal and success metric
 Every active linked bank is synced at least every 6 hours, and within minutes of being linked. Success: a family sees this month's spending by category and their recent transactions without doing anything.
 
 ## User stories
-- As a parent, I want my transactions to appear on their own so that Tallyn shows where our money went.
+- As a parent, I want my transactions to appear on their own so that Coinroof shows where our money went.
 - As a parent, I want to see how much we spent on what this month.
 - As a person, I want only me (and, for kids, the household owner) to see **when and where** I spent money.
 - As anyone, I want to know when a bank needs me to sign in again.
@@ -49,7 +49,7 @@ Design and security: [[0005-bank-sync-system-role]].
 - `transaction_details` holds time and location, separate from `transactions`, with its own RLS policy built on `can_see_whereabouts()`. #28 changes that one function.
 - Spending excludes income, transfers between accounts and credit card payments (which would count card purchases twice). Currencies are summed separately.
 - About once a day after a good sync (#27): `/accounts/get` for fresh balances and credit limits (the transaction sync only sends balances with new transactions), then `/liabilities/get` for credit card, student loan and mortgage details, saved by `SaveAccounts` and `SaveLiabilities` (`0011_credit_cards.sql`, `0013_loans.sql`). Banks without cards, or that haven't consented, are cleared quietly with Plaid's code in the log. See [[Feature - Credit Cards]].
-- Logs carry counts and Tallyn's bank IDs only: no merchants, amounts, places or tokens.
+- Logs carry counts and Coinroof's bank IDs only: no merchants, amounts, places or tokens.
 - `GET /api/transactions?household_id=&limit=` and `GET /api/spending?household_id=&month=YYYY-MM`.
 
 ## Rollout

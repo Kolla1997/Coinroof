@@ -3,7 +3,7 @@ import { usePlaidLink } from 'react-plaid-link'
 import { Link2 } from 'lucide-react'
 import { api } from '../lib/api.js'
 
-// Link a bank (#8). Bank logins happen inside Plaid's own window; Tallyn
+// Link a bank (#8). Bank logins happen inside Plaid's own window; Coinroof
 // never sees them. The list of banks is on the Accounts page.
 //
 // The link token is fetched on click, like ReconnectBank (#115): fetching it

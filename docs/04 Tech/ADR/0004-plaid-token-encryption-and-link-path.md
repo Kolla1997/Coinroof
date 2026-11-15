@@ -14,7 +14,7 @@ tags: [adr, security, plaid, database]
 - **Ticket:** #8
 
 ## Context
-A Plaid access token gives read access to a person's bank data until it's revoked. Tallyn must store it to sync transactions (#9). [[0002-backend-database-access]] says users can't write bank tables and request handlers only use `AsUser`, but linking a bank is a user action. See [[Feature - Bank Linking]].
+A Plaid access token gives read access to a person's bank data until it's revoked. Coinroof must store it to sync transactions (#9). [[0002-backend-database-access]] says users can't write bank tables and request handlers only use `AsUser`, but linking a bank is a user action. See [[Feature - Bank Linking]].
 
 ## Options considered
 **Encryption**

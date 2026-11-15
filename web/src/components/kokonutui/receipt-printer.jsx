@@ -62,7 +62,7 @@ function turn(px, py, angle) {
 
 const money = (v) => v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 
-// Tallyn edit (#182): a ledger receipt. Signed lines in the figure font,
+// Coinroof edit (#182): a ledger receipt. Signed lines in the figure font,
 // no tax or barcode unless asked, and a total label of your own.
 function Receipt({ merchant, date, order, items, tax, currency, totalLabel = 'Total', footer, plain }) {
   const subtotal = items.reduce((sum, item) => sum + item.quantity * item.price, 0)

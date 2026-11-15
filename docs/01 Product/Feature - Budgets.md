@@ -27,7 +27,7 @@ Built. Pace-line tiles for household budgets, day notches for budgets for one pe
 
 **Scope: in**
 - One **household plan** and one **personal plan per person**, with the same who-counts and who-sees rules as budgets ([[0014-budget-totals-opt-in]]): household plans count members who opted in, plus kids, as totals only.
-- **Income:** Tallyn suggests the monthly income as the average of the last **3 full months** of pay-type income (`INCOME_WAGES`, `INCOME_RETIREMENT_PENSION`, `INCOME_UNEMPLOYMENT`). Tax refunds, interest, dividends and other one-offs are left out. Always editable.
+- **Income:** Coinroof suggests the monthly income as the average of the last **3 full months** of pay-type income (`INCOME_WAGES`, `INCOME_RETIREMENT_PENSION`, `INCOME_UNEMPLOYMENT`). Tax refunds, interest, dividends and other one-offs are left out. Always editable.
 - **Templates** (a common way to split income, never advice):
 
 | Template | Buckets |
@@ -47,7 +47,7 @@ Built. Pace-line tiles for household budgets, day notches for budgets for one pe
 | Long-term wealth | Money moved into investments and retirement | `TRANSFER_OUT_INVESTMENT_AND_RETIREMENT_FUNDS` |
 
 - **Paying a credit card bill never counts as debt repayment**: that spending already counted when it happened.
-- **Say what Tallyn can't see**, e.g. retirement taken from pay before it reaches the bank (an employer 401(k)).
+- **Say what Coinroof can't see**, e.g. retirement taken from pay before it reaches the bank (an employer 401(k)).
 - The plan sits **above** the category budgets on the Budgets page; both keep working. A budget is a cap, a plan is a split.
 
 **Scope: out (later)**

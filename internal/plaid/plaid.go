@@ -1,4 +1,4 @@
-// Package plaid is a small client for the parts of the Plaid API that Tallyn
+// Package plaid is a small client for the parts of the Plaid API that Coinroof
 // uses: Link tokens, public token exchange, accounts and item removal.
 //
 // Security (ADR 0004):
@@ -135,10 +135,10 @@ func (c *Client) post(ctx context.Context, path string, body, out any) error {
 }
 
 // CreateLinkToken returns a short-lived token that opens Plaid Link for
-// userID. userID is Tallyn's opaque user ID, never an email address.
+// userID. userID is Coinroof's opaque user ID, never an email address.
 func (c *Client) CreateLinkToken(ctx context.Context, userID string) (string, error) {
 	body := map[string]any{
-		"client_name":   "Tallyn",
+		"client_name":   "Coinroof",
 		"language":      "en",
 		"country_codes": []string{"US"},
 		"user":          map[string]string{"client_user_id": userID},
@@ -171,7 +171,7 @@ func (c *Client) CreateLinkToken(ctx context.Context, userID string) (string, er
 // the access token stays the same.
 func (c *Client) CreateUpdateLinkToken(ctx context.Context, userID, accessToken string) (string, error) {
 	body := map[string]any{
-		"client_name":                   "Tallyn",
+		"client_name":                   "Coinroof",
 		"language":                      "en",
 		"country_codes":                 []string{"US"},
 		"user":                          map[string]string{"client_user_id": userID},

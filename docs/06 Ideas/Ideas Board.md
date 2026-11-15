@@ -9,7 +9,7 @@ kanban-plugin: board
 ## New
 
 - [ ] [#2 Test idea, please ignore](https://github.com/Kolla1997/Tallyn/issues/2) #type/idea
-- [ ] [#131 Send Tallyn emails through our own provider](https://github.com/Kolla1997/Tallyn/issues/131) #type/idea #area/infra
+- [ ] [#131 Send Coinroof emails through our own provider](https://github.com/Kolla1997/Tallyn/issues/131) #type/idea #area/infra
 - [ ] [#132 Messaging between household members](https://github.com/Kolla1997/Tallyn/issues/132) #type/idea #area/backend
 - [ ] [#270 Push notifications on phones](https://github.com/Kolla1997/Tallyn/issues/270) #type/idea
 - [ ] [#292 Weekly AI-written money and markets newsletter](https://github.com/Kolla1997/Tallyn/issues/292) #type/idea #area/backend #priority/p3
@@ -18,7 +18,7 @@ kanban-plugin: board
 
 ## Exploring
 
-- [ ] [#136 Ask Tallyn AI about spending from Discord](https://github.com/Kolla1997/Tallyn/issues/136) #type/idea #area/backend
+- [ ] [#136 Ask Coinroof AI about spending from Discord](https://github.com/Kolla1997/Tallyn/issues/136) #type/idea #area/backend
 
 
 ## Promoted

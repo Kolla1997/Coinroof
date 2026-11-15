@@ -1,6 +1,6 @@
 -- 0001_households: profiles, households and household members, with RLS (#6)
 --
--- A household is the group of people who share money in Tallyn (a family).
+-- A household is the group of people who share money in Coinroof (a family).
 -- Every member has one role. A person can belong to more than one household.
 --
 -- Access model (see docs/04 Tech/ADR/0002-backend-database-access.md):

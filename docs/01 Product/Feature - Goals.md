@@ -10,7 +10,7 @@ tags: [spec, goals, privacy]
 # Feature — Savings goals
 
 ## Problem
-Families save toward things (a trip, a school fund, an emergency fund) and want to see how close they are, without Tallyn pretending it can move money.
+Families save toward things (a trip, a school fund, an emergency fund) and want to see how close they are, without Coinroof pretending it can move money.
 
 ## Goal and success metric
 Anyone can set a goal in under a minute and see, at a glance, how close it is and what it takes to get there on time. Success: most households with a savings account have at least one goal.
@@ -22,7 +22,7 @@ Anyone can set a goal in under a minute and see, at a glance, how close it is an
 
 ## Scope
 **In** (decided by Dinesh 2026-10-09 in #14, and 2026-10-24):
-- A goal has a name, a target, an optional "by" month, and fills one of two ways: it **follows a savings account** (progress = that account's balance, updated at each bank sync) or is **updated by hand**. No "Add money": Tallyn can't move money.
+- A goal has a name, a target, an optional "by" month, and fills one of two ways: it **follows a savings account** (progress = that account's balance, updated at each bank sync) or is **updated by hand**. No "Add money": Coinroof can't move money.
 - **Who can see it**, per goal: only me, me and one chosen member, or everyone in the household. Separate from the sharing switches (#28).
 - **A goal never reveals a balance** someone can't already see: if a goal follows an account the viewer may not see, they get the name and target only, with "Progress is private". No percentage either (it gives the balance away).
 - **Currency per goal**, no conversion (#11 stays parked): a goal that follows an account takes that account's currency; one updated by hand defaults to the household's and can be another. Totals count goals in the household currency, with a note like "+1 goal in EUR".
@@ -31,7 +31,7 @@ Anyone can set a goal in under a minute and see, at a glance, how close it is an
 - **Home:** the Goals card on Home shows the same answer, in short.
 
 **Out (later):**
-- Matching transfers into savings to a goal (Tallyn can't tell which goal a transfer was for); linking to the plan's goal buckets (#133)
+- Matching transfers into savings to a goal (Coinroof can't tell which goal a transfer was for); linking to the plan's goal buckets (#133)
 - Converting goals in other currencies into one total (#11)
 
 ## Design

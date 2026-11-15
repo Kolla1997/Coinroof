@@ -15,7 +15,7 @@ tags: [adr, plaid, security]
 - **Supersedes:** the "Transactions only" part of [[0004-plaid-token-encryption-and-link-path]]'s least-data rule. Everything else in 0004 stands.
 
 ## Context
-Dinesh wants credit cards on Home: limit, balance used, APR, minimum payment and due date. Balances and limits come with the accounts Tallyn already reads. APR, minimum and due date only come from Plaid **Liabilities**, which ADR 0004 left out ("US only, Transactions only").
+Dinesh wants credit cards on Home: limit, balance used, APR, minimum payment and due date. Balances and limits come with the accounts Coinroof already reads. APR, minimum and due date only come from Plaid **Liabilities**, which ADR 0004 left out ("US only, Transactions only").
 
 ## Options considered
 1. **Liabilities as a required product** at Link. Simple, but banks without cards or loans couldn't be linked at all.
@@ -29,7 +29,7 @@ Option 2.
 - The sync calls `/liabilities/get` about once a day (Plaid refreshes daily), after a good transaction sync, together with `/accounts/get` for fresh balances and limits. A failure there never fails the bank's sync.
 - Credit cards are stored in `credit_cards` (migration `0011`): APRs, minimum, due date, last statement and payment, overdue. Student loans and mortgages are stored in `loans` (migration `0013`, also #27): rate, next and last payment, payoff date, original amount, past due, interest and principal paid this year. Never a servicer or property address, escrow or PMI (decided 2026-10-09).
 - Card details have the same visibility as the card's balance (`can_see_account_data(..., 'balances')`), and only the sync role writes them.
-- Logs carry Plaid's error code and Tallyn's bank ID only.
+- Logs carry Plaid's error code and Coinroof's bank ID only.
 
 ## Consequences
 - **Cost:** Liabilities is a monthly fee per connected bank in Production, on top of Transactions. Free in Sandbox. Dinesh to confirm the price before launch.

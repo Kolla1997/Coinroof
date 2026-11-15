@@ -209,7 +209,7 @@
       "value": "200-300ms ease-out"
     }
   },
-  "$description": "Tallyn design tokens. Source of truth for colour, type, radius, spacing and motion values.",
+  "$description": "Coinroof design tokens. Source of truth for colour, type, radius, spacing and motion values.",
   "effect": {
     "glass-surface": {
       "value": "rgba(255, 255, 255, 0.7)",

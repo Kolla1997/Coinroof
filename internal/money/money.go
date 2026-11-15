@@ -1,5 +1,5 @@
 // Package money converts amounts to whole minor units (cents, pence, yen...),
-// the way Tallyn stores money: bigint next to a currency code (migrations/0002).
+// the way Coinroof stores money: bigint next to a currency code (migrations/0002).
 // Never use floats for money.
 package money
 

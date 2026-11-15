@@ -16,7 +16,7 @@ A one-off audit of every screen and component in `web/` using the outside skills
 - Four read-only code audits, one per area: sign-in and onboarding, money screens and charts, family/settings/shell, app-wide CSS.
 - Skills: emil-design-eng, review-animations, improve-animations, animation-performance, break-ui (findings only), ui-ux-pro-max (UX, accessibility and chart rules only), hallmark Floor checks and `sloplint` (static, run outside the repo), plus WCAG 2.1 AA.
 - A live check in the browser at 375px and 1280px, light mode, signed in to the dev project with sandbox data.
-- Tallyn's rules won every disagreement (§6). Findings that only hold if a Tallyn rule changes are listed under [[#Needs a rule change]].
+- Coinroof's rules won every disagreement (§6). Findings that only hold if a Coinroof rule changes are listed under [[#Needs a rule change]].
 
 **Not covered**
 - Dark mode: it isn't built yet ([[Design System]] lists it as missing).
@@ -52,7 +52,7 @@ Agreed with Dinesh and created 2026-10-23. Ordered by what to do first.
 | Ticket | What | Findings | Kind | P |
 |---|---|---|---|---|
 | [#151](https://github.com/Kolla1997/Tallyn/issues/151) | Stuck and failed states: Try again instead of endless loaders, backup-code dead end, code form lock, Join keeps the invite | M1, F5, A1, A4, A14 | inv + small vis (Try again button) | p1 |
-| [#152](https://github.com/Kolla1997/Tallyn/issues/152) | Calm error messages: map raw Supabase and network errors to Tallyn copy, neutral sign-up message | A7, A12, M11 | inv (copy from Voice and Tone) | p1 |
+| [#152](https://github.com/Kolla1997/Tallyn/issues/152) | Calm error messages: map raw Supabase and network errors to Coinroof copy, neutral sign-up message | A7, A12, M11 | inv (copy from Voice and Tone) | p1 |
 | [#153](https://github.com/Kolla1997/Tallyn/issues/153) | Keyboard and screen readers: page titles, focus on navigation and view changes, dialog focus return, visible focus rings, ARIA fixes | L1, A8–A11, F1–F4, F7–F12, M7–M9, G1, G10, G13 | inv | p1 |
 | [#154](https://github.com/Kolla1997/Tallyn/issues/154) | Worst-case data: long text, emoji initials, blank names, double submits, races, Markdown hang, 0% rates, money edge cases | A5, A6, A13, F6, F13–F21, M4–M6, M10, L4 | inv | p1 |
 | [#155](https://github.com/Kolla1997/Tallyn/issues/155) | Glass fallbacks and reduced motion gaps, plus page basics (`color-scheme`, background before JS, `100dvh`, safe area) | G2, G3, G12, G14 | inv | p1 |
@@ -111,7 +111,7 @@ Agreed with Dinesh and created 2026-10-23. Ordered by what to do first.
 | F4 | `Shell.jsx:82, 146, 338-346` | `aside "Main"` reads as "Main complementary"; inner nav unlabelled; a `<p>` inside `role="menu"` | L | inv |
 | F5 | `FamilyPage.jsx:66-82, 128` | Load error plus a loader that never stops; error never cleared | M | inv + vis |
 | F6 | `ConfirmDialog.jsx:24` | Type-to-confirm: no Unicode normalising; emoji names; fallback "Your teen" to type; a blank name passes with nothing typed | M | inv |
-| F7 | `lib/router.jsx:17`, App | `document.title` is "Tallyn" on every screen; nothing announces a page change | M | inv |
+| F7 | `lib/router.jsx:17`, App | `document.title` is "Coinroof" on every screen; nothing announces a page change | M | inv |
 | F8 | `FamilyPage.jsx:131-198`, `Settings.jsx:45-69` | On phones, picking a person changes content off-screen | M | inv |
 | F9 | `FamilyPage.jsx:297-302` | Role picker uses `aria-pressed` for a single choice; should be a radio group | L | inv |
 | F10 | `ConfirmDialog.jsx:50, 52` | Fixed `id="dialog-title"` could clash | L | inv |
@@ -153,16 +153,16 @@ Agreed with Dinesh and created 2026-10-23. Ordered by what to do first.
 ## Findings: live check
 | ID | Where | Finding | P | Kind |
 |---|---|---|---|---|
-| L1 | Every screen | Tab title is always "Tallyn" (same as F7) | M | inv |
+| L1 | Every screen | Tab title is always "Coinroof" (same as F7) | M | inv |
 | L2 | Home, Family | Text links ("All 28 accounts", "See all", "Manage", "Sharing") are 20px tall | M | vis |
 | L3 | Every screen, dev | Requests wait on each other: consent 2–3s → profile 2–3s → page data up to 6s. Home about 11s on a reload in dev | M | inv |
 | L4 | `BudgetsPage.jsx:248` | Screen-reader label "Change You's Food and drink budget" | L | inv |
-| ~~L5~~ | `TallynLoader` | Dropped (2026-10-23): the “two loaders” were one loader caught at the start of its own animation | — | — |
+| ~~L5~~ | `CoinroofLoader` | Dropped (2026-10-23): the “two loaders” were one loader caught at the start of its own animation | — | — |
 | L6 | Accounts and Transactions at 375px | Long account names wrap to three lines and squeeze the amount; filter chips wrap to two rows | L | vis |
 
 ## Needs a rule change
-Raised by the skills, against a Tallyn rule. Nothing changes unless Dinesh agrees.
-- **Middle-dot meta lines** ("Owner · Household"): hallmark bans them; Tallyn uses them by choice (#72, #122).
+Raised by the skills, against a Coinroof rule. Nothing changes unless Dinesh agrees.
+- **Middle-dot meta lines** ("Owner · Household"): hallmark bans them; Coinroof uses them by choice (#72, #122).
 - **"→" after the sign-in switch link**: flagged by sloplint; Dinesh picked it in #25.
 - **Ring overshoot and `.is-hot` glow**: the overshoot briefly draws more owed than is real, and the glow is a shadow. Both are in the Animation Guide.
 - **Motion and breakpoint tokens**: durations and breakpoints live only in prose. Making them tokens in `design-tokens.json` (and snapping 400/600/900/1100/1200px to the scale) would be a Design System change.

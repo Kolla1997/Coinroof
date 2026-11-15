@@ -32,7 +32,7 @@ export function ResetRequest({ initialEmail = '', expired = false, onBack }) {
     const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: window.location.origin })
     setBusy(false)
     // Same answer whether or not the account exists, so nobody can use this
-    // form to find out who has a Tallyn account. Only waiting is reported.
+    // form to find out who has a Coinroof account. Only waiting is reported.
     if (error && (error.status === 429 || error.code === 'over_email_send_rate_limit')) {
       setError('Please wait a minute before asking for another link.')
       return

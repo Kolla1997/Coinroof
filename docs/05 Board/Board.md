@@ -63,13 +63,13 @@ kanban-plugin: board
 - [x] [#53 Rename a household](https://github.com/Kolla1997/Tallyn/issues/53) #type/feature #area/frontend #area/backend #priority/p2
 - [x] [#54 Download your data](https://github.com/Kolla1997/Tallyn/issues/54) #type/feature #area/frontend #area/backend #priority/p1
 - [x] [#55 Notifications](https://github.com/Kolla1997/Tallyn/issues/55) #type/feature #area/frontend #area/backend #priority/p2
-- [x] [#56 Close your Tallyn account](https://github.com/Kolla1997/Tallyn/issues/56) #type/feature #area/frontend #area/backend #priority/p1
+- [x] [#56 Close your Coinroof account](https://github.com/Kolla1997/Tallyn/issues/56) #type/feature #area/frontend #area/backend #priority/p1
 - [x] [#58 Transactions: summary and details panel](https://github.com/Kolla1997/Tallyn/issues/58) #type/feature #area/frontend #area/backend #priority/p1
 - [x] [#60 Maps: choose a provider and show purchase locations on a map](https://github.com/Kolla1997/Tallyn/issues/60) #type/feature #area/frontend #area/infra #priority/p2
 - [x] [#61 Frosted glass finish on every card](https://github.com/Kolla1997/Tallyn/issues/61) #type/design #area/design #area/frontend #priority/p2
 - [x] [#63 Floating rounded sidebar, darker secondary text, soft card shade](https://github.com/Kolla1997/Tallyn/issues/63) #type/design #area/design #area/frontend #priority/p2
 - [x] [#64 Floating rounded sidebar, darker secondary text and a soft shade under cards](https://github.com/Kolla1997/Tallyn/issues/64) #type/design #area/design #area/frontend #priority/p2
-- [x] [#66 Gear settings icon and Tallyn loading animation](https://github.com/Kolla1997/Tallyn/issues/66) #type/design #area/design #area/frontend #priority/p2
+- [x] [#66 Gear settings icon and Coinroof loading animation](https://github.com/Kolla1997/Tallyn/issues/66) #type/design #area/design #area/frontend #priority/p2
 - [x] [#68 Home shows your own money first, with a Yours / Everyone switch](https://github.com/Kolla1997/Tallyn/issues/68) #type/feature #area/frontend #priority/p1
 - [x] [#72 Sidebar: one profile card with a menu, Collapse by the logo](https://github.com/Kolla1997/Tallyn/issues/72) #type/design #area/frontend #priority/p2
 - [x] [#75 Transactions: a year of spending as dots, with a day overview on hover](https://github.com/Kolla1997/Tallyn/issues/75) #type/feature #area/frontend #area/backend #priority/p2
@@ -108,7 +108,7 @@ kanban-plugin: board
 - [x] [#158 Tap areas and control contrast](https://github.com/Kolla1997/Tallyn/issues/158) #type/design #area/design #area/frontend #priority/p2
 - [x] [#159 Load speed: requests wait on each other](https://github.com/Kolla1997/Tallyn/issues/159) #type/tech-debt #area/frontend #area/backend #priority/p2
 - [x] [#160 CSS cleanup and tokens](https://github.com/Kolla1997/Tallyn/issues/160) #type/tech-debt #area/design #area/frontend #priority/p3
-- [x] [#180 Tallyn design skill: Tallyn rules plus taste-skill's app-screen method](https://github.com/Kolla1997/Tallyn/issues/180) #type/docs #area/design #priority/p2
+- [x] [#180 Coinroof design skill: Coinroof rules plus taste-skill's app-screen method](https://github.com/Kolla1997/Tallyn/issues/180) #type/docs #area/design #priority/p2
 - [x] [#182 Home: explore bolder directions with taste-skill](https://github.com/Kolla1997/Tallyn/issues/182) #type/design #area/design #priority/p2
 - [x] [#183 Add shadcn, Bklit charts, Kokonut UI (free) and anime.js to web/ for drafts](https://github.com/Kolla1997/Tallyn/issues/183) #type/tech-debt #area/frontend #priority/p2
 - [x] [#185 Calm redesign drafts for all screens](https://github.com/Kolla1997/Tallyn/issues/185) #type/design #area/design #priority/p2

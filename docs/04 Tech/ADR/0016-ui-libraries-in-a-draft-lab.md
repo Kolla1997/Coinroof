@@ -34,4 +34,4 @@ Option B.
 ## Consequences
 - New runtime packages in `web/package.json`: visx, d3-array, d3-shape, motion, @number-flow/react, animejs, clsx, tailwind-merge, class-variance-authority. They only load in the lab until a screen imports them.
 - npm 10 (Node 20 and 22) hits an `edgesOut` bug resolving `@tailwindcss/vite`; it was added with npm 11 (`npx npm@11 i`). `npm ci` on Node 20 reads the lockfile fine.
-- Using any of this in a real screen is a separate decision: it needs a ticket, and either Tailwind without its base reset or a component restyled to Tallyn's tokens.
+- Using any of this in a real screen is a separate decision: it needs a ticket, and either Tailwind without its base reset or a component restyled to Coinroof's tokens.

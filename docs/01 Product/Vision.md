@@ -9,9 +9,9 @@ tags: [product]
 # Vision
 
 ## One-liner
-**Tallyn is a family finance app. It all adds up.**
+**Coinroof is a family finance app. It all adds up.**
 
-## What Tallyn does
+## What Coinroof does
 Families connect their bank accounts and cards, see one total balance, track spending and savings in real time, and open joint accounts for partners, kids and parents.
 
 > [!warning] US first (Dinesh, 2026-10-30)
@@ -36,7 +36,7 @@ Families connect their bank accounts and cards, see one total balance, track spe
 - Multi-currency, later: accounts in any currency, one total in the home currency (#11). Not now: Coinroof is US only, in USD
 - AI assistant over the family's financial data (RAG with pgvector)
 
-## What Tallyn is not
+## What Coinroof is not
 > [!todo] e.g. not a bank, doesn't move money (confirm)
 
 ## Success looks like

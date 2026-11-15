@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-// A minimal router for Tallyn's few pages (#39): real URLs (/accounts,
+// A minimal router for Coinroof's few pages (#39): real URLs (/accounts,
 // /family...) using the browser's history, no dependency. The Go server and
 // Vite both fall back to index.html for these paths.
 

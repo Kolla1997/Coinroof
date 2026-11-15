@@ -16,7 +16,7 @@ import (
 	"github.com/Kolla1997/Tallyn/internal/money"
 )
 
-// exportData answers GET /api/me/export (#54): a ZIP of everything Tallyn
+// exportData answers GET /api/me/export (#54): a ZIP of everything Coinroof
 // holds about the signed-in person. It needs a 2FA code from the last few
 // minutes, then counts against a limit of 3 an hour (a refused code doesn't
 // use one up). The log gets counts only, never the contents.

@@ -5,7 +5,7 @@ import markDark from '../../../brand/coinroof/animation/SVG/coinroof-mark-animat
 // corner one by one, the level stripes slide in, then each arc brightens in turn) with "Adding it all up" and dots
 // that appear one by one. Screen readers hear the words once; with reduced motion the tile and the dots stand still
 // (the SVG and the CSS both respect it). The component keeps its name until the code rename (#203).
-export default function TallynLoader({ text = 'Adding it all up', small = false }) {
+export default function CoinroofLoader({ text = 'Adding it all up', small = false }) {
   return (
     <div className={small ? 'loader loader-small' : 'loader'} role="status">
       <img className="dark:hidden" src={mark} alt="" width={small ? 40 : 88} height={small ? 40 : 88} />

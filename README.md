@@ -1,8 +1,8 @@
-# Tallyn
+# Coinroof
 
 **It all adds up.**
 
-Tallyn is a family finance app. Connect bank accounts in any currency, track spending and savings in real time, and open joint accounts for partners, kids and parents.
+Coinroof is a family finance app. Connect bank accounts in any currency, track spending and savings in real time, and open joint accounts for partners, kids and parents.
 
 ## Features (v1)
 
@@ -66,4 +66,4 @@ In early development. Not yet open to the public.
 
 ## License
 
-Copyright © 2026 Tallyn. All rights reserved.
+Copyright © 2026 Coinroof. All rights reserved.

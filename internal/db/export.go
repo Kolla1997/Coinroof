@@ -8,7 +8,7 @@ import (
 	"github.com/jackc/pgx/v5"
 )
 
-// Export is everything Tallyn holds about one person (#54): their own rows
+// Export is everything Coinroof holds about one person (#54): their own rows
 // only. Everything is read as that person (RLS on) and every query also
 // filters to rows they own, because RLS lets them read money others share
 // with them, which never belongs in their download. No Plaid tokens, sync

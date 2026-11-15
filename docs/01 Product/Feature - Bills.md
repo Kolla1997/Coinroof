@@ -12,7 +12,7 @@ tags: [spec, bills]
 Record bills and payments Plaid can't see: rent, electricity, gas, water, internet, insurance, childcare, cash payments. [#127](https://github.com/Kolla1997/Tallyn/issues/127). Loans: [#306](https://github.com/Kolla1997/Tallyn/issues/306). Onboarding step: [#307](https://github.com/Kolla1997/Tallyn/issues/307). Reminders: [#126](https://github.com/Kolla1997/Tallyn/issues/126).
 
 ## Problem
-Rent and utilities are often a family's biggest costs. Paid in cash, by cheque or from an account that isn't linked, they never reach Tallyn, so spending looks smaller than it is.
+Rent and utilities are often a family's biggest costs. Paid in cash, by cheque or from an account that isn't linked, they never reach Coinroof, so spending looks smaller than it is.
 
 ## Who and what question
 Account owners only. The screen answers: **"What's due this month, and what have we paid?"**

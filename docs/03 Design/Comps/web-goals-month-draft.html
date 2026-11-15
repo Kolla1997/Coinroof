@@ -92,7 +92,7 @@ html, body { overflow-x: clip; }
 
   <section class="d-opt">
     <h2 class="d-h">A · Tidy field, browser popup</h2>
-    <p class="d-why">Keeps the browser's picker but the field reads in words: "Any time" or "June 2027", with Tallyn's calendar icon. Smallest change; the popup still looks different per browser.</p>
+    <p class="d-why">Keeps the browser's picker but the field reads in words: "Any time" or "June 2027", with Coinroof's calendar icon. Smallest change; the popup still looks different per browser.</p>
     <div class="d-grid"><div class="sheet">
       <span class="lbl">By (optional)</span>
       <label style="position:relative"><span class="sr-only">By month</span>
@@ -104,7 +104,7 @@ html, body { overflow-x: clip; }
 
   <section class="d-opt">
     <h2 class="d-h">B · Month grid (like Apple Calendar's month view)</h2>
-    <p class="d-why">The field opens a small Tallyn panel: the year with arrows, then 12 months. Past months are greyed out, this month has a ring. "No date" clears it. Same look in every browser, big targets for thumbs.</p>
+    <p class="d-why">The field opens a small Coinroof panel: the year with arrows, then 12 months. Past months are greyed out, this month has a ring. "No date" clears it. Same look in every browser, big targets for thumbs.</p>
     <div class="d-grid"><div class="sheet">
       <span class="lbl">By (optional)</span>
       <button type="button" class="mfield" aria-expanded="true" data-pick="b"><span class="ph" data-txt>Any time</span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></button>
@@ -121,7 +121,7 @@ html, body { overflow-x: clip; }
       <div class="selects" data-sel="c" hidden>
         <label>Month<select data-m></select></label><label>Year<select data-y></select></label>
       </div>
-      <p class="hint" data-hint="c">No date: Tallyn won't say how much to put aside each month.</p>
+      <p class="hint" data-hint="c">No date: Coinroof won't say how much to put aside each month.</p>
     </div></div>
   </section>
 
@@ -144,7 +144,7 @@ html, body { overflow-x: clip; }
         <label class="bradio"><input type="radio" name="bad"/>I'll update it myself</label></div></div>
       <div><p class="d-cap">Fixed</p><div class="sheet"><fieldset class="fills"><legend>How it fills</legend>
         <label class="fill"><input type="radio" name="good" checked/><span><b>Follow a savings account</b><small>Fills on its own from the balance.</small></span></label>
-        <label class="fill"><input type="radio" name="good"/><span><b>I'll update it myself</b><small>For cash, or money Tallyn can't see.</small></span></label>
+        <label class="fill"><input type="radio" name="good"/><span><b>I'll update it myself</b><small>For cash, or money Coinroof can't see.</small></span></label>
       </fieldset></div></div>
     </div>
   </section>
@@ -198,7 +198,7 @@ picker('b', false); picker('x', true)
   function draw() {
     q.innerHTML = [...QUICK, ['Pick a month', -1]].map(([l, k]) => `<button type="button" class="qc" aria-pressed="${pick === k}" data-k="${k}">${l}</button>`).join('')
     s.hidden = pick !== -1
-    if (pick === 0) h.textContent = "No date: Tallyn won't say how much to put aside each month."
+    if (pick === 0) h.textContent = "No date: Coinroof won't say how much to put aside each month."
     else if (pick > 0) { const i = idx(NOW.y, NOW.m) + pick; say(Math.floor(i / 12), i % 12) }
     else say(+ys.value, +ms.value)
   }

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { LockIcon } from '../components/Icons.jsx'
-import TallynLoader from '../components/TallynLoader.jsx'
+import CoinroofLoader from '../components/CoinroofLoader.jsx'
 import { TryAgain } from '../components/LoadFailed.jsx'
 import { verifiedAuthenticators } from '../lib/mfa.js'
 import CodeForm from './CodeForm.jsx'
@@ -103,7 +103,7 @@ export function SaveBackupCodes({ email, canDefer = false, newFeature = false, o
         </>
       )}
       {reauth && !codes && <CodeForm factorIds={reauth} button="Make my codes" onVerified={make} />}
-      {!codes && !error && !reauth && <TallynLoader small text="Making your codes" />}
+      {!codes && !error && !reauth && <CoinroofLoader small text="Making your codes" />}
       {codes && (
         <>
           <ol className="codes-grid" aria-label="Your backup codes">
@@ -173,7 +173,7 @@ export function BackupCodesGate({ accessToken, email, page: Page, children }) {
   return (
     <Page centred={state !== 'ask'}>
       {state === 'checking' ? (
-        <TallynLoader />
+        <CoinroofLoader />
       ) : (
         <>
           <SaveBackupCodes
@@ -214,7 +214,7 @@ export function UseBackupCode({ onBack }) {
     try {
       await api('/api/recovery/backup-code', { method: 'POST', body: { code } })
       markRecovered()
-      // The session now has no authenticator: Tallyn asks to set one up.
+      // The session now has no authenticator: Coinroof asks to set one up.
       await supabase.auth.refreshSession()
     } catch (err) {
       setError(RECOVERY_ERRORS[err.message] ?? 'Something went wrong. Try again in a moment.')

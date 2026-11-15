@@ -349,7 +349,7 @@ export default function SpendingRing({ title = 'October spending', categories = 
 
   const current = categories[selected]
   const share = total && current ? (current.amount / total) * 100 : 0
-  // Tallyn edit (#182): no comparison line when there is no last month to compare with.
+  // Coinroof edit (#182): no comparison line when there is no last month to compare with.
   const change = current?.change
 
   return (

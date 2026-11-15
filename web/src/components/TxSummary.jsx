@@ -5,7 +5,7 @@ import { categoryLabel, formatMoney } from '../lib/money.js'
 import { nameOf } from '../lib/people.jsx'
 import { cleanName } from './TransactionRow.jsx'
 import TxIcon from './TxIcon.jsx'
-import TallynLoader from './TallynLoader.jsx'
+import CoinroofLoader from './CoinroofLoader.jsx'
 import CountUp from './CountUp.jsx'
 import { Panel, Rows, See, NUM, MUTED, IN } from './calm/ui.jsx'
 import { categoryShares, finding } from '../lib/categoryShares.js'
@@ -21,7 +21,9 @@ const TxMap = lazy(() => import('./TxMap.jsx'))
 export function TxSummary({ totals, scope, category = '', onCategory }) {
   if (!totals) {
     return (
-      <Panel label="Summary">{totals === null ? <TallynLoader small /> : <p className={`text-[13px] ${MUTED}`}>Nothing to add up for these filters.</p>}</Panel>
+      <Panel label="Summary">
+        {totals === null ? <CoinroofLoader small /> : <p className={`text-[13px] ${MUTED}`}>Nothing to add up for these filters.</p>}
+      </Panel>
     )
   }
   const cur = totals.currency

@@ -14,7 +14,7 @@ tags: [adr, security, auth]
 - **Ticket:** #7
 
 ## Context
-Tallyn needs email sign-up, log-in and required 2FA ([[Feature - Auth]]). Supabase Auth provides all three. Something has to hold the session, and the Go API has to know who is calling so that `AsUser` can run the request as that person ([[0002-backend-database-access]]).
+Coinroof needs email sign-up, log-in and required 2FA ([[Feature - Auth]]). Supabase Auth provides all three. Something has to hold the session, and the Go API has to know who is calling so that `AsUser` can run the request as that person ([[0002-backend-database-access]]).
 
 ## Options considered
 1. **Browser holds the session.** The React app uses `supabase-js` with the public publishable key for sign-up, log-in and TOTP. It sends the access token to Go as `Authorization: Bearer`. Go verifies the token against Supabase's public signing keys (JWKS).
