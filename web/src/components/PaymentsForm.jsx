@@ -1,5 +1,5 @@
 import { createElement, useRef, useState } from 'react'
-import { Baby, Car, Check, Droplet, Flame, House, Landmark, Plus, Receipt, Repeat, Shield, Wifi, X, Zap } from 'lucide-react'
+import { Baby, Car, Check, Droplet, Flame, GraduationCap, HandCoins, House, Landmark, Plus, Receipt, Repeat, Shield, Wifi, X, Zap } from 'lucide-react'
 import CountUp from './CountUp.jsx'
 import { loanPayment } from './ManualLoan.jsx'
 import { IconTile, Pill, MUTED, NUM, OWE, IN } from './calm/ui.jsx'
@@ -22,7 +22,7 @@ export const KINDS = {
   internet: { name: 'Internet', icon: Wifi, category: 'utilities' },
   insurance: { name: 'Insurance', icon: Shield, category: 'insurance', rename: true },
   other: { name: 'Other', icon: Plus, category: 'other', multi: true },
-  loan: { name: 'Loan', icon: Car, loan: true, multi: true },
+  loan: { name: 'Loan', icon: Landmark, loan: true, multi: true },
 }
 export const ONBOARDING_CHIPS = ['rent', 'electric', 'gas', 'water', 'internet', 'loan', 'other']
 export const BILLS_CHIPS = ['rent', 'electric', 'gas', 'water', 'internet', 'insurance', 'other', 'loan']
@@ -47,7 +47,10 @@ const CHIP =
 const today = () => new Date().toLocaleDateString('en-CA') // YYYY-MM-DD, local
 export const ord = (d) => d + (d % 10 === 1 && d !== 11 ? 'st' : d % 10 === 2 && d !== 12 ? 'nd' : d % 10 === 3 && d !== 13 ? 'rd' : 'th')
 const isLoan = (it) => it.k === 'loan'
-const iconOf = (it) => (it.k === 'bill' || it.k === 'other' ? (CATEGORY_ICON[it.category] ?? Receipt) : KINDS[it.k].icon)
+// A loan shows its kind once picked (Dinesh, #315): the chip itself is a bank, as Bills marks loan payments.
+const LOAN_ICON = { car: Car, personal: HandCoins, education: GraduationCap, other: Landmark }
+const iconOf = (it) =>
+  it.k === 'bill' || it.k === 'other' ? (CATEGORY_ICON[it.category] ?? Receipt) : isLoan(it) ? (LOAN_ICON[it.loanKind] ?? Landmark) : KINDS[it.k].icon
 
 const KindIcon = ({ it }) => createElement(iconOf(it), { className: 'size-4' })
 
