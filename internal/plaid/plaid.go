@@ -20,7 +20,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/Kolla1997/Tallyn/internal/money"
+	"github.com/Kolla1997/Coinroof/internal/money"
 )
 
 var baseURLs = map[string]string{

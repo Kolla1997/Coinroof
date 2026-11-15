@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
-	"github.com/Kolla1997/Tallyn/internal/plaid"
+	"github.com/Kolla1997/Coinroof/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/plaid"
 )
 
 // Plaid is the part of the Plaid API the bank routes use. *plaid.Client implements it.

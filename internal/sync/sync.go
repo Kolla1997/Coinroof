@@ -17,8 +17,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
-	"github.com/Kolla1997/Tallyn/internal/plaid"
+	"github.com/Kolla1997/Coinroof/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/plaid"
 )
 
 // Store is the system database access. *db.System implements it.

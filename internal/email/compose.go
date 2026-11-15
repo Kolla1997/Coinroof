@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Kolla1997/Tallyn/internal/money"
+	"github.com/Kolla1997/Coinroof/internal/money"
 )
 
 // The emails Dinesh picked (D1 in drafts/269-email-backgrounds.html): a

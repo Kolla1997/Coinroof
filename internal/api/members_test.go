@@ -10,8 +10,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
-	"github.com/Kolla1997/Tallyn/internal/email"
+	"github.com/Kolla1997/Coinroof/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/email"
 )
 
 // All data here is fake.

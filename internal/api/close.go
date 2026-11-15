@@ -9,9 +9,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/Kolla1997/Tallyn/internal/auth"
-	"github.com/Kolla1997/Tallyn/internal/db"
-	"github.com/Kolla1997/Tallyn/internal/plaid"
+	"github.com/Kolla1997/Coinroof/internal/auth"
+	"github.com/Kolla1997/Coinroof/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/plaid"
 )
 
 // AccountDeleter deletes a person's Supabase sign-in (#56, ADR 0015).

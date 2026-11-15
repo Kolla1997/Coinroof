@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 // Loans Plaid can't see (#306). Owners only; the database decides. A loan is

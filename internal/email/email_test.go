@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 // All data is fake.

@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 // Backup codes (#23, ADR 0013): ten one-time codes, shown once, for when

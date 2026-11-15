@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 // In-app notifications (#267). Who gets what lives in the database

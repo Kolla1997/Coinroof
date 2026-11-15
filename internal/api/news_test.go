@@ -9,8 +9,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
-	"github.com/Kolla1997/Tallyn/internal/email"
+	"github.com/Kolla1997/Coinroof/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/email"
 )
 
 // Product news (#281). All IDs are fake.

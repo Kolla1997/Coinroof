@@ -11,9 +11,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Kolla1997/Tallyn/internal/auth"
-	"github.com/Kolla1997/Tallyn/internal/db"
-	"github.com/Kolla1997/Tallyn/internal/money"
+	"github.com/Kolla1997/Coinroof/internal/auth"
+	"github.com/Kolla1997/Coinroof/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/money"
 )
 
 // exportData answers GET /api/me/export (#54): a ZIP of everything Coinroof

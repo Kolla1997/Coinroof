@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Kolla1997/Tallyn/internal/auth"
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/auth"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 const testUser = "11111111-1111-4111-8111-111111111111" // fake

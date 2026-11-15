@@ -3,7 +3,7 @@ package api
 import (
 	"net/http"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 // Plan from your income (#133): one plan for the household and one per

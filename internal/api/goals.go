@@ -3,7 +3,7 @@ package api
 import (
 	"net/http"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 // Savings goals (#14). The database decides who sees a goal and its

@@ -13,14 +13,14 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/Kolla1997/Tallyn/internal/api"
-	"github.com/Kolla1997/Tallyn/internal/auth"
-	"github.com/Kolla1997/Tallyn/internal/db"
-	"github.com/Kolla1997/Tallyn/internal/email"
-	"github.com/Kolla1997/Tallyn/internal/plaid"
-	"github.com/Kolla1997/Tallyn/internal/supabaseadmin"
-	banksync "github.com/Kolla1997/Tallyn/internal/sync"
-	"github.com/Kolla1997/Tallyn/internal/tokencrypt"
+	"github.com/Kolla1997/Coinroof/internal/api"
+	"github.com/Kolla1997/Coinroof/internal/auth"
+	"github.com/Kolla1997/Coinroof/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/email"
+	"github.com/Kolla1997/Coinroof/internal/plaid"
+	"github.com/Kolla1997/Coinroof/internal/supabaseadmin"
+	banksync "github.com/Kolla1997/Coinroof/internal/sync"
+	"github.com/Kolla1997/Coinroof/internal/tokencrypt"
 )
 
 func main() {

@@ -8,7 +8,7 @@ import (
 
 	"github.com/jackc/pgx/v5"
 
-	"github.com/Kolla1997/Tallyn/internal/plaid"
+	"github.com/Kolla1997/Coinroof/internal/plaid"
 )
 
 // Transactions page (#42): filters, paging, owners and logos. All data is fake.
