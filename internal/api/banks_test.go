@@ -117,6 +117,12 @@ func (stubStore) SetNews(context.Context, string, bool, string, string) error   
 func (stubStore) SaveNotificationSettings(context.Context, string, string, db.NotificationSettings) error {
 	return errors.New("stub")
 }
+func (stubStore) CashJobSettingsFor(context.Context, string, string) (db.CashJobSettings, error) {
+	return db.CashJobSettings{}, errors.New("stub")
+}
+func (stubStore) SaveCashJobSettings(context.Context, string, string, db.CashJobSettings) error {
+	return errors.New("stub")
+}
 func (stubStore) CreateHousehold(context.Context, string, string, string) (db.MyHousehold, error) {
 	return db.MyHousehold{}, errors.New("stub")
 }

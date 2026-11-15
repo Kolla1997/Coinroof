@@ -11,6 +11,8 @@ tags: [log]
 Newest first. One entry per working session or decision.
 
 ## 2026-11-15
+- #33 Promoted and agreed with Dinesh: a Home card that gives today's cash a job (waterfall: dues before payday, an everyday buffer, then debt share, goals, savings). Dinesh picked C · Mix of `drafts/33-cash-jobs.html` (tally tape + jobs bar). Sums worked out in the app from endpoints that already apply sharing; migration 0033 `cash_job_settings` keeps each owner's payday and split (in the export too). Open: default split stays 50% debt.
+- Parked #11 and #156 in the new milestone "Multi-currency (after Coinroof is built)" (Dinesh): Coinroof is US only.
 - #1 Editing a bill no longer clears its note (the edit save left it out). No screen shows notes yet, so nothing was lost.
 - #319 Paused bills: Dinesh picked A of `drafts/319-paused-bills.html`: a Paused list under Left to pay with Resume (from this month) and Edit; the calendar shows only bills that count. Edit's icon now follows the chip name, so Water, Gas and Internet no longer show Electric's bolt. Found while checking the #315 form signed in on the sandbox (several at once, loan payment, edit and pause all saved fine).
 - #290 Already built in #291; #318 added the export README line and closed it.

@@ -20,6 +20,7 @@ import MetricCard from '@/components/kokonutui/metric-card'
 import SmoothTab from '@/components/kokonutui/smooth-tab'
 import { FILL_STEP, Gauge } from '@/components/charts/gauge'
 import OpensOver from '../components/calm/OpensOver.jsx'
+import CashJobs from '../components/CashJobs.jsx'
 
 // Home in the calm redesign (#187), built from the #185/#182 draft (web/src/lab/home/CalmHome.jsx):
 // a 12-column grid with
@@ -149,6 +150,7 @@ export default function HomePage({ me, household, refreshKey, onChanged }) {
             <SharedWithYou banks={banks} me={me} people={people} roles={roles} />
           </div>
           <div className="grid content-start gap-3 md:col-span-2 lg:col-span-4">
+            {household.role === 'owner' && <CashJobs household={household} banks={banks} daily={daily.everyone} />}
             <Family members={members} isOwner={household.role === 'owner'} />
             <Goals household={household} />
           </div>

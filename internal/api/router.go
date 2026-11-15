@@ -84,6 +84,8 @@ type Store interface {
 	DismissNotifications(ctx context.Context, userID string, ids []string) error
 	NotificationSettingsFor(ctx context.Context, userID, householdID string) (db.NotificationSettings, error) // #268
 	SaveNotificationSettings(ctx context.Context, userID, householdID string, s db.NotificationSettings) error
+	CashJobSettingsFor(ctx context.Context, userID, householdID string) (db.CashJobSettings, error) // #33
+	SaveCashJobSettings(ctx context.Context, userID, householdID string, s db.CashJobSettings) error
 	SetEmail(ctx context.Context, userID, householdID, kind, kid string, on bool) error // #269
 	News(ctx context.Context, userID string) (db.News, error)                           // #281
 	SetNews(ctx context.Context, userID string, on bool, source, privacyVersion string) error
@@ -196,6 +198,8 @@ func NewRouter(d Deps) http.Handler {
 	api.HandleFunc("POST /api/notifications/dismiss", dismissNotifications(d.Store))
 	api.HandleFunc("GET /api/notifications/settings", notificationSettings(d.Store)) // #268
 	api.HandleFunc("PUT /api/notifications/settings", saveNotificationSettings(d.Store))
+	api.HandleFunc("GET /api/cash-jobs/settings", cashJobSettings(d.Store)) // #33
+	api.HandleFunc("PUT /api/cash-jobs/settings", saveCashJobSettings(d.Store))
 	api.HandleFunc("/api/", func(w http.ResponseWriter, _ *http.Request) {
 		writeError(w, http.StatusNotFound, "not_found")
 	})
