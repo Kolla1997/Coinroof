@@ -101,3 +101,24 @@ export function cardDues(banks, month) {
   }
   return out
 }
+
+// Paused bills, for the Paused list on Bills (#319). Loans are paused in Debts, not here.
+export function pausedBills(bills) {
+  return bills.filter((b) => b.paused && b.category !== 'loan')
+}
+
+// The save that resumes a paused bill (#319): it starts again from this month at the latest, so the
+// months it was paused never show as late.
+export function resumeBody(bill, thisMonth) {
+  return {
+    name: bill.name,
+    amount_minor: bill.amount_minor,
+    varies: bill.varies,
+    frequency: bill.frequency,
+    due_day: bill.due_day,
+    starts_on: bill.starts_on > thisMonth ? bill.starts_on : thisMonth,
+    category: bill.category ?? '',
+    note: bill.note ?? '',
+    paused: false,
+  }
+}

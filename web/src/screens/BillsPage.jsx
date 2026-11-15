@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { AlertCircle, CalendarDays, Check, ChevronLeft, ChevronRight, Clock, CreditCard, Plus, Repeat } from 'lucide-react'
+import { AlertCircle, CalendarDays, Check, ChevronLeft, ChevronRight, Clock, CreditCard, Play, Plus, Repeat } from 'lucide-react'
 import ConfirmDialog from '../components/ConfirmDialog.jsx'
 import PaidDialog from '../components/PaidDialog.jsx'
-import PaymentsForm from '../components/PaymentsForm.jsx'
+import PaymentsForm, { billIcon, ord } from '../components/PaymentsForm.jsx'
 import LoadFailed from '../components/LoadFailed.jsx'
 import PageSkeleton from '../components/calm/PageSkeleton.jsx'
 import { api } from '../lib/api.js'
 import { navigate } from '../lib/router.jsx'
-import { CATEGORIES, FREQUENCIES, amountOf, byDay, cardDues, frequencyName, monthGrid, shiftMonth, totals } from '../lib/bills.js'
+import { CATEGORIES, FREQUENCIES, amountOf, byDay, cardDues, frequencyName, monthGrid, pausedBills, resumeBody, shiftMonth, totals } from '../lib/bills.js'
 import { formatMoney } from '../lib/money.js'
 import { useRetry } from '../lib/retry.js'
 import { useModal } from '../lib/modal.js'
@@ -136,6 +136,10 @@ export default function BillsPage({ household, refreshKey }) {
           onUnmark={unmark}
           onDifferent={(bill, due) => setDialog({ kind: 'paid', bill, due })}
           onEdit={(bill) => (bill.category === 'loan' ? navigate('/debts') : setDialog({ kind: 'bill', bill }))}
+          onResume={async (bill) => {
+            await api(`/api/bills/${bill.id}`, { method: 'PUT', body: resumeBody(bill, now.slice(0, 7)) })
+            load()
+          }}
         />
       )}
 
@@ -188,7 +192,7 @@ export default function BillsPage({ household, refreshKey }) {
   )
 }
 
-function Calendar({ data, month, now, picked, money, onPick, onMonth, onMarkPaid, onUnmark, onDifferent, onEdit }) {
+function Calendar({ data, month, now, picked, money, onPick, onMonth, onMarkPaid, onUnmark, onDifferent, onEdit, onResume }) {
   const { lead, days } = monthGrid(month)
   const days_ = byDay(data.dues)
   const bills = Object.fromEntries(data.bills.map((b) => [b.id, b]))
@@ -354,8 +358,70 @@ function Calendar({ data, month, now, picked, money, onPick, onMonth, onMarkPaid
             {sum.late > 0 && <span style={OWE}> · {sum.late} late</span>}
           </p>
         </div>
+        <Paused bills={pausedBills(data.bills)} money={money} onEdit={onEdit} onResume={onResume} />
       </aside>
     </div>
+  )
+}
+
+// Paused bills (#319, Dinesh's pick A of drafts/319-paused-bills.html): listed under Left to pay,
+// never counted in it, each with Resume and Edit. The calendar shows only bills that count.
+function Paused({ bills, money, onEdit, onResume }) {
+  const [busy, setBusy] = useState(null)
+  const [failed, setFailed] = useState(false)
+  if (!bills.length) return null
+  const resume = async (bill) => {
+    setBusy(bill.id)
+    setFailed(false)
+    try {
+      await onResume(bill)
+    } catch {
+      setFailed(true)
+    } finally {
+      setBusy(null)
+    }
+  }
+  return (
+    <section className="mt-5 border-t border-zinc-200 pt-4 dark:border-zinc-800" aria-labelledby="bills-paused-h">
+      <h3 id="bills-paused-h" className="m-0 mb-1 flex items-center justify-between text-[15px] font-semibold">
+        Paused
+        <span className="rounded-full bg-zinc-100 px-2 text-[12px] tabular-nums dark:bg-zinc-800" aria-hidden="true">
+          {bills.length}
+        </span>
+        <span className="sr-only">, {bills.length}</span>
+      </h3>
+      {bills.map((b) => {
+        const I = billIcon(b.name, b.category)
+        return (
+          <div
+            key={b.id}
+            className="calm-row grid grid-cols-[28px_minmax(0,1fr)_auto] items-center gap-x-2.5 gap-y-1.5 border-t border-zinc-200 py-2 first-of-type:border-t-0 dark:border-zinc-800"
+          >
+            <span className={`flex size-7 items-center justify-center rounded-lg bg-zinc-100 dark:bg-zinc-800 ${MUTED}`}>
+              <I className="size-3.5" aria-hidden="true" />
+            </span>
+            <span className="min-w-0">
+              <b className="block truncate text-[14px]">{b.name}</b>
+              <span className={`text-[12px] ${MUTED}`}>Due on the {ord(b.due_day)} · not counted</span>
+            </span>
+            <span className={`text-[14px] tabular-nums ${MUTED}`}>{money(b.amount_minor, b.currency)}</span>
+            <span className="col-start-2 col-end-4 flex flex-wrap gap-2">
+              <Pill icon={Play} disabled={busy === b.id} onClick={() => resume(b)}>
+                {busy === b.id ? 'Resuming…' : 'Resume'}
+              </Pill>
+              <Pill quiet onClick={() => onEdit(b)}>
+                Edit
+              </Pill>
+            </span>
+          </div>
+        )
+      })}
+      {failed && (
+        <p className="m-0 mt-1 text-[13px]" style={OWE} role="alert">
+          We couldn&apos;t resume it. Try again in a moment.
+        </p>
+      )}
+    </section>
   )
 }
 
