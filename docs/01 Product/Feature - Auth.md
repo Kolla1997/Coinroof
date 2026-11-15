@@ -10,16 +10,16 @@ tags: [spec, auth, security]
 # Feature — Auth: email + 2FA
 
 ## Problem
-Family finance data must stay private to each person and household. People need to sign up and log in securely before Tallyn shows them anything.
+Family finance data must stay private to each person and household. People need to sign up and log in securely before Coinroof shows them anything.
 
 ## Goal and success metric
 Every API call that touches family data comes from a person who signed in with email and password **and** a second factor. Success: no API route under `/api/` (other than the health check) answers without a verified, 2FA-completed Supabase session.
 
 ## User stories
-- As a new user, I want to create an account with my email so that I can start using Tallyn.
+- As a new user, I want to create an account with my email so that I can start using Coinroof.
 - As a user, I want to set up an authenticator app (Microsoft Authenticator, Google Authenticator, 1Password…) so that a stolen password isn't enough to get into my family's money.
 - As a returning user, I want to log in with my email, password and a 6-digit code.
-- As Tallyn, we want the server to check every request itself, so that a bug in the web app can't expose data.
+- As Coinroof, we want the server to check every request itself, so that a bug in the web app can't expose data.
 
 ## Scope
 **In:**

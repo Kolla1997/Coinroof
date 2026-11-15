@@ -7,7 +7,7 @@ issue: 56
 tags: [spec, privacy]
 ---
 
-# Feature — Close your Tallyn account
+# Feature — Close your Coinroof account
 
 ## Problem
 Settings → Leave or close shows "Close account" as coming soon. People must be able to close their account themselves (Privacy Policy §6, §8).
@@ -16,7 +16,7 @@ Settings → Leave or close shows "Close account" as coming soon. People must be
 Anyone can close their account from Settings in one sitting, and nothing of theirs is left behind except the minimal closing record. Success: no closing requests need handling by hand.
 
 ## User stories
-- As someone leaving Tallyn, I want to close my account so that my banks are disconnected and my data is deleted.
+- As someone leaving Coinroof, I want to close my account so that my banks are disconnected and my data is deleted.
 - As the other owner of a household, I want the household and its budgets to carry on when my partner closes their account.
 
 ## Scope
@@ -42,7 +42,7 @@ If you're the only owner of a household with others in it, the dialog says so an
 See [[0015-closing-an-account]] for the steps, the record and the 3-year purge. Tests: [[Test Plan]] rows under Sign-in and security.
 
 ## Rollout
-Ships to everyone at once. Migration 0016 runs first. The Privacy Policy keeps its current text until the lawyer review (#36) adds the 3-year record and backup retention; Tallyn isn't public yet.
+Ships to everyone at once. Migration 0016 runs first. The Privacy Policy keeps its current text until the lawyer review (#36) adds the 3-year record and backup retention; Coinroof isn't public yet.
 
 ## Open questions
 > [!todo] How long Supabase's backups and logs keep deleted data on our plan, for the Privacy Policy (#36).

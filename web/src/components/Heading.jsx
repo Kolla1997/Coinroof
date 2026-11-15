@@ -7,7 +7,7 @@ export function resetHeading() {
   firstScreen = true
 }
 
-// A screen's h1 (#153). It names the browser tab ("Accounts · Tallyn"), and
+// A screen's h1 (#153). It names the browser tab ("Accounts · Coinroof"), and
 // when the screen or step changes it takes keyboard focus, so screen readers
 // announce where you are. The very first screen after a page load is left
 // alone. Focus from a click shows no ring (only keyboard use does).

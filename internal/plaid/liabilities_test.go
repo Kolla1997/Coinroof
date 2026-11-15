@@ -84,7 +84,7 @@ func TestLiabilities(t *testing.T) {
 	}
 }
 
-// Loans (#27): only the fields Tallyn shows; implausible values dropped;
+// Loans (#27): only the fields Coinroof shows; implausible values dropped;
 // a mortgage with an amount past due counts as overdue.
 func TestLiabilityLoans(t *testing.T) {
 	c, _ := setup(t, "/liabilities/get", 200, liabilitiesBody)

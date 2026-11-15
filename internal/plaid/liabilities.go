@@ -16,7 +16,7 @@ type Liabilities struct {
 }
 
 // Loan is what a bank reports about a student loan or mortgage (#27). Only
-// what Tallyn shows: never account numbers, payment reference numbers,
+// what Coinroof shows: never account numbers, payment reference numbers,
 // servicer or property addresses (decided 2026-10-09), escrow or PMI.
 // Amounts are minor units of the account's currency; dates YYYY-MM-DD;
 // nil or "" when the bank doesn't say.

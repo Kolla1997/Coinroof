@@ -9,7 +9,7 @@ tags: [idea, ai]
 
 # Idea — TallyX AI
 
-**One-liner:** Ask Tallyn about your money in plain words ("what did I spend on food this month?"), first from Discord, later in the app.
+**One-liner:** Ask Coinroof about your money in plain words ("what did I spend on food this month?"), first from Discord, later in the app.
 
 Tickets: [#136](https://github.com/Kolla1997/Tallyn/issues/136) (TallyX on Discord), building on [#15](https://github.com/Kolla1997/Tallyn/issues/15) (AI assistant). Related: [#132](https://github.com/Kolla1997/Tallyn/issues/132) (messaging between household members).
 
@@ -17,7 +17,7 @@ Tickets: [#136](https://github.com/Kolla1997/Tallyn/issues/136) (TallyX on Disco
 > "TallyX" is a working name. Dinesh is open to others.
 
 ## Why (problem / opportunity)
-People want a quick answer without opening the app and finding the right screen. A chat app they already use makes Tallyn feel close at hand.
+People want a quick answer without opening the app and finding the right screen. A chat app they already use makes Coinroof feel close at hand.
 
 ## Rough shape
 
@@ -25,7 +25,7 @@ People want a quick answer without opening the app and finding the right screen.
 
 **Maybe no RAG.** Most questions are lookups in structured data, not searches through documents. Tool calls may cover them, so #15's pgvector RAG may not be needed at first. Revisit if people ask about free text (notes, merchant names).
 
-**Same privacy rules as the app.** TallyX acts as the person asking and sees only what they can see in Tallyn. Row-level security and the household roles apply unchanged: a teen can't ask about a parent's spending.
+**Same privacy rules as the app.** TallyX acts as the person asking and sees only what they can see in Coinroof. Row-level security and the household roles apply unchanged: a teen can't ask about a parent's spending.
 
 **Model choice (from the Model Routing Playbook, read 2026-10-23):**
 1. Start with **one** fast, low-cost model (e.g. Haiku) at low effort. Simple lookups are most questions.
@@ -39,7 +39,7 @@ People want a quick answer without opening the app and finding the right screen.
 - Wrong answers that sound right (false passes). For a money app this matters most; the target is zero wrong numbers.
 - Privacy cases: questions that try to reach another member's data must be refused.
 
-**Discord.** Direct messages only, never public channels. People link their Discord account from Tallyn settings, and can unlink it at any time.
+**Discord.** Direct messages only, never public channels. People link their Discord account from Coinroof settings, and can unlink it at any time.
 
 **Voice.** Clear and calm, as in `docs/02 Brand/Voice and Tone.md`. TallyX answers questions about your own money. It doesn't give investment or financial advice and says so when asked.
 
@@ -50,7 +50,7 @@ L. Split it when promoted: (1) the tool API and answer engine with the measureme
 > [!warning] Legal and consent before any real data
 > Sending financial data to an AI provider, and answers through Discord, needs a Privacy Policy update in `legal/` (lawyer-reviewed) and a clear opt-in per person. How kids' and teens' data is handled needs a decision first.
 
-- Discord first, or in-app chat first? In-app is simpler and keeps data inside Tallyn; Discord is the original idea.
+- Discord first, or in-app chat first? In-app is simpler and keeps data inside Coinroof; Discord is the original idea.
 - Which AI provider, and what does their data retention allow? Needs an ADR.
 - Who can turn TallyX on for a household: each person, or owners and adults only?
 - Rough cost per active user per month we can accept. Set this before picking the model.

@@ -78,7 +78,7 @@ The app never logs in as `postgres` (ADR 0006). After running `migrations/0006_a
 ## Supabase Auth settings (#7)
 In the Supabase dashboard, for each project (dev and prod). See [[Feature - Auth]].
 - Auth → Providers → Email: on, with **Confirm email** on, and **minimum password length 8** (#22; the app asks for 8 too)
-- Auth → Email templates → **Reset password** (#22): subject "Reset your Tallyn password", body: "Someone asked to reset the password for your Tallyn account. If it was you, open this link to choose a new one: {{ .ConfirmationURL }} It works for 1 hour. You'll be asked for your authenticator code first. If it wasn't you, you can ignore this email: your password stays the same."
+- Auth → Email templates → **Reset password** (#22): subject "Reset your Coinroof password", body: "Someone asked to reset the password for your Coinroof account. If it was you, open this link to choose a new one: {{ .ConfirmationURL }} It works for 1 hour. You'll be asked for your authenticator code first. If it wasn't you, you can ignore this email: your password stays the same."
 - Auth → Multi-Factor: **TOTP** on (free, on by default). Leave phone MFA off (paid add-on)
 - Auth → Emails → **Security notifications** (#23): switch on "Password changed", "MFA method added" and "MFA method removed", so people hear when their sign-in changes
 - Project Settings → API keys → **secret key** (#23, ADR 0013): put it in `.env` as `SUPABASE_SERVICE_ROLE_KEY`, **only** on the server. It's used only to remove a lost authenticator; without it, backup-code recovery answers 503

@@ -205,7 +205,7 @@ export function SankeyNode({
   showValueLabels = true,
   labelOrientation = 'horizontal',
   getNodeColor: getNodeColorProp,
-  // Tallyn edit (#182): the unit is the caller's, not always sessions
+  // Coinroof edit (#182): the unit is the caller's, not always sessions
   formatValue = (v) => `${intFmt(v)} sessions`,
 }) {
   const { nodes, links, width, margin, hoveredNodeIndex, hoveredLinkIndex, setHoveredNodeIndex, setTooltipData, animationDuration } = useSankey()

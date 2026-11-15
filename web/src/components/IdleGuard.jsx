@@ -7,8 +7,8 @@ import { returnFocus } from '../lib/modal.js'
 // last minute a dialog counts down ("Still there?"), with the page blurred
 // behind it so balances aren't readable on an unattended screen.
 //
-// Activity is a click, tap, key, scroll or wheel in any Tallyn tab (shared
-// through localStorage); Tallyn's own background refreshes don't count. The
+// Activity is a click, tap, key, scroll or wheel in any Coinroof tab (shared
+// through localStorage); Coinroof's own background refreshes don't count. The
 // check also runs when the tab comes back into view, because timers pause
 // while a computer sleeps: back after the 30 minutes means signed out at once.
 

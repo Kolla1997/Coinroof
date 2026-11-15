@@ -1,4 +1,4 @@
-# CLAUDE.md — Working on Tallyn
+# CLAUDE.md — Working on Coinroof
 
 Read this first in every session. It tells you where things live, how to write docs, and what not to touch.
 
@@ -25,9 +25,9 @@ Then stop and wait. Don't start until Dinesh approves (a plan he has already app
 - `/promote <N>`: typing the command is the approval to move the card. Ask before writing a Feature Spec
 - Auto-promotion done by `scripts/sync_board.py` (see §5)
 
-## 1. What Tallyn is
+## 1. What Coinroof is
 
-**Tallyn is a family finance app. Tagline: "It all adds up."**
+**Coinroof is a family finance app. Tagline: "It all adds up."**
 People connect their US bank accounts, see one total in US dollars, track spending and savings in real time, and open joint accounts for partners, kids and parents. For now Coinroof is US only; more currencies may come later (#11), so the code keeps a household's currency but every screen shows USD. Status: early development, not public.
 
 Full context: `docs/01 Product/Vision.md`.
@@ -49,7 +49,7 @@ The **repo root is the Obsidian vault**. Notes live in `docs/`. Code folders are
 | `docs/06 Ideas/Ideas Board.md` | Mirror of **Tallyn Ideas** (idea pipeline) | **No.** It's generated, so never edit it |
 | `docs/06 Ideas/` | Longer write-ups of ideas, one note each, with `issue: N` | Yes, for idea detail |
 | `.claude/commands/` | Claude Code slash commands (`/i`). Source copies live in `scripts/claude-commands/` | — |
-| `.claude/skills/` | Outside Claude Code skills, pinned copies; sources in `SOURCES.md` (#141) | No. Advice only, Tallyn rules win (§6) |
+| `.claude/skills/` | Outside Claude Code skills, pinned copies; sources in `SOURCES.md` (#141) | No. Advice only, Coinroof rules win (§6) |
 | `docs/07 Log/` | Dated session and decision log | Yes |
 | `docs/Templates/` | Note templates. Always start new notes from these | — |
 | `cmd/`, `internal/` | Go backend (API + scheduled bank sync) | Code |
@@ -71,7 +71,7 @@ The **repo root is the Obsidian vault**. Notes live in `docs/`. Code folders are
 3. Record decisions: tech decisions get an ADR in `docs/04 Tech/ADR/`; brand and design decisions go in the "Decisions" table of the relevant guide.
 4. Update `PROGRESS.md` (also when Dinesh says "wrap up"). It's the handoff to the next session, not a history: replace stale content, keep it under ~300 words, and leave history to the Log, ADRs and the board. It's gitignored and hidden from Obsidian. Structure:
    ```
-   # Progress — Tallyn
+   # Progress — Coinroof
    _Last updated: YYYY-MM-DD_ · Branch: `<branch>` · Ticket: #N
 
    ## Done (last session only)
@@ -188,10 +188,10 @@ Labels: `type:*` (idea, bug, feature, design, docs, tech-debt), `area:*` (brand,
 - Write copy in the voice set out in `docs/02 Brand/Voice and Tone.md`. This is a money app for families, so be clear and calm, never pushy.
 - Every card is frosted glass over a soft glow (`docs/03 Design/Design System.md` → Glass finish, #61). Keep text AA readable on it, keep dialogs, inputs and buttons solid, and keep the fallbacks for browsers without blur and for reduced transparency.
 - Draft before building (§0): no visual change goes in without a draft Dinesh has picked from.
-- Outside skills in `.claude/skills/` (listed in `.claude/skills/SOURCES.md`, #141) are advice, not rules. When one disagrees with this file, `design-tokens.json`, the Brand Guide or the Design System (easing, durations, colours, layout, workflow), Tallyn's own rules win. Their steps also don't skip §0: still draft, wait for a pick, and ask before subagents or new dependencies.
-  - **hallmark** and **ui-ux-pro-max** never pick Tallyn's look. Use them for their checks (hallmark's Floor and `sloplint`, ui-ux-pro-max's UX, accessibility and chart guidance), not their themes, palettes or fonts. Skip hallmark's theme deal, scaffold (`tokens.css`/`base.css`), photo library and edit-time hook; skip ui-ux-pro-max's `--persist` (no `design-system/` folder). Hallmark's generated images (Together AI) stay off.
-  - For any Tallyn screen, follow `docs/03 Design/Design System.md` → Designing a screen (#180), loaded by the `tallyn-design` skill: Tallyn's look first, taste-skill's app-screen method for content, its checks with the clashing rules allowed.
-  - **design-taste-frontend** (taste-skill) never picks Tallyn's look either. Use it for its checks only: `lint.mjs`, `inspect.mjs` (with `--app` for app screens) and its tells and critique notes. Skip its direction deal (`draw.mjs`, `scenes.mjs`), palettes, type, photos and section blueprints, and never run `assets.mjs`.
+- Outside skills in `.claude/skills/` (listed in `.claude/skills/SOURCES.md`, #141) are advice, not rules. When one disagrees with this file, `design-tokens.json`, the Brand Guide or the Design System (easing, durations, colours, layout, workflow), Coinroof's own rules win. Their steps also don't skip §0: still draft, wait for a pick, and ask before subagents or new dependencies.
+  - **hallmark** and **ui-ux-pro-max** never pick Coinroof's look. Use them for their checks (hallmark's Floor and `sloplint`, ui-ux-pro-max's UX, accessibility and chart guidance), not their themes, palettes or fonts. Skip hallmark's theme deal, scaffold (`tokens.css`/`base.css`), photo library and edit-time hook; skip ui-ux-pro-max's `--persist` (no `design-system/` folder). Hallmark's generated images (Together AI) stay off.
+  - For any Coinroof screen, follow `docs/03 Design/Design System.md` → Designing a screen (#180), loaded by the `tallyn-design` skill: Coinroof's look first, taste-skill's app-screen method for content, its checks with the clashing rules allowed.
+  - **design-taste-frontend** (taste-skill) never picks Coinroof's look either. Use it for its checks only: `lint.mjs`, `inspect.mjs` (with `--app` for app screens) and its tells and critique notes. Skip its direction deal (`draw.mjs`, `scenes.mjs`), palettes, type, photos and section blueprints, and never run `assets.mjs`.
 
 ## 7. Security rules (finance app)
 

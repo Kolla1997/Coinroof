@@ -1,5 +1,5 @@
 // Sign out after 30 minutes without activity (#91). The time of the last
-// activity is kept in localStorage, so every Tallyn tab shares it: active in
+// activity is kept in localStorage, so every Coinroof tab shares it: active in
 // one tab keeps all of them signed in. Kept apart from the component so the
 // rules can be tested without a browser session.
 

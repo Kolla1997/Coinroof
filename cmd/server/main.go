@@ -1,4 +1,4 @@
-// Command server runs the Tallyn API and serves the built React app (web/dist).
+// Command server runs the Coinroof API and serves the built React app (web/dist).
 package main
 
 import (

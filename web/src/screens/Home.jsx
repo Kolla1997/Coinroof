@@ -9,12 +9,12 @@ import HomePage from './HomePage.jsx'
 import Join from './Join.jsx'
 import Shell, { PageHead } from './Shell.jsx'
 import BillReminder from '../components/BillReminder.jsx'
-import TallynLoader from '../components/TallynLoader.jsx'
+import CoinroofLoader from '../components/CoinroofLoader.jsx'
 import Heading from '../components/Heading.jsx'
 import { loadMe } from '../lib/me.js'
 
 // Faster first load (#99): Home comes with the app; the other pages load the
-// first time they're opened, with the Tallyn loader meanwhile.
+// first time they're opened, with the Coinroof loader meanwhile.
 const AccountsPage = lazy(() => import('./AccountsPage.jsx'))
 const BudgetsPage = lazy(() => import('./BudgetsPage.jsx'))
 const DebtsPage = lazy(() => import('./DebtsPage.jsx'))
@@ -102,7 +102,7 @@ export default function Home({ email, onSignOut }) {
       </AuthPage>
     )
   }
-  if (!me) return <TallynLoader />
+  if (!me) return <CoinroofLoader />
 
   const households = me.households ?? []
   const household = households.find((h) => h.id === selected) ?? households[0]
@@ -219,7 +219,7 @@ export default function Home({ email, onSignOut }) {
             </span>
           </p>
         )}
-        <Suspense fallback={<TallynLoader />}>{page}</Suspense>
+        <Suspense fallback={<CoinroofLoader />}>{page}</Suspense>
       </div>
     </Shell>
   )

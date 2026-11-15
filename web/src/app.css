@@ -40,7 +40,7 @@
   --font-tagline: 'Bricolage Grotesque', var(--font-body);
 }
 
-/* The chart and UI libraries' colour variables (#187), in Tallyn's colours. The drafts' lab set
+/* The chart and UI libraries' colour variables (#187), in Coinroof's colours. The drafts' lab set
    these in lab.css; without them a ring's empty track, axis labels and grid lines fell back to
    black or nothing. The redesign tokens switch with the theme, so most follow it on their own. */
 :root {
@@ -100,7 +100,7 @@ body {
   overflow-x: clip;
 }
 
-/* Phase A of the move (#187): the old stylesheet is built on Tallyn's token variables, so every
+/* Phase A of the move (#187): the old stylesheet is built on Coinroof's token variables, so every
    screen takes the redesign's colours, card glass and radii from here at once. Declared on body,
    which overrides the values applyTokens puts on the root. Screens then move one by one where the
    drafts change their layout. */

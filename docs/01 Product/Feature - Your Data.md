@@ -13,11 +13,11 @@ tags: [spec, privacy]
 The Privacy Policy (§8) says people can ask for a copy of their data by writing to us. That's slow for them and manual for us, and Settings → Your data shows "Coming soon".
 
 ## Goal and success metric
-Anyone can download everything Tallyn holds about them from Settings, in one step, without writing to us. Success: no copy-of-my-data requests need handling by hand.
+Anyone can download everything Coinroof holds about them from Settings, in one step, without writing to us. Success: no copy-of-my-data requests need handling by hand.
 
 ## User stories
-- As an account holder, I want a copy of my Tallyn data so that I can keep it, check it or take it elsewhere.
-- As a parent who shares with my partner, I want my download to hold only my own money, so that their accounts never leave Tallyn in my file.
+- As an account holder, I want a copy of my Coinroof data so that I can keep it, check it or take it elsewhere.
+- As a parent who shares with my partner, I want my download to hold only my own money, so that their accounts never leave Coinroof in my file.
 
 ## Scope
 **In** (agreed with Dinesh, 2026-10-24):

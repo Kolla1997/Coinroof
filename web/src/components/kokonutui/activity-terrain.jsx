@@ -210,7 +210,7 @@ const formatDay = (date) =>
   })
 const formatMonth = (date) => date.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' })
 
-// Tallyn edit (#185): `caption` and `describeDay` replace the contributions wording, so the grid can
+// Coinroof edit (#185): `caption` and `describeDay` replace the contributions wording, so the grid can
 // show money (or anything else) in the caller's words.
 export default function ActivityTerrain({
   data = DEFAULT_DATA,
@@ -218,7 +218,7 @@ export default function ActivityTerrain({
   title = 'Activity',
   defaultFlat = false,
   className,
-  canvasClassName, // Tallyn edit (#185): set the canvas height; the grid scales to fit it.
+  canvasClassName, // Coinroof edit (#185): set the canvas height; the grid scales to fit it.
   caption,
   describeDay = (count, day) => `${count} ${count === 1 ? 'contribution' : 'contributions'} on ${day}`,
 }) {

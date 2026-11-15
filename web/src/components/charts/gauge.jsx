@@ -101,7 +101,7 @@ function GaugeNotchSvg({
               }}
               transition={{
                 ...notchTransition,
-                // Tallyn edit (#221): fillDelay starts the fill after the row has arrived, one square at a time.
+                // Coinroof edit (#221): fillDelay starts the fill after the row has arrived, one square at a time.
                 delay: fillDelay == null ? (0.3 + notch.index * 0.02) * stagger : fillDelay + notch.index * FILL_STEP,
               }}
             />

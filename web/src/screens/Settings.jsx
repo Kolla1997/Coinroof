@@ -563,7 +563,7 @@ function RenameHousehold({ household, onDone, onSaved }) {
   )
 }
 
-// Download your data (#54): a fresh code, then a ZIP of everything Tallyn
+// Download your data (#54): a fresh code, then a ZIP of everything Coinroof
 // holds about you. The server checks the code was entered just now.
 const EXPORT_ERRORS = {
   too_many_requests: 'You can download your data 3 times an hour. Try again later.',
@@ -620,7 +620,7 @@ function YourData() {
 }
 
 // The Terms and the Privacy Policy (#36, Dinesh picked A): each row opens the
-// page inside Tallyn, with the version underneath.
+// page inside Coinroof, with the version underneath.
 function Legal() {
   return (
     <Section id="legal-h" title="Legal">

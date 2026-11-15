@@ -10,13 +10,13 @@ tags: [spec, legal]
 # Feature — Terms and Privacy
 
 > [!warning] Not legal advice
-> The documents in `legal/` were drafted by Claude from what Tallyn actually does. A lawyer must review them, and every `[TO CONFIRM]` must be filled in, before any real user signs up.
+> The documents in `legal/` were drafted by Claude from what Coinroof actually does. A lawyer must review them, and every `[TO CONFIRM]` must be filled in, before any real user signs up.
 
 ## Problem
-Tallyn handles families' bank data. Before anyone real signs up, it needs a Terms of Service and a Privacy Policy, people must agree to them, and rules already decided (no children under 13, read-only, consent-based sharing) must be written down for users.
+Coinroof handles families' bank data. Before anyone real signs up, it needs a Terms of Service and a Privacy Policy, people must agree to them, and rules already decided (no children under 13, read-only, consent-based sharing) must be written down for users.
 
 ## Goal and success metric
-Every person using Tallyn has agreed to the current versions of both documents, and we can show which version and when.
+Every person using Coinroof has agreed to the current versions of both documents, and we can show which version and when.
 
 ## User stories
 - As someone signing up, I want to read the terms and privacy policy and agree before my account is made.
@@ -31,7 +31,7 @@ Every person using Tallyn has agreed to the current versions of both documents, 
 - `migrations/0010_consents.sql`: one row per person, document and version; you can only add and read your own; the database sets the time; rows can't be changed or deleted
 - API: `GET /api/consent` (current versions and whether you still need to agree), `POST /api/consent` (agree; refused with `version_changed` if the versions you saw are old)
 
-**Out:** cookie banner (Tallyn sets no tracking cookies), GLBA notice (only if the lawyer says it's needed), closing an account (#56), data download (#54).
+**Out:** cookie banner (Coinroof sets no tracking cookies), GLBA notice (only if the lawyer says it's needed), closing an account (#56), data download (#54).
 
 ## Design
 The pages, the sign-up checkbox and the "Before you start" step get drafts for Dinesh to pick from before they're built (CLAUDE.md §0).
@@ -55,7 +55,7 @@ The pages, the sign-up checkbox and the "Before you start" step get drafts for D
 > - Hosting provider (Render or Railway is still open)
 
 > [!todo] For the lawyer
-> - Does Tallyn count as a "financial institution" under the GLBA? If so: a GLBA privacy notice and the FTC Safeguards Rule (a written security programme)
+> - Does Coinroof count as a "financial institution" under the GLBA? If so: a GLBA privacy notice and the FTC Safeguards Rule (a written security programme)
 > - Legal bases and the CCPA/CPRA wording, and how we verify data requests
 > - Teens 13–17: is a parent's invitation enough consent? Any state rules for minors' data
 > - Children under 13: confirm "no accounts" for now; what verifiable parental consent would need later

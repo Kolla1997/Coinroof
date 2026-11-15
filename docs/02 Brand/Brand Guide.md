@@ -9,9 +9,9 @@ tags: [brand]
 # Brand Guide
 
 ## Idea
-**Tallyn** is a family finance app. People connect bank accounts in any currency, see one total, track spending and savings, and open joint accounts for partners, kids and parents. The name joins *tally* (counting) and *kin* (family). Tagline: **It all adds up.** Promise: your money, your family, everything adds up. See [[Vision]].
+**Coinroof** is a family finance app. People connect bank accounts in any currency, see one total, track spending and savings, and open joint accounts for partners, kids and parents. The name joins *tally* (counting) and *kin* (family). Tagline: **It all adds up.** Promise: your money, your family, everything adds up. See [[Vision]].
 
-Write the name **Tallyn**: capital T, never all-caps in body text.
+Write the name **Coinroof**: capital T, never all-caps in body text.
 
 ## Personality
 Warm, trustworthy, modern, family-friendly, smart, simple, premium but approachable. Financial without feeling like a traditional bank.
@@ -63,5 +63,5 @@ Before anything goes out (site, social, deck, email, app store):
 | 2026-10-08 | Mark is a dot above two leaves | A person and a sprout; reads at 16px |
 | 2026-10-08 | Add Clay Deep and Sage Deep | Clay with white text is 4.4:1, below AA for small text |
 | 2026-10-08 | Currency amounts fixed to Space Grotesk | Consistent, tabular numbers |
-| 2026-10-29 | Rename to **Coinroof**; logo is Dinesh's Canva striped tile + COINROOF wordmark; palette green #067B00, red #CB0900, ink #1B1B1B. Kit in `brand/coinroof/` (#195). This guide still describes Tallyn until the app switches | Another product already uses the Tallyn name |
+| 2026-10-29 | Rename to **Coinroof**; logo is Dinesh's Canva striped tile + COINROOF wordmark; palette green #067B00, red #CB0900, ink #1B1B1B. Kit in `brand/coinroof/` (#195). This guide still describes Coinroof until the app switches | Another product already uses the Coinroof name |
 | 2026-10-29 | In the app, the plain Coinroof lockup (no bar) on sign-in, the rail and the phone header; the logo animation is **Ripple** (#200, [[Animation Guide]]) | Dinesh picked A for both from drafts |

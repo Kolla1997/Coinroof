@@ -19,7 +19,7 @@ import { useModal as openModal } from '../lib/modal.js'
 
 // Savings goals (#14), in the calm redesign (#187, the #185 draft): "This month" on top (what
 // to put aside, ticked as money lands, the answer first), every goal as a pot that fills, and
-// the goal you open as a forecast drawn by Bklit, with its next milestone. Tallyn never moves
+// the goal you open as a forecast drawn by Bklit, with its next milestone. Coinroof never moves
 // money; a goal follows one of its person's accounts or is updated by hand. Progress is never
 // shown to someone who can't already see the balance behind it (the server leaves it out).
 

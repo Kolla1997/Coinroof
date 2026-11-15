@@ -7,7 +7,7 @@ import { TryAgain } from '../components/LoadFailed.jsx'
 import Heading from '../components/Heading.jsx'
 import { api } from '../lib/api.js'
 
-// First sign-in: add Tallyn to an authenticator app (TOTP) and confirm a code.
+// First sign-in: add Coinroof to an authenticator app (TOTP) and confirm a code.
 // Also after recovering with a backup code (#23): set up again, then save a
 // new set of backup codes. And after an owner reset it (#120): who, and when.
 export default function SetUp2FA({ onSignOut }) {

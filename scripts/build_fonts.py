@@ -34,7 +34,7 @@ FONTS = [
     ('Bricolage Grotesque', 'BricolageGrotesque[opsz,wdth,wght].ttf', '200 800', 'bricolage-grotesque'),
 ]
 
-# Google Fonts' latin range, plus the arrows, ☰ and ✓ Tallyn uses.
+# Google Fonts' latin range, plus the arrows, ☰ and ✓ Coinroof uses.
 LATIN = [
     (0x0000, 0x00FF), (0x0131, 0x0131), (0x0152, 0x0153), (0x02BB, 0x02BC), (0x02C6, 0x02C6),
     (0x02DA, 0x02DA), (0x02DC, 0x02DC), (0x0304, 0x0304), (0x0308, 0x0308), (0x0329, 0x0329),

@@ -923,7 +923,7 @@ body::before {
   }
 }
 
-/* Tallyn loader (#66): the animated mark, "Adding it all up" and dots that
+/* Coinroof loader (#66): the animated mark, "Adding it all up" and dots that
    appear one by one. Still under reduced motion. */
 .loader {
   display: flex;
@@ -1198,7 +1198,7 @@ label.agree .agree-note {
   outline-offset: 2px;
 }
 
-/* Page footer (#25, option B): a thin line, Tallyn and the tagline on the
+/* Page footer (#25, option B): a thin line, Coinroof and the tagline on the
    left, the legal links on the right, at the very bottom of every screen. */
 .site-footer {
   display: flex;

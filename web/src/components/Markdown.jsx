@@ -38,7 +38,7 @@ function inline(text, key = 'i') {
   return out
 }
 
-// A heading's id, so a contents list can link to it (#1): "2. Who can use Tallyn" → "who-can-use-tallyn".
+// A heading's id, so a contents list can link to it (#1): "2. Who can use Coinroof" → "who-can-use-coinroof".
 export const slug = (text) =>
   text
     .toLowerCase()

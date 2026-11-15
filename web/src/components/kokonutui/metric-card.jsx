@@ -20,7 +20,7 @@ const PAD_Y = 10
 // into another.
 const SAMPLES = 90
 const MORPH_MS = 420
-// Tallyn edit (#221): on load the line rises from flat and the total rolls up from 0, once.
+// Coinroof edit (#221): on load the line rises from flat and the total rolls up from 0, once.
 const RISE_MS = 900
 const DAY = 86_400_000
 const DIGIT = /\d/
@@ -336,7 +336,7 @@ function keyStep(key, last) {
 
 export default function MetricCard({
   label = 'Revenue',
-  // Tallyn edit (#182): for spending or costs, a rise is bad news, so it is not shown in green.
+  // Coinroof edit (#182): for spending or costs, a rise is bad news, so it is not shown in green.
   upIsGood = true,
   segments = ['Plans', 'Usage', 'Services'],
   data = DEFAULT_DATA,

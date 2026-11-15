@@ -5,7 +5,7 @@ import { currentVersions, LEGAL, takeAgreement } from '../lib/legal.js'
 import { NEWS_LABEL, NEWS_NOTE, newsDefault } from '../lib/news.js'
 import { Link } from '../lib/router.jsx'
 import AuthPage from './AuthPage.jsx'
-import TallynLoader from './TallynLoader.jsx'
+import CoinroofLoader from './CoinroofLoader.jsx'
 import Heading from './Heading.jsx'
 
 // Before the app, everyone must have agreed to the current Terms of Service
@@ -69,7 +69,7 @@ export default function ConsentGate({ onSignOut, children }) {
   if (state === 'checking')
     return (
       <main className="calm-page grid min-h-svh place-items-center">
-        <TallynLoader />
+        <CoinroofLoader />
       </main>
     )
   return (

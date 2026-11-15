@@ -88,7 +88,7 @@ create table public.transactions (
   authorized_date      date,
   name                 text not null,
   merchant_name        text,
-  -- Plaid personal_finance_category. Tallyn's own categories come with #13.
+  -- Plaid personal_finance_category. Coinroof's own categories come with #13.
   category_primary     text,
   category_detailed    text,
   pending              boolean not null default false,

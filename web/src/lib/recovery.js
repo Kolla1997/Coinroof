@@ -1,4 +1,4 @@
-// Password reset (#22, Dinesh picked A). The reset email's link opens Tallyn
+// Password reset (#22, Dinesh picked A). The reset email's link opens Coinroof
 // with "type=recovery" in the address; Supabase signs the person in from it.
 // Before the new password, the 2FA code (Supabase won't change the password
 // of an account with 2FA without it), so a reset never skips 2FA.

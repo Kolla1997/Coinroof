@@ -14,7 +14,7 @@ tags: [adr, security, members]
 - **Ticket:** #12
 
 ## Context
-People need to join households ([[Feature - Household Members]]). An invite grants access to a family's household (and, for parents, to their kids' money), so a leaked or guessed invite must not let a stranger in. Tallyn has no email-sending service yet.
+People need to join households ([[Feature - Household Members]]). An invite grants access to a family's household (and, for parents, to their kids' money), so a leaked or guessed invite must not let a stranger in. Coinroof has no email-sending service yet.
 
 ## Options considered
 1. **Link the owner sends**, carrying a random token; the database stores only its hash; joining needs the invited, confirmed email.
@@ -36,4 +36,4 @@ Option 1.
 - The owner has to send the link themselves; the UI shows it once with a Copy button.
 - If the invited person signs up with a different email, the invite won't work; the owner invites that email instead.
 - Children can't be invited until the COPPA question is answered; the `child` role stays for existing data and future use.
-- Adding Tallyn-sent emails later changes delivery only; the token, hash and checks stay.
+- Adding Coinroof-sent emails later changes delivery only; the token, hash and checks stay.

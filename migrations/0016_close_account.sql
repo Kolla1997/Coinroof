@@ -1,4 +1,4 @@
--- 0016: Close your Tallyn account (#56, ADR 0015).
+-- 0016: Close your Coinroof account (#56, ADR 0015).
 --
 -- Closing deletes the person's Supabase sign-in, and everything of theirs
 -- goes with it by cascade (profile, banks, accounts, transactions,

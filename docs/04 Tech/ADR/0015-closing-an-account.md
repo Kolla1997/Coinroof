@@ -14,7 +14,7 @@ tags: [adr, privacy, security]
 - **Ticket:** #56
 
 ## Context
-People must be able to close their Tallyn account (Privacy Policy §6 and §8). Their data hangs off their Supabase sign-in: deleting `auth.users` cascades to the profile, banks, accounts, transactions, memberships, shares, consents, backup codes and budgets made for them. Three things needed deciding:
+People must be able to close their Coinroof account (Privacy Policy §6 and §8). Their data hangs off their Supabase sign-in: deleting `auth.users` cascades to the profile, banks, accounts, transactions, memberships, shares, consents, backup codes and budgets made for them. Three things needed deciding:
 - The bank's access at Plaid must be revoked, not just our copy deleted.
 - Household budgets a person made were deleted with them, for everyone in the household.
 - What, if anything, to keep after closing (the ticket said to ask first).

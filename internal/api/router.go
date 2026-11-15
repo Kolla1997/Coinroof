@@ -1,4 +1,4 @@
-// Package api holds the HTTP handlers and routing for the Tallyn server.
+// Package api holds the HTTP handlers and routing for the Coinroof server.
 package api
 
 import (
