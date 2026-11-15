@@ -1,7 +1,7 @@
 // Backup codes (#23): small flags kept for this tab (sessionStorage).
-const RECOVERED = 'tallyn.recoveredWithCode' // just used a backup code: say so on the setup screen
-const JUST_SET_UP = 'tallyn.just2FA' // just set up an authenticator: show a new set of codes
-const LATER = 'tallyn.codesLater' // "Remind me next time" for this sign-in
+const RECOVERED = 'coinroof.recoveredWithCode' // just used a backup code: say so on the setup screen
+const JUST_SET_UP = 'coinroof.just2FA' // just set up an authenticator: show a new set of codes
+const LATER = 'coinroof.codesLater' // "Remind me next time" for this sign-in
 
 let memory = {}
 function read(key) {

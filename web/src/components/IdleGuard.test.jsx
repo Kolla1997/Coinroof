@@ -30,7 +30,7 @@ describe('IdleGuard', () => {
     expect(document.activeElement).toHaveTextContent('Stay signed in')
     act(() => vi.advanceTimersByTime(MIN))
     expect(onSignOut).toHaveBeenCalledTimes(1)
-    expect(localStorage.getItem('tallyn.signOutNote')).toBe('idle')
+    expect(localStorage.getItem('coinroof.signOutNote')).toBe('idle')
   })
 
   it('Stay signed in, or Esc, starts the 30 minutes again', () => {
@@ -59,7 +59,7 @@ describe('IdleGuard', () => {
   })
 
   it('coming back after sleep, past 30 minutes: signs out straight away', () => {
-    localStorage.setItem('tallyn.lastActive', String(start - 2 * 60 * MIN))
+    localStorage.setItem('coinroof.lastActive', String(start - 2 * 60 * MIN))
     const onSignOut = vi.fn()
     render(<IdleGuard onSignOut={onSignOut} />)
     expect(onSignOut).toHaveBeenCalledTimes(1)

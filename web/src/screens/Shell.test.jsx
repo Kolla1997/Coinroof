@@ -69,7 +69,7 @@ describe('Shell', () => {
     }
     fireEvent.click(screen.getByRole('button', { name: 'Expand sidebar' }))
     expect(screen.getByRole('button', { name: 'Collapse sidebar' })).toBeInTheDocument()
-    expect(localStorage.getItem('tallyn.sidebar')).toBe('expanded')
+    expect(localStorage.getItem('coinroof.sidebar')).toBe('expanded')
   })
 
   // Cheaper motion (#157): the page's padding changes in one step and the page slides from where it

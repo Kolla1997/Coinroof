@@ -86,7 +86,7 @@ describe('ChoosePassword', () => {
     await act(async () => fireEvent.click(screen.getByRole('button', { name: 'Save and sign in' })))
     expect(auth.updateUser).toHaveBeenCalledWith({ password: 'Coffee-Lamp-Garden' })
     expect(auth.signOut).toHaveBeenCalledWith({ scope: 'others' })
-    expect(localStorage.getItem('tallyn.passwordChanged')).toBe('1')
+    expect(localStorage.getItem('coinroof.passwordChanged')).toBe('1')
     expect(onDone).toHaveBeenCalled()
   })
 

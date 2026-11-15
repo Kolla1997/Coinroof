@@ -6,9 +6,9 @@
 // The reset being under way is kept in sessionStorage: the link opens its own
 // tab, and closing that tab ends it.
 
-const FLAG = 'tallyn.recovery' // 'pending' | 'expired'
-const ASKED = 'tallyn.resetAsked' // { email, at }: to recognise an expired reset link
-const CHANGED = 'tallyn.passwordChanged' // the note on Home, shown once
+const FLAG = 'coinroof.recovery' // 'pending' | 'expired'
+const ASKED = 'coinroof.resetAsked' // { email, at }: to recognise an expired reset link
+const CHANGED = 'coinroof.passwordChanged' // the note on Home, shown once
 export const MIN_PASSWORD = 8 // Dinesh, 2026-10-12; set the same in Supabase (Dev Setup)
 const ASKED_FOR = 24 * 60 * 60 * 1000
 

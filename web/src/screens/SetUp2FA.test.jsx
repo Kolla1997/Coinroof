@@ -45,16 +45,16 @@ describe('SetUp2FA', () => {
     expect(screen.getAllByRole('textbox', { name: /Digit/ })).toHaveLength(6)
     expect(screen.getByText(/Then you'll save backup codes/)).toBeInTheDocument()
     // Backup codes come next (#23).
-    expect(sessionStorage.getItem('tallyn.just2FA')).toBe('1')
+    expect(sessionStorage.getItem('coinroof.just2FA')).toBe('1')
   })
 
   it('after a backup code: says the old authenticator is gone, and new codes follow', async () => {
-    sessionStorage.setItem('tallyn.recoveredWithCode', '1')
+    sessionStorage.setItem('coinroof.recoveredWithCode', '1')
     await act(async () => render(<SetUp2FA onSignOut={() => {}} />))
     expect(screen.getByText(/You're in with a backup code/)).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'Set up your authenticator' })).toBeInTheDocument()
     expect(screen.getByText(/new set of backup codes/)).toBeInTheDocument()
-    expect(sessionStorage.getItem('tallyn.recoveredWithCode')).toBeNull()
+    expect(sessionStorage.getItem('coinroof.recoveredWithCode')).toBeNull()
   })
 
   it('says so calmly when setup can’t start, with Try again (#152)', async () => {

@@ -436,7 +436,7 @@ const SMALL_RED = 'inline-flex h-8 items-center rounded-full border-0 px-3 text-
 
 // How each bank's accounts are laid out (#187): one row that scrolls sideways, or a grid. Kept on
 // this device.
-const VIEW_KEY = 'tallyn.accountsView'
+const VIEW_KEY = 'coinroof.accountsView'
 function useAccountsView() {
   const [view, setView] = useState(() => {
     try {

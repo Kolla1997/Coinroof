@@ -21,7 +21,7 @@ describe('shared activity and the sign-in note', () => {
   beforeEach(() => localStorage.clear())
   it('shares the last activity through storage, for every tab', () => {
     markActive(123)
-    expect(localStorage.getItem('tallyn.lastActive')).toBe('123')
+    expect(localStorage.getItem('coinroof.lastActive')).toBe('123')
     expect(lastActive()).toBe(123)
   })
   it('starts a fresh clock only after the sign-in page clears it', () => {

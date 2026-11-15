@@ -7,7 +7,7 @@ let expiring = false
 // Pass { method, body } for writes; body is sent as JSON.
 export async function api(path, opts) {
   // /preview.html (#187) answers with made-up data in development only; the build drops this.
-  if (import.meta.env.DEV && globalThis.__tallynPreviewApi) return globalThis.__tallynPreviewApi(path, opts)
+  if (import.meta.env.DEV && globalThis.__coinroofPreviewApi) return globalThis.__coinroofPreviewApi(path, opts)
   const res = await send(path, opts)
   if (res.status === 204) return null
   return res.json().catch(() => ({}))

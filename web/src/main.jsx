@@ -1,3 +1,4 @@
+import './lib/storage-move.js' // first: old tallyn.* keys move to coinroof.* (#324)
 import './lib/recovery-capture.js' // first: a password reset link (#22)
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
@@ -23,7 +24,7 @@ captureInviteFromURL() // before anything else reads the URL
 // (#99). Reload once to get the new version, instead of a broken page; if that
 // was already tried in the last minute, let the error show.
 window.addEventListener('vite:preloadError', (event) => {
-  const KEY = 'tallyn.reloadedForUpdate'
+  const KEY = 'coinroof.reloadedForUpdate'
   let last = 0
   try {
     last = Number(sessionStorage.getItem(KEY)) || 0

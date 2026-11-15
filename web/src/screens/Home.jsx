@@ -24,7 +24,7 @@ const Settings = lazy(() => import('./Settings.jsx'))
 const GoalsPage = lazy(() => import('./GoalsPage.jsx'))
 const BillsPage = lazy(() => import('./BillsPage.jsx'))
 
-const HOUSEHOLD_KEY = 'tallyn.household'
+const HOUSEHOLD_KEY = 'coinroof.household'
 
 function savedHousehold() {
   try {

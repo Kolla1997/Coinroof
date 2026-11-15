@@ -334,7 +334,7 @@ export async function prepare(page, aal = 'aal2') {
     ([key, value]) => {
       localStorage.clear()
       if (value) localStorage.setItem(key, value)
-      localStorage.setItem('tallyn.lastActive', String(Date.now()))
+      localStorage.setItem('coinroof.lastActive', String(Date.now()))
     },
     [STORAGE_KEY, s ? JSON.stringify(s) : null],
   )

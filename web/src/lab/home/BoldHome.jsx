@@ -142,7 +142,7 @@ function useArrival(ref, key) {
   useEffect(() => {
     const el = ref.current
     if (!el) return
-    const seen = sessionStorage.getItem('tallyn-arrived')
+    const seen = sessionStorage.getItem('coinroof-arrived')
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const items = el.querySelectorAll('[data-arrive]')
     if (seen || reduce) return
@@ -153,7 +153,7 @@ function useArrival(ref, key) {
       delay: stagger(60),
       duration: 420,
       ease: 'cubicBezier(0.23, 1, 0.32, 1)',
-      onComplete: () => sessionStorage.setItem('tallyn-arrived', '1'),
+      onComplete: () => sessionStorage.setItem('coinroof-arrived', '1'),
     })
   }, [ref, key])
 }

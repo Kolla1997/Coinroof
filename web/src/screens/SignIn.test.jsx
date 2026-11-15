@@ -9,11 +9,11 @@ describe('SignIn after an idle sign-out', () => {
   const note = /signed out after 30 minutes without activity/i
 
   it('shows the note once', () => {
-    localStorage.setItem('tallyn.signOutNote', 'idle')
-    localStorage.setItem('tallyn.lastActive', '123')
+    localStorage.setItem('coinroof.signOutNote', 'idle')
+    localStorage.setItem('coinroof.lastActive', '123')
     const { unmount } = render(<SignIn />)
     expect(screen.getByRole('status')).toHaveTextContent(note)
-    expect(localStorage.getItem('tallyn.lastActive')).toBeNull()
+    expect(localStorage.getItem('coinroof.lastActive')).toBeNull()
     unmount()
     render(<SignIn />)
     expect(screen.queryByText(note)).not.toBeInTheDocument()
@@ -26,7 +26,7 @@ describe('SignIn after an idle sign-out', () => {
   })
 
   it('says why after 12 hours (#92)', () => {
-    localStorage.setItem('tallyn.signOutNote', 'max')
+    localStorage.setItem('coinroof.signOutNote', 'max')
     render(<SignIn />)
     expect(screen.getByRole('status')).toHaveTextContent('For your security, Coinroof asks you to sign in again every 12 hours.')
   })
