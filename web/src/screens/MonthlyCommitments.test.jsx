@@ -69,13 +69,14 @@ describe('MonthlyCommitments', () => {
     expect(onDone).toHaveBeenCalledTimes(1)
   })
 
-  it('works out a car loan payment and saves it as a loan', async () => {
+  it('adds a loan (a car loan by default), works out its payment and saves it as a loan', async () => {
     const onDone = setup()
-    click('Car loan')
+    click('Loan')
     type('Amount borrowed', '25000')
     type('Interest, APR percent', '4.9')
     type('Length in months', '60')
     type('First payment date', '2025-12-05')
+    expect(screen.getByRole('button', { name: 'Car' }).getAttribute('aria-pressed')).toBe('true')
     expect(screen.getByText(/Your payment:/).textContent).toContain('$470.64 a month, due on the 5th')
     click('Done')
     expect(screen.getByText('Due on the 5th · loan')).toBeTruthy()
@@ -175,7 +176,7 @@ describe('monthly commitments helpers', () => {
     expect(dayOf(bill)).toBe(31)
     expect(dayOf({ ...bill, day: '32' })).toBe(0)
     expect(monthlyOf({ ...bill, amount: 'lots' }, 'USD')).toBe(0)
-    const loan = { k: 'car', name: 'Car loan', principal: '25000', apr: '4.9', months: '60', first: '2025-12-05' }
+    const loan = { k: 'loan', name: 'Car loan', principal: '25000', apr: '4.9', months: '60', first: '2025-12-05' }
     expect(monthlyOf(loan, 'USD')).toBe(47064)
     expect(dayOf(loan)).toBe(5)
     expect(monthlyOf({ ...loan, months: '' }, 'USD')).toBe(0)

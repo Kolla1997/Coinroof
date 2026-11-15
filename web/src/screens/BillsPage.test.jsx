@@ -40,6 +40,7 @@ const DUES = [
 function answers(bills = BILLS, dues = DUES) {
   routeApi(api, [
     [/^\/api\/bills\/[a-z]+\/payments\//, null],
+    ['/api/loans', { id: 'loan-1' }],
     ['/api/bills', (path, opts) => (opts?.method === 'POST' ? { id: 'new' } : { today: '2026-11-09', month: '2026-11', bills, dues })],
   ])
 }
@@ -118,18 +119,87 @@ describe('BillsPage', () => {
     expect(side.queryByText('Late')).not.toBeInTheDocument()
   })
 
-  it('adds a bill', async () => {
+  it('adds a bill with the shared form, starting in the month on screen', async () => {
     answers([], [])
     await open()
     expect(screen.getByRole('heading', { name: 'No bills yet' })).toBeInTheDocument()
     await act(async () => fireEvent.click(screen.getAllByRole('button', { name: 'Add a bill' })[0]))
-    const dialog = within(screen.getByRole('dialog', { name: 'Add a bill' }))
-    fireEvent.change(dialog.getByLabelText('Name'), { target: { value: 'Rent' } })
-    fireEvent.change(dialog.getByLabelText('Amount (USD)'), { target: { value: '1,500' } })
-    fireEvent.change(dialog.getByLabelText('Due on day'), { target: { value: '1' } })
-    await act(async () => fireEvent.click(dialog.getByRole('button', { name: 'Add bill' })))
+    const dialog = within(screen.getByRole('dialog', { name: 'Add bills and loans' }))
+    fireEvent.click(dialog.getByRole('button', { name: 'Rent / Mortgage' }))
+    fireEvent.change(dialog.getByLabelText('Amount for Rent / Mortgage'), { target: { value: '1,500' } })
+    fireEvent.change(dialog.getByLabelText('Due day for Rent / Mortgage'), { target: { value: '1' } })
+    await act(async () => fireEvent.click(dialog.getByRole('button', { name: 'Save 1' })))
     const [[, opts]] = callsTo(api, '/api/bills', 'POST')
-    expect(opts.body).toMatchObject({ household_id: 'hh-1', name: 'Rent', amount_minor: 150000, due_day: 1, frequency: 'monthly', starts_on: '2026-11' })
+    expect(opts.body).toMatchObject({
+      household_id: 'hh-1',
+      name: 'Rent / Mortgage',
+      amount_minor: 150000,
+      due_day: 1,
+      frequency: 'monthly',
+      starts_on: '2026-11',
+      category: 'housing',
+    })
+  })
+
+  it('adds several at once: a bill every 3 months through More options, and a personal loan', async () => {
+    answers([], [])
+    await open()
+    await act(async () => fireEvent.click(screen.getAllByRole('button', { name: 'Add a bill' })[0]))
+    const dialog = within(screen.getByRole('dialog', { name: 'Add bills and loans' }))
+    fireEvent.click(dialog.getByRole('button', { name: 'Insurance' }))
+    fireEvent.change(dialog.getByLabelText('Name'), { target: { value: 'Car insurance' } })
+    fireEvent.change(dialog.getByLabelText('Amount for Car insurance'), { target: { value: '306' } })
+    fireEvent.change(dialog.getByLabelText('Due day for Car insurance'), { target: { value: '22' } })
+    fireEvent.click(dialog.getByRole('button', { name: 'More options: how often, start month' }))
+    fireEvent.change(dialog.getByLabelText('How often'), { target: { value: 'quarterly' } })
+    fireEvent.change(dialog.getByLabelText('Starting'), { target: { value: '2026-12' } })
+    expect(dialog.getByText(/every 3 months,/)).toBeInTheDocument()
+    fireEvent.click(dialog.getByRole('button', { name: 'Done' }))
+    expect(dialog.getByText('Every 3 months, on the 22nd')).toBeInTheDocument()
+
+    fireEvent.click(dialog.getByRole('button', { name: 'Loan' }))
+    fireEvent.click(dialog.getByRole('button', { name: 'Personal' }))
+    expect(dialog.getByLabelText('Loan name')).toHaveValue('Personal loan')
+    fireEvent.change(dialog.getByLabelText('Amount borrowed'), { target: { value: '10000' } })
+    fireEvent.change(dialog.getByLabelText('Interest, APR percent'), { target: { value: '0' } })
+    fireEvent.change(dialog.getByLabelText('Length in months'), { target: { value: '40' } })
+    fireEvent.change(dialog.getByLabelText('First payment date'), { target: { value: '2026-12-15' } })
+    expect(dialog.getByText(/Your payment:/).textContent).toContain('$250.00 a month, due on the 15th')
+    expect(dialog.getAllByText('$556.00').length).toBeGreaterThan(0)
+
+    await act(async () => fireEvent.click(dialog.getByRole('button', { name: 'Save 2' })))
+    const [[, bill]] = callsTo(api, '/api/bills', 'POST')
+    expect(bill.body).toMatchObject({
+      name: 'Car insurance',
+      amount_minor: 30600,
+      frequency: 'quarterly',
+      starts_on: '2026-12',
+      due_day: 22,
+      category: 'insurance',
+    })
+    const [[, loan]] = callsTo(api, '/api/loans', 'POST')
+    expect(loan.body).toMatchObject({ household_id: 'hh-1', name: 'Personal loan', principal_minor: 1000000, apr: '0', months: 40, first_due: '2026-12-15' })
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+  })
+
+  it('edits a bill in the same form, with its options open, and deletes from there', async () => {
+    answers()
+    await open()
+    await act(async () => fireEvent.click(screen.getAllByRole('button', { name: /^Gas, edit$/ })[0]))
+    const dialog = within(screen.getByRole('dialog', { name: 'Edit Gas' }))
+    expect(dialog.queryByRole('group', { name: 'Quick add' })).not.toBeInTheDocument()
+    expect(dialog.getByLabelText('Amount for Gas')).toHaveValue('64.90')
+    expect(dialog.getByLabelText('How often')).toHaveValue('monthly')
+    fireEvent.change(dialog.getByLabelText('Amount for Gas'), { target: { value: '70' } })
+    fireEvent.click(dialog.getByLabelText('Paused (it stops showing as due)'))
+    await act(async () => fireEvent.click(dialog.getByRole('button', { name: 'Save' })))
+    const [[, put]] = callsTo(api, '/api/bills/gas', 'PUT')
+    expect(put.body).toMatchObject({ name: 'Gas', amount_minor: 7000, varies: true, due_day: 9, starts_on: '2026-11', paused: true })
+    expect(put.body.household_id).toBeUndefined()
+
+    await act(async () => fireEvent.click(screen.getAllByRole('button', { name: /^Gas, edit$/ })[0]))
+    await act(async () => fireEvent.click(within(screen.getByRole('dialog', { name: 'Edit Gas' })).getByRole('button', { name: 'Delete' })))
+    expect(screen.getByRole('dialog', { name: 'Delete Gas?' })).toBeInTheDocument()
   })
 
   it('shows a linked card on its due day, read-only, with its minimum in Left to pay', async () => {

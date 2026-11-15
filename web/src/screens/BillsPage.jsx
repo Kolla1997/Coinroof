@@ -2,12 +2,12 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { AlertCircle, CalendarDays, Check, ChevronLeft, ChevronRight, Clock, CreditCard, Plus, Repeat } from 'lucide-react'
 import ConfirmDialog from '../components/ConfirmDialog.jsx'
 import PaidDialog from '../components/PaidDialog.jsx'
+import PaymentsForm from '../components/PaymentsForm.jsx'
 import LoadFailed from '../components/LoadFailed.jsx'
 import PageSkeleton from '../components/calm/PageSkeleton.jsx'
 import { api } from '../lib/api.js'
 import { navigate } from '../lib/router.jsx'
 import { CATEGORIES, FREQUENCIES, amountOf, byDay, cardDues, frequencyName, monthGrid, shiftMonth, totals } from '../lib/bills.js'
-import { fromMinor, toMinor } from '../lib/budgets.js'
 import { formatMoney } from '../lib/money.js'
 import { useRetry } from '../lib/retry.js'
 import { useModal } from '../lib/modal.js'
@@ -148,8 +148,7 @@ export default function BillsPage({ household, refreshKey }) {
             setDeleting(dialog.bill)
             setDialog(null)
           }}
-          onClose={() => setDialog(null)}
-          onSaved={() => {
+          onClose={() => {
             setDialog(null)
             load()
           }}
@@ -459,127 +458,26 @@ function BillCard({ bill, due, money, onMarkPaid, onUnmark, onDifferent, onEdit 
   )
 }
 
-function BillDialog({ bill, household, month, onDelete, onClose, onSaved }) {
+// Add bills and loans, or edit a bill (#315, Dinesh's pick 3 of drafts/315-bills-add-form.html): the
+// onboarding form (#307) in a dialog. A new bill starts in the month on screen.
+function BillDialog({ bill, household, month, onDelete, onClose }) {
   const ref = useRef(null)
   useModal(ref)
-  const cur = bill?.currency ?? household.home_currency
-  const [f, setF] = useState({
-    name: bill?.name ?? '',
-    amount: bill ? fromMinor(bill.amount_minor, cur) : '',
-    varies: bill?.varies ?? false,
-    frequency: bill?.frequency ?? 'monthly',
-    due_day: String(bill?.due_day ?? ''),
-    starts_on: bill?.starts_on ?? month,
-    category: bill?.category ?? '',
-    paused: bill?.paused ?? false,
-  })
-  const [error, setError] = useState('')
-  const [busy, setBusy] = useState(false)
-  const set = (k) => (e) => setF({ ...f, [k]: e.target.type === 'checkbox' ? e.target.checked : e.target.value })
-  const save = async (e) => {
-    e.preventDefault()
-    const minor = toMinor(f.amount, cur)
-    const day = Number(f.due_day)
-    if (!f.name.trim()) return setError('Give it a name, like Rent.')
-    if (!minor || minor <= 0) return setError('Enter the amount, like 1500.')
-    if (!Number.isInteger(day) || day < 1 || day > 31) return setError('Enter the day of the month it’s due, 1 to 31.')
-    setBusy(true)
-    const body = {
-      name: f.name,
-      amount_minor: minor,
-      varies: f.varies,
-      frequency: f.frequency,
-      due_day: day,
-      starts_on: f.starts_on,
-      category: f.category,
-      paused: f.paused,
-    }
-    try {
-      if (bill) await api(`/api/bills/${bill.id}`, { method: 'PUT', body })
-      else await api('/api/bills', { method: 'POST', body: { household_id: household.id, ...body } })
-      onSaved()
-    } catch {
-      setError("We couldn't save it. Try again in a moment.")
-      setBusy(false)
-    }
-  }
   return (
-    <dialog ref={ref} className={DIALOG} aria-labelledby="bill-title" onCancel={(e) => (busy ? e.preventDefault() : onClose())}>
-      <form onSubmit={save} className="grid gap-3 text-[14px]">
-        <h2 id="bill-title" className={DIALOG_H}>
-          {bill ? `Edit ${bill.name}` : 'Add a bill'}
-        </h2>
-        <label className="grid gap-1">
-          <span className="font-semibold">Name</span>
-          <input className={FIELD} value={f.name} onChange={set('name')} maxLength={60} placeholder="Rent" autoFocus={!bill} />
-        </label>
-        <div className="grid grid-cols-2 gap-3">
-          <label className="grid gap-1">
-            <span className="font-semibold">Amount ({cur})</span>
-            <input className={`${FIELD} tabular-nums`} inputMode="decimal" autoComplete="off" value={f.amount} onChange={set('amount')} placeholder="1500" />
-          </label>
-          <label className="grid gap-1">
-            <span className="font-semibold">Due on day</span>
-            <input className={`${FIELD} tabular-nums`} inputMode="numeric" value={f.due_day} onChange={set('due_day')} placeholder="1" />
-          </label>
-        </div>
-        <label className="flex items-center gap-2">
-          <input type="checkbox" checked={f.varies} onChange={set('varies')} className="size-4" />
-          The amount changes each time (gas, electric)
-        </label>
-        <div className="grid grid-cols-2 gap-3">
-          <label className="grid gap-1">
-            <span className="font-semibold">How often</span>
-            <select className={FIELD} value={f.frequency} onChange={set('frequency')}>
-              {FREQUENCIES.map(([k, t]) => (
-                <option key={k} value={k}>
-                  {t}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="grid gap-1">
-            <span className="font-semibold">{f.frequency === 'once' ? 'In' : 'Starting'}</span>
-            <input className={FIELD} type="month" value={f.starts_on} onChange={set('starts_on')} />
-          </label>
-        </div>
-        <label className="grid gap-1">
-          <span className="font-semibold">Kind</span>
-          <select className={FIELD} value={f.category} onChange={set('category')}>
-            <option value="">Not set</option>
-            {CATEGORIES.map(([k, t]) => (
-              <option key={k} value={k}>
-                {t}
-              </option>
-            ))}
-          </select>
-        </label>
-        {bill && (
-          <label className="flex items-center gap-2">
-            <input type="checkbox" checked={f.paused} onChange={set('paused')} className="size-4" />
-            Paused (it stops showing as due)
-          </label>
-        )}
-        <p className={NOTE}>Due on the 31st means the last day in shorter months. Only household owners see bills.</p>
-        {error && (
-          <p className="m-0 font-semibold" style={OWE} role="alert">
-            {error}
-          </p>
-        )}
-        <div className="mt-2 flex flex-wrap items-center justify-end gap-2">
-          {bill && (
-            <button type="button" onClick={onDelete} disabled={busy} className="mr-auto text-[13px] font-semibold underline underline-offset-4" style={OWE}>
-              Delete
-            </button>
-          )}
-          <Pill quiet onClick={onClose} disabled={busy}>
-            Cancel
-          </Pill>
-          <Pill type="submit" disabled={busy}>
-            {busy ? 'Saving…' : bill ? 'Save' : 'Add bill'}
-          </Pill>
-        </div>
-      </form>
+    <dialog
+      ref={ref}
+      className={DIALOG.replace('max-w-md', 'max-w-xl')}
+      aria-labelledby="bill-title"
+      onCancel={(e) => {
+        e.preventDefault()
+        onClose()
+      }}
+    >
+      <h2 id="bill-title" className={DIALOG_H}>
+        {bill ? `Edit ${bill.name}` : 'Add bills and loans'}
+      </h2>
+      {!bill && <p className={NOTE}>Pick what it is, then when it&apos;s due. Add one or several. Only household owners see them.</p>}
+      <PaymentsForm household={household} variant="bills" bill={bill} startMonth={() => month} onDone={onClose} onCancel={onClose} onDelete={onDelete} />
     </dialog>
   )
 }

@@ -2,13 +2,16 @@
 type: log
 status: active
 owner: Dinesh
-updated: 2026-11-11
+updated: 2026-11-15
 tags: [log]
 ---
 
 # Log
 
 Newest first. One entry per working session or decision.
+
+## 2026-11-15
+- #315 Bills tab: Add a bill now opens the onboarding form (shared `PaymentsForm.jsx`): several at once, More options for how often and start month, Edit in the same form. Dinesh picked 3 · Mix and asked for any loan: a Loan chip (Car, Personal, Education, Other) replaces Car loan here and in onboarding. No backend change.
 
 ## 2026-11-11
 - #307 Monthly payments step after Create household: Dinesh picked A (chips and rows) from the first draft, then A4 · Mix from round 2 (one-line rows, sentence editor, month notches). Saves bills and a car loan through the existing endpoints; no backend change. Decisions: a car loan asks for the four loan figures; a bill whose day has passed starts next month; copy says "change them later in Bills" (the ticket said Settings); no site footer on the step (Dinesh).
