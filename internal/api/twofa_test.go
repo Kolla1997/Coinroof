@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 // An owner resets a teen's 2FA (#120). Who may reset whom is the database's

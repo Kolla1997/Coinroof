@@ -5,7 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"github.com/Kolla1997/Tallyn/internal/email"
+	"github.com/Kolla1997/Coinroof/internal/email"
 	"log"
 	"net/http"
 	"os"
@@ -13,8 +13,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Kolla1997/Tallyn/internal/auth"
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/auth"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 // Store is the data the API reads and writes. *db.DB implements it.

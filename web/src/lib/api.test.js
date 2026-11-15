@@ -43,7 +43,7 @@ describe('api', () => {
     expect(results.every((r) => r.status === 'rejected' && r.reason.message === 'session_expired')).toBe(true)
     expect(signOut).toHaveBeenCalledTimes(1)
     expect(signOut).toHaveBeenCalledWith({ scope: 'local' })
-    expect(localStorage.getItem('tallyn.signOutNote')).toBe('max')
+    expect(localStorage.getItem('coinroof.signOutNote')).toBe('max')
   })
 
   it('other errors don’t sign anyone out', async () => {

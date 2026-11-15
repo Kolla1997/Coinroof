@@ -9,7 +9,7 @@ import (
 
 	"github.com/jackc/pgx/v5"
 
-	"github.com/Kolla1997/Tallyn/internal/plaid"
+	"github.com/Kolla1997/Coinroof/internal/plaid"
 )
 
 // Sharing rules (0007_sharing.sql, ADR 0007). All people and data are fake.

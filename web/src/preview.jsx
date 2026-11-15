@@ -12,7 +12,7 @@ import SignIn from './screens/SignIn.jsx'
 import AuthPage from './components/AuthPage.jsx'
 import MonthlyCommitments from './screens/MonthlyCommitments.jsx'
 
-globalThis.__tallynPreviewApi = fakeApi
+globalThis.__coinroofPreviewApi = fakeApi
 // Open /preview.html?p=accounts to start on a page; the app's router then takes over.
 // Add &t=dark or &t=light to open in that theme.
 const query = new URLSearchParams(location.search)

@@ -236,7 +236,7 @@ describe('Settings: profile, legal and coming soon (#114)', () => {
       await confirmClose()
       expect(api).toHaveBeenCalledWith('/api/me/close', { method: 'POST', body: { email: 'you@example.com' } })
       expect(signOut).toHaveBeenCalledWith({ scope: 'local' })
-      expect(localStorage.getItem('tallyn.signOutNote')).toBe('closed')
+      expect(localStorage.getItem('coinroof.signOutNote')).toBe('closed')
     })
 
     it('the only owner of a shared household is told to hand it over first', async () => {

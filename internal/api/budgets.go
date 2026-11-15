@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 // Budgets (#13, ADR 0014): for the household or one person, weekly or

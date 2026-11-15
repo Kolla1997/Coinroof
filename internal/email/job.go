@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 // Outbox is the database side of the job: db.System.

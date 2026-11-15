@@ -1,4 +1,4 @@
-module github.com/Kolla1997/Tallyn
+module github.com/Kolla1997/Coinroof
 
 go 1.24
 

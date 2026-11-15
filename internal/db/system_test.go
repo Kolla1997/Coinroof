@@ -8,10 +8,10 @@ import (
 
 	"github.com/jackc/pgx/v5"
 
-	"github.com/Kolla1997/Tallyn/internal/plaid"
+	"github.com/Kolla1997/Coinroof/internal/plaid"
 )
 
-// All data below is fake. Needs TALLYN_TEST_DATABASE_URL (see db_test.go).
+// All data below is fake. Needs COINROOF_TEST_DATABASE_URL (see db_test.go).
 
 func ptr[T any](v T) *T { return &v }
 

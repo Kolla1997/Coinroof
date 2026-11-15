@@ -10,9 +10,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
-	"github.com/Kolla1997/Tallyn/internal/plaid"
-	"github.com/Kolla1997/Tallyn/internal/tokencrypt"
+	"github.com/Kolla1997/Coinroof/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/plaid"
+	"github.com/Kolla1997/Coinroof/internal/tokencrypt"
 )
 
 // Closing an account (#56, ADR 0015). All data is fake.

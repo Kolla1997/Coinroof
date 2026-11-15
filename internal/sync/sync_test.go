@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
-	"github.com/Kolla1997/Tallyn/internal/plaid"
+	"github.com/Kolla1997/Coinroof/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/plaid"
 )
 
 // All tokens, IDs and merchants here are fake.

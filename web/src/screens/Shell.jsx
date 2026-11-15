@@ -55,7 +55,7 @@ const SIDEBAR = [
   ['/settings', 'Settings', SettingsIcon],
 ]
 
-const SIDEBAR_KEY = 'tallyn.sidebar'
+const SIDEBAR_KEY = 'coinroof.sidebar'
 
 // The logo file for the theme (Logo Guide: the dark files on dark grounds, never recoloured).
 const Logo = ({ light, dark, className }) => (

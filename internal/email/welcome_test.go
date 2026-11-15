@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 // The welcome email (#280): F, the short letter.

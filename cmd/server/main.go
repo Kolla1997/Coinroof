@@ -13,14 +13,14 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/Kolla1997/Tallyn/internal/api"
-	"github.com/Kolla1997/Tallyn/internal/auth"
-	"github.com/Kolla1997/Tallyn/internal/db"
-	"github.com/Kolla1997/Tallyn/internal/email"
-	"github.com/Kolla1997/Tallyn/internal/plaid"
-	"github.com/Kolla1997/Tallyn/internal/supabaseadmin"
-	banksync "github.com/Kolla1997/Tallyn/internal/sync"
-	"github.com/Kolla1997/Tallyn/internal/tokencrypt"
+	"github.com/Kolla1997/Coinroof/internal/api"
+	"github.com/Kolla1997/Coinroof/internal/auth"
+	"github.com/Kolla1997/Coinroof/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/email"
+	"github.com/Kolla1997/Coinroof/internal/plaid"
+	"github.com/Kolla1997/Coinroof/internal/supabaseadmin"
+	banksync "github.com/Kolla1997/Coinroof/internal/sync"
+	"github.com/Kolla1997/Coinroof/internal/tokencrypt"
 )
 
 func main() {
@@ -37,11 +37,11 @@ func main() {
 	if u := os.Getenv("SUPABASE_URL"); u != "" {
 		v, err := auth.New(ctx, u)
 		if err != nil {
-			log.Fatalf("tallyn: %v", err)
+			log.Fatalf("coinroof: %v", err)
 		}
 		requireAuth, requireSignedIn = v.Require, v.RequireSignedIn
 	} else {
-		log.Printf("tallyn: SUPABASE_URL not set, /api/ routes will answer 503")
+		log.Printf("coinroof: SUPABASE_URL not set, /api/ routes will answer 503")
 	}
 
 	// DATABASE_URL must be the tallyn_api login (#30, ADR 0006). The server
@@ -52,15 +52,15 @@ func main() {
 	if u := os.Getenv("DATABASE_URL"); u != "" {
 		d, err := db.Open(ctx, u)
 		if err != nil {
-			log.Fatalf("tallyn: %v", err)
+			log.Fatalf("coinroof: %v", err)
 		}
 		defer d.Close()
 		if err := d.CheckAPILogin(ctx); err != nil {
-			log.Fatalf("tallyn: %v", err)
+			log.Fatalf("coinroof: %v", err)
 		}
 		store, codes = d, d
 	} else {
-		log.Printf("tallyn: DATABASE_URL not set, /api/ routes will answer 503")
+		log.Printf("coinroof: DATABASE_URL not set, /api/ routes will answer 503")
 	}
 
 	// Bank linking needs both Plaid keys and the token encryption key (#8).
@@ -72,7 +72,7 @@ func main() {
 	if key := os.Getenv("TOKEN_ENCRYPTION_KEY"); key != "" && key != "replace-me" {
 		b, err := tokencrypt.New(key)
 		if err != nil {
-			log.Fatalf("tallyn: %v", err)
+			log.Fatalf("coinroof: %v", err)
 		}
 		box = b
 		raw, _ := base64.StdEncoding.DecodeString(strings.TrimSpace(key)) // checked by tokencrypt.New
@@ -89,16 +89,16 @@ func main() {
 	if k := os.Getenv("SUPABASE_SERVICE_ROLE_KEY"); k != "" && k != "replace-me" {
 		c, err := supabaseadmin.New(os.Getenv("SUPABASE_URL"), k)
 		if err != nil {
-			log.Fatalf("tallyn: %v", err)
+			log.Fatalf("coinroof: %v", err)
 		}
 		factors, accounts = c, c
 	} else {
-		log.Printf("tallyn: SUPABASE_SERVICE_ROLE_KEY not set, backup-code recovery and closing an account will answer 503")
+		log.Printf("coinroof: SUPABASE_SERVICE_ROLE_KEY not set, backup-code recovery and closing an account will answer 503")
 	}
 	if id := os.Getenv("PLAID_CLIENT_ID"); id != "" && id != "replace-me" {
 		c, err := plaid.New(getenv("PLAID_ENV", "sandbox"), id, os.Getenv("PLAID_SECRET"), os.Getenv("PLAID_REDIRECT_URI"))
 		if err != nil {
-			log.Fatalf("tallyn: %v", err)
+			log.Fatalf("coinroof: %v", err)
 		}
 		plaidClient = c
 	}
@@ -108,7 +108,7 @@ func main() {
 	if plaidClient != nil && box != nil {
 		bankAPI, tokens = plaidClient, box
 	} else {
-		log.Printf("tallyn: PLAID_CLIENT_ID or TOKEN_ENCRYPTION_KEY not set, bank linking will answer 503")
+		log.Printf("coinroof: PLAID_CLIENT_ID or TOKEN_ENCRYPTION_KEY not set, bank linking will answer 503")
 	}
 
 	// Bank sync (#9): every 6 hours, plus right after a bank is linked. It has
@@ -118,17 +118,17 @@ func main() {
 	syncURL := os.Getenv("DATABASE_URL_SYNC")
 	switch {
 	case syncURL == "":
-		log.Printf("tallyn: DATABASE_URL_SYNC not set, bank sync is off")
+		log.Printf("coinroof: DATABASE_URL_SYNC not set, bank sync is off")
 	case plaidClient == nil || box == nil:
-		log.Printf("tallyn: bank sync is off until bank linking is configured")
+		log.Printf("coinroof: bank sync is off until bank linking is configured")
 	default:
 		every, err := time.ParseDuration(getenv("SYNC_EVERY", "6h"))
 		if err != nil || every < time.Minute {
-			log.Fatalf("tallyn: SYNC_EVERY must be a duration of at least 1m (got %q)", os.Getenv("SYNC_EVERY"))
+			log.Fatalf("coinroof: SYNC_EVERY must be a duration of at least 1m (got %q)", os.Getenv("SYNC_EVERY"))
 		}
 		system, err := db.OpenSystem(ctx, syncURL)
 		if err != nil {
-			log.Fatalf("tallyn: %v", err)
+			log.Fatalf("coinroof: %v", err)
 		}
 		defer system.Close()
 		syncer := banksync.New(system, plaidClient, box, every)
@@ -137,7 +137,7 @@ func main() {
 		go syncer.Run(ctx)
 		go purgeClosingRecords(ctx, system)
 		go emailJob(system, linkKey, mailer).Run(ctx)
-		log.Printf("tallyn: bank sync every %s", every)
+		log.Printf("coinroof: bank sync every %s", every)
 	}
 
 	srv := &http.Server{
@@ -173,9 +173,9 @@ func main() {
 	}
 
 	go func() {
-		log.Printf("tallyn: listening on :%s (web: %s)", port, webDir)
+		log.Printf("coinroof: listening on :%s (web: %s)", port, webDir)
 		if err := srv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
-			log.Fatalf("tallyn: %v", err)
+			log.Fatalf("coinroof: %v", err)
 		}
 	}()
 
@@ -186,7 +186,7 @@ func main() {
 	shutdownCtx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	if err := srv.Shutdown(shutdownCtx); err != nil {
-		log.Printf("tallyn: shutdown: %v", err)
+		log.Printf("coinroof: shutdown: %v", err)
 	}
 }
 
@@ -201,9 +201,9 @@ func emailSender() email.Sender {
 		switch to := os.Getenv("EMAIL_TEST_TO"); {
 		case to != "":
 			sender = email.TestOnly{To: to, Next: sender}
-			log.Printf("tallyn: emails go to EMAIL_TEST_TO only")
+			log.Printf("coinroof: emails go to EMAIL_TEST_TO only")
 		case os.Getenv("EMAIL_LIVE") != "true":
-			log.Printf("tallyn: BREVO_API_KEY set without EMAIL_TEST_TO or EMAIL_LIVE=true, emails are only logged")
+			log.Printf("coinroof: BREVO_API_KEY set without EMAIL_TEST_TO or EMAIL_LIVE=true, emails are only logged")
 			sender = email.Logger{}
 		}
 	}
@@ -234,14 +234,14 @@ func purgeClosingRecords(ctx context.Context, system *db.System) {
 	defer t.Stop()
 	for {
 		if n, err := system.PurgeClosedAccounts(ctx, db.ClosingRecordsKept); err != nil {
-			log.Printf("tallyn: purge closing records: %v", err)
+			log.Printf("coinroof: purge closing records: %v", err)
 		} else if n > 0 {
-			log.Printf("tallyn: purged %d closing records older than 3 years", n)
+			log.Printf("coinroof: purged %d closing records older than 3 years", n)
 		}
 		// Savings goals (#14): this month's amount for goals that follow an
 		// account, for the forecast and "this month".
 		if _, err := system.SnapshotGoals(ctx, time.Now().UTC()); err != nil {
-			log.Printf("tallyn: goal snapshots: %v", err)
+			log.Printf("coinroof: goal snapshots: %v", err)
 		}
 		select {
 		case <-ctx.Done():

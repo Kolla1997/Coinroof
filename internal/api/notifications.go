@@ -3,7 +3,7 @@ package api
 import (
 	"net/http"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 // In-app notifications (#267). Triggers in the database write them; each

@@ -21,7 +21,7 @@ tags: [spec, tech, testing]
 Coinroof has a solid base of tests, but nothing says which use cases they cover and which they don't. Gaps get found by chance. For example, the hidden category legend (#94) was only caught by looking at the screen.
 
 **What exists on `main` (2026-10-12):**
-- **Go:** 22 test files. Database tests run against a real Postgres when `TALLYN_TEST_DATABASE_URL` is set, and are skipped otherwise.
+- **Go:** 22 test files. Database tests run against a real Postgres when `COINROOF_TEST_DATABASE_URL` is set, and are skipped otherwise.
 - **Web:** 12 Vitest files with 43 tests (jsdom).
 - **CI:** every PR runs both, Postgres included (`.github/workflows/checks.yml`, #100).
 - **No browser end-to-end tests.**
@@ -37,7 +37,7 @@ Coinroof has a solid base of tests, but nothing says which use cases they cover 
 | Level | What it proves | Tools | Runs |
 |---|---|---|---|
 | **Unit** | One function or component, with no network or database. Rules, formatting, edge cases | Go `testing`; Vitest + Testing Library (jsdom) | Every PR |
-| **Integration** | The API with a real Postgres: RLS, roles, SQL, handlers end to end with a test token | Go tests with `TALLYN_TEST_DATABASE_URL` (Postgres 16 in CI) | Every PR |
+| **Integration** | The API with a real Postgres: RLS, roles, SQL, handlers end to end with a test token | Go tests with `COINROOF_TEST_DATABASE_URL` (Postgres 16 in CI) | Every PR |
 | **Layout** | Every page at phone, laptop and desktop width: no sideways scroll, no error, key parts really visible (#117) | Playwright (Chromium) against the production build, with fake data and a fake session (`web/e2e`) | Every PR |
 | **Contract** | Our Plaid and Supabase code against recorded responses | Go `httptest` fakes (Plaid today) | Every PR |
 | **Browser end-to-end** | A person's path through the real app: sign-in, 2FA, a page, a change | **Playwright** with a separate Supabase test project and the Plaid sandbox (#113) | Weekly, and before each release |
@@ -209,6 +209,7 @@ Coinroof has a solid base of tests, but nothing says which use cases they cover 
 | Tap areas and control contrast (#158): on phones, small text links, Pills and old small buttons get an invisible tap area about 44px tall; input, select and switch edges use grey-3 (3:1 or better); disabled buttons are grey, not only faded; buttons press in (not with reduced motion); bank chips stay on one scrolling row at 375px | P2 | No | — | Yes | `web/e2e/layout.spec.js` (no sideways scroll at 375, 1024, 1440). Gap: tap-area size and contrast aren't asserted; release checklist |
 | Glass fallbacks and page basics (#155): without blur or with reduced transparency every card, the sidebar and the tab bar go solid, also in dark mode; Safari gets the prefixed blur; with reduced motion, chart and card pieces fade in place (`MotionConfig reducedMotion="user"`); `color-scheme` per theme; the page ground shows before the app loads; `100dvh`; the tab bar clears the phone's home indicator; the two main fonts preload with metric-matched fallbacks | P1 | No | — | Partly | `web/e2e/layout.spec.js` (pages still render at 375, 1024, 1440). Gap: blur support, reduced transparency, reduced motion, safe areas and font swap can't be tested in jsdom or headless Chromium here; all in the release checklist |
 | The app is called Coinroof everywhere people look: page titles, screen copy, sign-in and authenticator text, downloaded files (`coinroof-data-….zip`, `coinroof-backup-codes.txt`) (#200) | P2 | Yes | Yes | No | `Heading.test.jsx` (tab title), `SignIn.test.jsx`, `SetUp2FA.test.jsx`, `BackupCodes.test.jsx`, `Settings.test.jsx` and `api.test.js` (export file name), `TestExportZip` in `export_test.go` (`coinroof-data.json`, README); the stored-hash salts keep their old "tallyn" text on purpose |
+| After the rename (#324), what people chose is kept: old `tallyn.*` browser keys (theme, household, terms agreed, sign-in notes) move once to `coinroof.*`; a value already under the new name wins | P1 | Yes | — | — | `lib/storage-move.test.js` |
 | The Coinroof logo shows on sign-in, the rail (open and collapsed), the phone header and the loader, in light and dark (#200) | P2 | No | — | Partly | `web/e2e/layout.spec.js` checks the pages render; the logo itself is a release-checklist item (gap: no test checks which logo file shows) |
 | The app's red and green are the Coinroof logo's, and money text and button text stay AA readable in light and dark (#201) | P2 | Yes | — | No | `tokens.test.js` (logo values applied, dark-mode text values, 4.5:1 on cards and page in both themes) |
 | Money and counters use tabular figures, so digits don't shift the layout (#193) | P2 | Yes | — | No | `CountUp.test.jsx` (visible number has `tabular-nums`, final value read once); shared `.money` / `.count` rule in `web/src/styles.css` |

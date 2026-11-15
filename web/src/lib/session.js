@@ -42,7 +42,7 @@ export function sessionOver(now, at) {
 }
 
 // The sign-in page's note after an automatic sign-out, shown once.
-const NOTE = 'tallyn.signOutNote'
+const NOTE = 'coinroof.signOutNote'
 export const NOTES = {
   idle: 'You were signed out after 30 minutes without activity, to keep your money private.', // #91
   max: 'For your security, Coinroof asks you to sign in again every 12 hours.', // #92

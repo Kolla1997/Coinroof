@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 // POST /api/households/{id}/members/{user}/reset-2fa: an owner resets a

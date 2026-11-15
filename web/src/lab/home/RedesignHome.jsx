@@ -102,14 +102,14 @@ const scopeData = (scope) => {
 // Arrival: once per session (rare tier). Purpose: the order of the screen.
 function useArrival(ref) {
   useEffect(() => {
-    if (!ref.current || reduced() || sessionStorage.getItem('tallyn-home-r3')) return
+    if (!ref.current || reduced() || sessionStorage.getItem('coinroof-home-r3')) return
     animate(ref.current.querySelectorAll('[data-arrive]'), {
       opacity: [0, 1],
       translateY: [12, 0],
       delay: stagger(50),
       duration: 380,
       ease: EASE,
-      onComplete: () => sessionStorage.setItem('tallyn-home-r3', '1'),
+      onComplete: () => sessionStorage.setItem('coinroof-home-r3', '1'),
     })
   }, [ref])
 }

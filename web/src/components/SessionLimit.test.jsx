@@ -23,7 +23,7 @@ describe('SessionLimit', () => {
     expect(onSignOut).not.toHaveBeenCalled()
     act(() => vi.advanceTimersByTime(60 * 1000))
     expect(onSignOut).toHaveBeenCalledTimes(1)
-    expect(localStorage.getItem('tallyn.signOutNote')).toBe('max')
+    expect(localStorage.getItem('coinroof.signOutNote')).toBe('max')
     act(() => vi.advanceTimersByTime(5 * 60 * 1000))
     expect(onSignOut).toHaveBeenCalledTimes(1)
   })

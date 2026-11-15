@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 // Product news (#281): the Settings switch. The choice is per person, and

@@ -24,7 +24,7 @@ export const currentVersions = () => ({ terms: LEGAL.terms.version, privacy: LEG
 
 // Remembered when someone ticks "I agree" at sign-up, so their first sign-in
 // can record it without asking twice.
-const PENDING = 'tallyn.agreed'
+const PENDING = 'coinroof.agreed'
 // news is the product news box (#281), sent with the agreement.
 export function rememberAgreement(news) {
   try {

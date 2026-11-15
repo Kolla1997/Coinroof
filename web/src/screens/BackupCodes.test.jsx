@@ -110,7 +110,7 @@ describe('BackupCodesGate', () => {
     expect(screen.getByText(/backup codes, so losing your phone/)).toBeInTheDocument()
     fireEvent.click(screen.getByRole('button', { name: 'Remind me next time' }))
     expect(screen.getByText('Home')).toBeInTheDocument()
-    expect(sessionStorage.getItem('tallyn.codesLater')).toBe('1')
+    expect(sessionStorage.getItem('coinroof.codesLater')).toBe('1')
   })
 
   it('existing account with codes: straight in', async () => {
@@ -126,7 +126,7 @@ describe('BackupCodesGate', () => {
   })
 
   it('just set up an authenticator (or recovered): a new set, no putting it off', async () => {
-    sessionStorage.setItem('tallyn.just2FA', '1')
+    sessionStorage.setItem('coinroof.just2FA', '1')
     api.mockImplementation((path, opts) => Promise.resolve(opts ? { codes: CODES } : { left: 9, total: 10 }))
     await act(async () =>
       render(
@@ -140,7 +140,7 @@ describe('BackupCodesGate', () => {
     fireEvent.click(screen.getByRole('checkbox'))
     fireEvent.click(screen.getByRole('button', { name: 'Continue to Coinroof' }))
     expect(screen.getByText('Home')).toBeInTheDocument()
-    expect(sessionStorage.getItem('tallyn.just2FA')).toBeNull()
+    expect(sessionStorage.getItem('coinroof.just2FA')).toBeNull()
   })
 })
 
@@ -156,7 +156,7 @@ describe('UseBackupCode', () => {
     expect(screen.getByLabelText('Backup code')).toHaveValue('7KQ4-M9TX')
     await act(async () => fireEvent.click(screen.getByRole('button', { name: 'Continue' })))
     expect(api).toHaveBeenCalledWith('/api/recovery/backup-code', { method: 'POST', body: { code: '7KQ4-M9TX' } })
-    expect(sessionStorage.getItem('tallyn.recoveredWithCode')).toBe('1')
+    expect(sessionStorage.getItem('coinroof.recoveredWithCode')).toBe('1')
     expect(refreshSession).toHaveBeenCalled()
   })
 

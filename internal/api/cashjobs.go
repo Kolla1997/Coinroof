@@ -3,7 +3,7 @@ package api
 import (
 	"net/http"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 // GET /api/cash-jobs/settings?household_id=: the owner's payday and split for

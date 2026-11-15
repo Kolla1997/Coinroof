@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Kolla1997/Tallyn/internal/auth"
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/auth"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 const testUser = "11111111-1111-4111-8111-111111111111" // fake
@@ -72,11 +72,11 @@ func TestHealth(t *testing.T) {
 
 func TestSPAFallback(t *testing.T) {
 	dir := t.TempDir()
-	if err := os.WriteFile(filepath.Join(dir, "index.html"), []byte("<p>tallyn</p>"), 0o644); err != nil {
+	if err := os.WriteFile(filepath.Join(dir, "index.html"), []byte("<p>coinroof</p>"), 0o644); err != nil {
 		t.Fatal(err)
 	}
 	rec := get(NewRouter(Deps{WebDir: dir}), "/accounts/123", "")
-	if rec.Code != http.StatusOK || rec.Body.String() != "<p>tallyn</p>" {
+	if rec.Code != http.StatusOK || rec.Body.String() != "<p>coinroof</p>" {
 		t.Fatalf("got %d %q, want index.html", rec.Code, rec.Body.String())
 	}
 }

@@ -6,7 +6,7 @@
 export const IDLE_MS = 30 * 60 * 1000
 export const WARN_MS = 60 * 1000 // the warning shows for the last minute
 
-const LAST = 'tallyn.lastActive'
+const LAST = 'coinroof.lastActive'
 
 // 'active', 'warn' (with seconds left) or 'out', from how long it's been.
 export function idleState(now, last) {

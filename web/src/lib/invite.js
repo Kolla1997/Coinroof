@@ -2,7 +2,7 @@
 // the fragment, which browsers never send to the server, so it can't end up in
 // server or proxy logs. It's kept in localStorage until the person has signed
 // in (sign-up and email confirmation can take a few page loads), then cleared.
-const KEY = 'tallyn.invite'
+const KEY = 'coinroof.invite'
 
 export function captureInviteFromURL() {
   if (window.location.pathname !== '/join') return

@@ -4,11 +4,11 @@ package db
 //
 // They need a throwaway Postgres where the login role can create databases:
 //
-//	TALLYN_TEST_DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres go test ./internal/db
+//	COINROOF_TEST_DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres go test ./internal/db
 //
 // Each run creates a fresh database, applies testdata/supabase_shim.sql and
 // every migration in order, runs the checks and drops the database.
-// Without TALLYN_TEST_DATABASE_URL the tests are skipped.
+// Without COINROOF_TEST_DATABASE_URL the tests are skipped.
 // All data below is fake.
 
 import (
@@ -46,9 +46,12 @@ type fixture struct {
 
 func setup(t *testing.T) *fixture {
 	t.Helper()
-	base := os.Getenv("TALLYN_TEST_DATABASE_URL")
+	base := os.Getenv("COINROOF_TEST_DATABASE_URL")
 	if base == "" {
-		t.Skip("TALLYN_TEST_DATABASE_URL not set")
+		base = os.Getenv("TALLYN_TEST_DATABASE_URL") // the old name (#324), still read for a while
+	}
+	if base == "" {
+		t.Skip("COINROOF_TEST_DATABASE_URL not set")
 	}
 	ctx := context.Background()
 
@@ -56,7 +59,7 @@ func setup(t *testing.T) *fixture {
 	if err != nil {
 		t.Fatalf("connect: %v", err)
 	}
-	name := fmt.Sprintf("tallyn_test_%d", time.Now().UnixNano())
+	name := fmt.Sprintf("coinroof_test_%d", time.Now().UnixNano())
 	if _, err := server.Exec(ctx, "create database "+name); err != nil {
 		t.Fatalf("create database: %v", err)
 	}

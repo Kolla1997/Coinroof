@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"slices"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 // Current versions of the documents people agree to (#36). They must match

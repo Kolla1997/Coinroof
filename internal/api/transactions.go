@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/Kolla1997/Tallyn/internal/db"
+	"github.com/Kolla1997/Coinroof/internal/db"
 )
 
 // transactions returns one page of the household's transactions the caller

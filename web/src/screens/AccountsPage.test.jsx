@@ -145,7 +145,7 @@ describe('AccountsPage', () => {
     expect(screen.getByRole('list', { name: 'Fake Credit Union accounts' })).toHaveAttribute('tabindex', '0')
     fireEvent.click(screen.getByRole('button', { name: 'Grid' }))
     expect(screen.queryByRole('list', { name: 'Fake Credit Union accounts' })).toBeNull()
-    expect(localStorage.getItem('tallyn.accountsView')).toBe('grid')
+    expect(localStorage.getItem('coinroof.accountsView')).toBe('grid')
     localStorage.clear()
   })
 
