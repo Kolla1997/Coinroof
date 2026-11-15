@@ -136,9 +136,9 @@ The P0 paths (sign-in with 2FA, Home totals, connecting a sandbox bank, inviting
 | Task | Command |
 |---|---|
 | Sync board into docs | Automatic (GitHub Action every 6 hours and on issue changes, `git pull` to get it). By hand: `python3 scripts/sync_board.py` |
-| Test | `go test ./...` (database tests skip unless `TALLYN_TEST_DATABASE_URL` is set) |
+| Test | `go test ./...` (database tests skip unless `COINROOF_TEST_DATABASE_URL` is set) |
 | Browser end-to-end tests | `cd web && npm run test:e2e` (needs the `E2E_*` values, above) |
-| Test the schema and RLS | Start a throwaway Postgres: `docker run --rm -d -p 5433:5432 -e POSTGRES_PASSWORD=postgres postgres:16`, then `TALLYN_TEST_DATABASE_URL=postgres://postgres:postgres@localhost:5433/postgres go test ./internal/db`. Without Docker, Homebrew `postgresql@16` works too (steps in [PR #20](https://github.com/Kolla1997/Tallyn/pull/20)) |
+| Test the schema and RLS | Start a throwaway Postgres: `docker run --rm -d -p 5433:5432 -e POSTGRES_PASSWORD=postgres postgres:16`, then `COINROOF_TEST_DATABASE_URL=postgres://postgres:postgres@localhost:5433/postgres go test ./internal/db`. Without Docker, Homebrew `postgresql@16` works too (steps in [PR #20](https://github.com/Kolla1997/Tallyn/pull/20)) |
 | Lint | `go vet ./...` and `gofmt -l cmd internal`; web: `cd web && npm run lint` (ESLint, #100) |
 | Format the web app | `cd web && npm run format` (Prettier: single quotes, no semicolons; check with `npm run format:check`) |
 | Test the web app | `cd web && npm test` (Vitest; tests sit next to the code as `*.test.js(x)`) |
@@ -146,4 +146,4 @@ The P0 paths (sign-in with 2FA, Home totals, connecting a sandbox bank, inviting
 | Checks on every PR | Automatic: `.github/workflows/checks.yml` runs Go format, vet and tests (with Postgres 16) and the web lint, format check, tests and build, plus the layout checks (#117). A PR shows ✓ or ✗ before merging (#100) |
 | Build the web app | `cd web && npm run build`. Each page is its own file, loaded when first opened; React and Supabase have their own files too (#99) |
 | Remake the web fonts | After changing a master in `brand/fonts/`: `python3 -m pip install fonttools brotli`, then `python3 scripts/build_fonts.py`. It writes WOFF2 files to `brand/fonts/web/` (Latin, Latin Extended and the rest, so a page downloads only what it uses) and `web/src/fonts.css`. Don't edit either by hand (#99) |
-| Build the Docker image | `docker build -t tallyn .` then `docker run -p 8080:8080 --env-file .env tallyn` |
+| Build the Docker image | `docker build -t coinroof .` then `docker run -p 8080:8080 --env-file .env coinroof` |

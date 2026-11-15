@@ -41,7 +41,7 @@ Anyone can download everything Coinroof holds about them from Settings, in one s
 Settings → Your data → **Download your data**: the "Coming soon" tag becomes a **Download** button. It opens the existing confirm dialog ([[UI Patterns]]), which asks for a fresh 6-digit code, then saves `tallyn-data-YYYY-MM-DD.zip`. No new visual pattern, so no draft (Dinesh, 2026-10-24).
 
 The ZIP holds:
-- `tallyn-data.json`: everything above, amounts in minor units with their currency
+- `coinroof-data.json`: everything above, amounts in minor units with their currency
 - `transactions.csv`: one row per transaction, amounts as decimals, for spreadsheets
 - `README.txt`: what each file and field means
 

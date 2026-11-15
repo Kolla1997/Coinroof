@@ -21,7 +21,7 @@ tags: [spec, tech, testing]
 Coinroof has a solid base of tests, but nothing says which use cases they cover and which they don't. Gaps get found by chance. For example, the hidden category legend (#94) was only caught by looking at the screen.
 
 **What exists on `main` (2026-10-12):**
-- **Go:** 22 test files. Database tests run against a real Postgres when `TALLYN_TEST_DATABASE_URL` is set, and are skipped otherwise.
+- **Go:** 22 test files. Database tests run against a real Postgres when `COINROOF_TEST_DATABASE_URL` is set, and are skipped otherwise.
 - **Web:** 12 Vitest files with 43 tests (jsdom).
 - **CI:** every PR runs both, Postgres included (`.github/workflows/checks.yml`, #100).
 - **No browser end-to-end tests.**
@@ -37,7 +37,7 @@ Coinroof has a solid base of tests, but nothing says which use cases they cover 
 | Level | What it proves | Tools | Runs |
 |---|---|---|---|
 | **Unit** | One function or component, with no network or database. Rules, formatting, edge cases | Go `testing`; Vitest + Testing Library (jsdom) | Every PR |
-| **Integration** | The API with a real Postgres: RLS, roles, SQL, handlers end to end with a test token | Go tests with `TALLYN_TEST_DATABASE_URL` (Postgres 16 in CI) | Every PR |
+| **Integration** | The API with a real Postgres: RLS, roles, SQL, handlers end to end with a test token | Go tests with `COINROOF_TEST_DATABASE_URL` (Postgres 16 in CI) | Every PR |
 | **Layout** | Every page at phone, laptop and desktop width: no sideways scroll, no error, key parts really visible (#117) | Playwright (Chromium) against the production build, with fake data and a fake session (`web/e2e`) | Every PR |
 | **Contract** | Our Plaid and Supabase code against recorded responses | Go `httptest` fakes (Plaid today) | Every PR |
 | **Browser end-to-end** | A person's path through the real app: sign-in, 2FA, a page, a change | **Playwright** with a separate Supabase test project and the Plaid sandbox (#113) | Weekly, and before each release |

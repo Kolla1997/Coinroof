@@ -11,6 +11,7 @@ tags: [log]
 Newest first. One entry per working session or decision.
 
 ## 2026-11-15
+- #324 Rename phase C: server log prefix `coinroof:`, `COINROOF_TEST_DATABASE_URL` (the old name still read as a fallback), `coinroof-web` package, Android colour names. The Go module path waits for the GitHub rename (phase E); Supabase project names (`tallyn-dev`, `tallyn-e2e`) are changed in Supabase by Dinesh.
 - #324 Rename phase B: browser storage keys `tallyn.*` → `coinroof.*`, moved once at start-up (`lib/storage-move.js`) so nobody loses their theme, household or terms-agreed.
 - #324 Rename to Coinroof, phase A (words): docs, comments, UI and email copy, `CLAUDE.md`, scripts; `TallynLoader` → `CoinroofLoader`; Plaid Link's client name now Coinroof. Left as written: old migrations, accepted ADRs, past Log entries, board mirrors, old logo files, the stored-hash key strings ("tallyn backup code v1" etc., changing them would break saved codes and links), and names renamed in phases B–E.
 - #33 Promoted and agreed with Dinesh: a Home card that gives today's cash a job (waterfall: dues before payday, an everyday buffer, then debt share, goals, savings). Dinesh picked C · Mix of `drafts/33-cash-jobs.html` (tally tape + jobs bar). Sums worked out in the app from endpoints that already apply sharing; migration 0033 `cash_job_settings` keeps each owner's payday and split (in the export too). Open: default split stays 50% debt.

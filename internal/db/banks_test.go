@@ -9,7 +9,7 @@ import (
 	"github.com/jackc/pgx/v5"
 )
 
-// All data below is fake. Needs TALLYN_TEST_DATABASE_URL (see db_test.go).
+// All data below is fake. Needs COINROOF_TEST_DATABASE_URL (see db_test.go).
 
 const dave = "00000000-0000-4000-8000-00000000000d" // adult in the Test household
 

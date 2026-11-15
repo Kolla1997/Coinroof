@@ -72,11 +72,11 @@ func TestHealth(t *testing.T) {
 
 func TestSPAFallback(t *testing.T) {
 	dir := t.TempDir()
-	if err := os.WriteFile(filepath.Join(dir, "index.html"), []byte("<p>tallyn</p>"), 0o644); err != nil {
+	if err := os.WriteFile(filepath.Join(dir, "index.html"), []byte("<p>coinroof</p>"), 0o644); err != nil {
 		t.Fatal(err)
 	}
 	rec := get(NewRouter(Deps{WebDir: dir}), "/accounts/123", "")
-	if rec.Code != http.StatusOK || rec.Body.String() != "<p>tallyn</p>" {
+	if rec.Code != http.StatusOK || rec.Body.String() != "<p>coinroof</p>" {
 		t.Fatalf("got %d %q, want index.html", rec.Code, rec.Body.String())
 	}
 }
