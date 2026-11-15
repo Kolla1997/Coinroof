@@ -15,6 +15,7 @@ kanban-plugin: board
 - [ ] [#306 Loans and debts with monthly payments and payoff tracking](https://github.com/Kolla1997/Tallyn/issues/306) #type/feature #area/frontend #area/backend
 - [ ] [#307 Onboarding step: monthly commitments (bills and loans)](https://github.com/Kolla1997/Tallyn/issues/307) #type/feature #area/frontend
 - [ ] [#126 Bill reminders: pop-up to record bills due](https://github.com/Kolla1997/Tallyn/issues/126) #type/feature #area/frontend
+- [ ] [#33 Give every dollar of available cash a job (Home card)](https://github.com/Kolla1997/Tallyn/issues/33) #type/feature #area/frontend #area/backend #priority/p1
 
 
 ## In Progress
