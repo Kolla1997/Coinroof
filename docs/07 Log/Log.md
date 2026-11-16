@@ -11,6 +11,8 @@ tags: [log]
 Newest first. One entry per working session or decision.
 
 ## 2026-11-15
+- #335 coinroof-prod created (Supabase free, Ohio): migrations 0001–0034 applied cleanly, RLS on all 31 tables, coinroof_* logins with passwords (old tallyn_* dropped), Auth settings checked, ES256 key, Data API closed, new TOKEN_ENCRYPTION_KEY (backed up by Dinesh). Secrets live in `.env.prod` (gitignored). Decision: sign-ups stay on (invited family sign up normally); an invite-only owner list moves to #336. First real account waits for the Plaid Trial.
+- #324 Done and closed with #203; dev Supabase project renamed coinroof-dev.
 - #334 Background jobs from an outside timer: `JOBS=external` turns off the server's own timers and adds `POST /jobs/sync`, `/jobs/email`, `/jobs/daily`, guarded by `JOBS_SECRET` (wrong key = 404, one run at a time). Emails go every 15 minutes there instead of 5. Created hosting tickets #334–#337 (Cloud Run, coinroof-prod, domain, Plaid Trial) at minimal cost.
 - #324 Phase D: 0034 copies every grant and policy of `tallyn_api`/`tallyn_sync` to new `coinroof_api`/`coinroof_sync` and empties the old roles (roles are server-wide, so a plain rename breaks the test databases). Go checks, tests, `.env.example` and docs use the new names; ADR 0020.
 - #324 Tidied the rename's leftovers: Tallyn logo, colours, animation, icons and social files moved to `brand/archive/tallyn/` (lab drafts and old comps point there); Logo Guide rewritten for the Coinroof kit, Animation Guide points at `brand/coinroof/animation/`; Brand Guide fixes from the word swap (capital C, Monr, "Tallyn name"); skill renamed `coinroof-design`. Open: what the name stands for, Coinroof clear space and minimum sizes, Monr commercial licence, Coinroof Lottie files.
