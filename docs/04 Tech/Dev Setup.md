@@ -117,7 +117,7 @@ The transaction map (ADR 0019) works locally from R2. On launch day, once the ap
 The P0 paths (sign-in with 2FA, Home totals, connecting a sandbox bank, inviting a member, sharing) in a real browser, against the Go API, a **Supabase project just for tests** and the Plaid sandbox. They run weekly (Mondays) and by hand (GitHub → Actions → **End-to-end** → Run workflow), never on pull requests. Rows in [[Test Plan]].
 
 > [!warning] Test project only
-> Never point these at tallyn-dev or production. Each test makes its own people (`e2e-…@example.test`) with the project's secret key, and deletes them afterwards. Households they made stay behind, empty.
+> Never point these at coinroof-dev or production. Each test makes its own people (`e2e-…@example.test`) with the project's secret key, and deletes them afterwards. Households they made stay behind, empty.
 
 **Set up the test project once:**
 1. Create a new Supabase project (e.g. `tallyn-e2e`) and set it up like the others: migrations in order, Auth settings and database logins (sections above). Plaid stays on **sandbox**.

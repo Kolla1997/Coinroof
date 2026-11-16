@@ -43,7 +43,7 @@ Home → **Members**: each member with their role (owners get a role menu), Remo
 [[0008-invitations]]. `migrations/0008_invites.sql`: `household_invites` (hash only), `create_household_invite`, `revoke_household_invite`, `accept_household_invite`. Links are `/join#<token>`; the fragment never reaches the server. API: `GET/POST /api/households/{id}/invites`, `DELETE /api/invites/{id}`, `POST /api/invites/accept`, `GET /api/households/{id}/members`, `PUT/DELETE /api/households/{id}/members/{user}`.
 
 ## Rollout
-Run 0008 on `tallyn-dev`, then test with the second account: remove it, invite it again, join from its window.
+Run 0008 on `coinroof-dev`, then test with the second account: remove it, invite it again, join from its window.
 
 ## Open questions
 - Children's logins after the COPPA check, or children shown under a parent without a login?
