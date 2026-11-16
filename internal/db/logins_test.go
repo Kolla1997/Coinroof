@@ -9,7 +9,7 @@ import (
 )
 
 // Attack simulations for ADR 0006: what SQL injected into a request (running
-// inside AsUser, as the tallyn_api login) or into the sync could do. Every
+// inside AsUser, as the coinroof_api login) or into the sync could do. Every
 // attempt must fail with permission denied. All data is fake.
 
 func TestInjectedSQLCantLeaveTheUsersRole(t *testing.T) {
@@ -27,7 +27,7 @@ func TestInjectedSQLCantLeaveTheUsersRole(t *testing.T) {
 		"reset role, then read every profile":                  {`reset role`, `select count(*) from public.profiles`},
 		"reset role, then call the link function":              {`reset role`, `select public.link_plaid_item(gen_random_uuid(), 'x', '\x00', null, null, '[]')`},
 		"read bank tokens as the user":                         {`select access_token_encrypted from public.plaid_items`},
-		"switch to the sync role":                              {`set role tallyn_sync`},
+		"switch to the sync role":                              {`set role coinroof_sync`},
 		"switch to the superuser":                              {`set role "` + superuser + `"`},
 		"switch to service_role":                               {`set role service_role`},
 		"switch to anon":                                       {`set role anon`},
@@ -108,6 +108,39 @@ func TestUnsafeLoginsAreRefused(t *testing.T) {
 		t.Fatalf("API login as DATABASE_URL_SYNC: err = %v, want ErrUnsafeLogin", err)
 	}
 	if err := f.db.CheckAPILogin(ctx); err != nil {
-		t.Fatalf("tallyn_api: %v", err)
+		t.Fatalf("coinroof_api: %v", err)
+	}
+}
+
+// After 0034 (#324) the old tallyn_* roles hold nothing in the database: no
+// grants on anything, no part in any policy, and tallyn_api can no longer
+// become authenticated. All the access moved to coinroof_*.
+func TestOldTallynRolesAreEmpty(t *testing.T) {
+	f := setup(t)
+	ctx := context.Background()
+	var left int
+	err := f.admin.QueryRow(ctx, `
+		with old as (select oid from pg_roles where rolname in ('tallyn_api', 'tallyn_sync'))
+		select (select count(*) from pg_namespace n, aclexplode(n.nspacl) a where a.grantee in (select oid from old))
+		     + (select count(*) from pg_class c, aclexplode(c.relacl) a where a.grantee in (select oid from old))
+		     + (select count(*) from pg_attribute at, aclexplode(at.attacl) a where a.grantee in (select oid from old))
+		     + (select count(*) from pg_proc p, aclexplode(p.proacl) a where a.grantee in (select oid from old))
+		     + (select count(*) from pg_policy p where p.polroles && array(select oid from old))`).Scan(&left)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if left != 0 {
+		t.Errorf("tallyn_* still hold %d grants or policies", left)
+	}
+	var canBecome bool
+	if err := f.admin.QueryRow(ctx, `select pg_has_role('tallyn_api', 'authenticated', 'SET')`).Scan(&canBecome); err != nil {
+		t.Fatal(err)
+	}
+	if canBecome {
+		t.Error("tallyn_api can still become authenticated")
+	}
+	var moved int
+	if err := f.admin.QueryRow(ctx, `select count(*) from pg_policy p where 'coinroof_sync'::regrole = any (p.polroles)`).Scan(&moved); err != nil || moved == 0 {
+		t.Errorf("no policies for coinroof_sync (%d, %v)", moved, err)
 	}
 }

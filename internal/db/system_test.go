@@ -66,11 +66,11 @@ func TestSyncRoleLimits(t *testing.T) {
 	// plan (separate login roles).
 	t.Run("the authenticated role never holds the sync role", func(t *testing.T) {
 		var member bool
-		if err := f.admin.QueryRow(ctx, `select pg_has_role('authenticated', 'tallyn_sync', 'MEMBER')`).Scan(&member); err != nil || member {
-			t.Fatalf("authenticated is a member of tallyn_sync (%v)", err)
+		if err := f.admin.QueryRow(ctx, `select pg_has_role('authenticated', 'coinroof_sync', 'MEMBER')`).Scan(&member); err != nil || member {
+			t.Fatalf("authenticated is a member of coinroof_sync (%v)", err)
 		}
-		if err := f.admin.QueryRow(ctx, `select pg_has_role('anon', 'tallyn_sync', 'MEMBER')`).Scan(&member); err != nil || member {
-			t.Fatalf("anon is a member of tallyn_sync (%v)", err)
+		if err := f.admin.QueryRow(ctx, `select pg_has_role('anon', 'coinroof_sync', 'MEMBER')`).Scan(&member); err != nil || member {
+			t.Fatalf("anon is a member of coinroof_sync (%v)", err)
 		}
 	})
 

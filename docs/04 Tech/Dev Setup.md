@@ -2,7 +2,7 @@
 type: guide
 status: draft
 owner: Dinesh
-updated: 2026-11-05
+updated: 2026-11-15
 issues: [5, 6, 7, 8, 9, 30, 99, 113, 255]
 tags: [tech, onboarding]
 ---
@@ -40,18 +40,21 @@ Without `SUPABASE_URL` or `DATABASE_URL` the server still starts, but every `/ap
 > Losing `TOKEN_ENCRYPTION_KEY` means every linked bank has to be linked again. Keep the production key in a password manager and the host's secret store, never in git or chat. See [[0004-plaid-token-encryption-and-link-path]].
 
 ## Database logins (#30)
-The app never logs in as `postgres` (ADR 0006). After running `migrations/0006_app_logins.sql`:
+The app never logs in as `postgres` (ADR 0006). The logins are `coinroof_api` and `coinroof_sync` (renamed from `tallyn_*` by `0034_coinroof_logins.sql`, ADR 0020). After running the migrations:
 1. Make two passwords, letters and numbers only so they need no encoding: `openssl rand -hex 24`, twice. Save both in the password manager
 2. In the Supabase SQL editor, run (with your passwords):
    ```sql
-   alter role tallyn_api  with login password 'API_PASSWORD';
-   alter role tallyn_sync with login password 'SYNC_PASSWORD';
+   alter role coinroof_api  with login password 'API_PASSWORD';
+   alter role coinroof_sync with login password 'SYNC_PASSWORD';
    ```
 3. In `.env`, copy the pooler host from **Connect → Session pooler**, then set:
-   - `DATABASE_URL=postgresql://tallyn_api.<project-ref>:API_PASSWORD@<pooler-host>:5432/postgres`
-   - `DATABASE_URL_SYNC=postgresql://tallyn_sync.<project-ref>:SYNC_PASSWORD@<pooler-host>:5432/postgres`
+   - `DATABASE_URL=postgresql://coinroof_api.<project-ref>:API_PASSWORD@<pooler-host>:5432/postgres`
+   - `DATABASE_URL_SYNC=postgresql://coinroof_sync.<project-ref>:SYNC_PASSWORD@<pooler-host>:5432/postgres`
    - move the old `postgres` connection string to `ADMIN_DATABASE_URL` (for migrations only)
 4. Start the backend. If a login is wrong, it stops with `unsafe database login: …` and says which one
+
+> [!warning] A project that had the `tallyn_*` logins
+> Applying 0034 empties `tallyn_api` and `tallyn_sync`, so do steps 1–3 for the `coinroof_*` logins straight after it and restart the server. Then drop the old ones when nothing uses them: `drop role tallyn_api; drop role tallyn_sync;`
 
 ## Bank sync (#9)
 1. Run `migrations/0005_bank_sync.sql` on the Supabase project, after 0001–0004 (and set `DATABASE_URL_SYNC`, see above)
@@ -125,8 +128,8 @@ The P0 paths (sign-in with 2FA, Home totals, connecting a sandbox bank, inviting
 | `E2E_SUPABASE_URL` | The test project's URL |
 | `E2E_SUPABASE_PUBLISHABLE_KEY` | Its publishable key |
 | `E2E_SUPABASE_SECRET_KEY` | Its secret key: makes and deletes test people, and the server uses it for backup-code recovery |
-| `E2E_DATABASE_URL` | `tallyn_api` login for the test project |
-| `E2E_DATABASE_URL_SYNC` | `tallyn_sync` login for the test project |
+| `E2E_DATABASE_URL` | `coinroof_api` login for the test project |
+| `E2E_DATABASE_URL_SYNC` | `coinroof_sync` login for the test project |
 | `E2E_PLAID_CLIENT_ID` / `E2E_PLAID_SECRET` | Plaid client ID and **sandbox** secret |
 | `E2E_TOKEN_ENCRYPTION_KEY` | A test-only key: `openssl rand -base64 32` |
 

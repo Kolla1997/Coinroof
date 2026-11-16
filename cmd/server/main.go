@@ -44,7 +44,7 @@ func main() {
 		log.Printf("coinroof: SUPABASE_URL not set, /api/ routes will answer 503")
 	}
 
-	// DATABASE_URL must be the tallyn_api login (#30, ADR 0006). The server
+	// DATABASE_URL must be the coinroof_api login (#30, ADR 0006). The server
 	// refuses to start with a login that could step outside the user's role,
 	// such as Supabase's postgres.
 	var store api.Store
@@ -112,7 +112,7 @@ func main() {
 	}
 
 	// Bank sync (#9): every 6 hours, plus right after a bank is linked. It has
-	// its own login, DATABASE_URL_SYNC as tallyn_sync (#30), and is the only
+	// its own login, DATABASE_URL_SYNC as coinroof_sync (#30), and is the only
 	// code that gets the system database access (db.System).
 	var syncNow, reconnected func(string)
 	syncURL := os.Getenv("DATABASE_URL_SYNC")
