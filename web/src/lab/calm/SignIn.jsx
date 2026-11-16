@@ -5,10 +5,10 @@
 // Made-up email, key and codes.
 import { useRef, useState } from 'react'
 import { Check, Eye, EyeOff, Lock, Mail, ArrowRight } from 'lucide-react'
-import lockupLight from '../../../../brand/logo/svg/tallyn-lockup-horizontal-light.svg?url'
-import lockupDark from '../../../../brand/logo/svg/tallyn-lockup-horizontal-dark.svg?url'
-import wordLight from '../../../../brand/logo/svg/tallyn-wordmark-light.svg?url'
-import wordDark from '../../../../brand/logo/svg/tallyn-wordmark-dark.svg?url'
+import lockupLight from '../../../../brand/archive/tallyn/logo/svg/tallyn-lockup-horizontal-light.svg?url'
+import lockupDark from '../../../../brand/archive/tallyn/logo/svg/tallyn-lockup-horizontal-dark.svg?url'
+import wordLight from '../../../../brand/archive/tallyn/logo/svg/tallyn-wordmark-light.svg?url'
+import wordDark from '../../../../brand/archive/tallyn/logo/svg/tallyn-wordmark-dark.svg?url'
 import { Note, Chips, press } from './ui.jsx'
 
 const EMAIL = 'maya.rivera@fastmail.com'

@@ -101,7 +101,7 @@ The **repo root is the Obsidian vault**. Notes live in `docs/`. Code folders are
   tags: []
   ---
   ```
-- Link notes with `[[Wikilinks]]`. Refer to code and assets by repo path in backticks (`internal/plaid`, `brand/logo/svg/tallyn-mark-light.svg`).
+- Link notes with `[[Wikilinks]]`. Refer to code and assets by repo path in backticks (`internal/plaid`, `brand/coinroof/logo/svg/coinroof-mark.svg`).
 - Put one concept in each note. If a note runs past ~300 lines, split it and link the parts.
 - Note names use Title Case with spaces (`Feature - Joint Accounts.md`). ADRs use `NNNN-kebab-title.md`.
 - Never delete a note that others link to. Set `status: deprecated` and link to its replacement.
@@ -184,13 +184,13 @@ Labels: `type:*` (idea, bug, feature, design, docs, tech-debt), `area:*` (brand,
 - Use only values from `design-tokens.json`. If one is missing, propose it in `docs/03 Design/Design System.md` first.
 - Every new screen, card, chart or figure needs a planned loading effect, shown in its draft, with a reduced-motion version. Reuse the patterns in `docs/03 Design/Design System.md` → Loading motion (#228).
 - Every dynamic number uses tabular figures (`tabular-nums`), so layouts don't shift as digits change: money, counters, timers, live prices. See `docs/03 Design/Design System.md` → Numbers (#193).
-- Use the logo only as described in `docs/02 Brand/Logo Guide.md`, from the files in `brand/logo/`. Never redraw, recolor or stretch it.
+- Use the logo only as described in `docs/02 Brand/Logo Guide.md`, from the files in `brand/coinroof/`. Never redraw, recolor or stretch it.
 - Write copy in the voice set out in `docs/02 Brand/Voice and Tone.md`. This is a money app for families, so be clear and calm, never pushy.
 - Every card is frosted glass over a soft glow (`docs/03 Design/Design System.md` → Glass finish, #61). Keep text AA readable on it, keep dialogs, inputs and buttons solid, and keep the fallbacks for browsers without blur and for reduced transparency.
 - Draft before building (§0): no visual change goes in without a draft Dinesh has picked from.
 - Outside skills in `.claude/skills/` (listed in `.claude/skills/SOURCES.md`, #141) are advice, not rules. When one disagrees with this file, `design-tokens.json`, the Brand Guide or the Design System (easing, durations, colours, layout, workflow), Coinroof's own rules win. Their steps also don't skip §0: still draft, wait for a pick, and ask before subagents or new dependencies.
   - **hallmark** and **ui-ux-pro-max** never pick Coinroof's look. Use them for their checks (hallmark's Floor and `sloplint`, ui-ux-pro-max's UX, accessibility and chart guidance), not their themes, palettes or fonts. Skip hallmark's theme deal, scaffold (`tokens.css`/`base.css`), photo library and edit-time hook; skip ui-ux-pro-max's `--persist` (no `design-system/` folder). Hallmark's generated images (Together AI) stay off.
-  - For any Coinroof screen, follow `docs/03 Design/Design System.md` → Designing a screen (#180), loaded by the `tallyn-design` skill: Coinroof's look first, taste-skill's app-screen method for content, its checks with the clashing rules allowed.
+  - For any Coinroof screen, follow `docs/03 Design/Design System.md` → Designing a screen (#180), loaded by the `coinroof-design` skill: Coinroof's look first, taste-skill's app-screen method for content, its checks with the clashing rules allowed.
   - **design-taste-frontend** (taste-skill) never picks Coinroof's look either. Use it for its checks only: `lint.mjs`, `inspect.mjs` (with `--app` for app screens) and its tells and critique notes. Skip its direction deal (`draw.mjs`, `scenes.mjs`), palettes, type, photos and section blueprints, and never run `assets.mjs`.
 
 ## 7. Security rules (finance app)

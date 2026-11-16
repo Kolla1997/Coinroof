@@ -8,7 +8,7 @@ tags: [design]
 ---
 # Design System
 
-Token values live in `design-tokens.json` (colour, type, radius, spacing, motion). If this note and the JSON disagree, the JSON wins: fix this note. Ready-made versions are in `brand/colors/` and `brand/typography/`: `tokens.css`, `tailwind.colors.js`, `Colors.swift`, `colors.xml`, `Color.kt`, `type-scale.css`.
+Token values live in `design-tokens.json` (colour, type, radius, spacing, motion). If this note and the JSON disagree, the JSON wins: fix this note. Ready-made versions are in `brand/coinroof/colors/` and `brand/typography/`: `tokens.css`, `tailwind.colors.js`, `Colors.swift`, `colors.xml`, `Color.kt`, `type-scale.css`.
 
 ## Shape
 Soft, friendly, frosted. Cards and the sidebar are frosted glass over a soft glow, with a soft shade underneath (see [[#Glass finish]]).
@@ -73,7 +73,7 @@ Every dynamic number in the app uses **tabular figures**, so a layout doesn't sh
 * **Progress:** Clay fill on Sand track; Sage for secondary goals.
 
 ## Accessibility
-AA contrast: 4.5:1 for text under 18.66px bold. Clay with white is 4.4:1 (large text only), so use Clay Deep for buttons and small text. Sage is for graphics only; use Sage Deep for text. Full ratios in `brand/colors/palette.json`.
+AA contrast: 4.5:1 for text under 18.66px bold. Clay with white is 4.4:1 (large text only), so use Clay Deep for buttons and small text. Sage is for graphics only; use Sage Deep for text. Full ratios for the Tallyn-era palette in `brand/archive/tallyn/colors/palette.json`.
 
 ## Motion
 See [[Animation Guide]]. UI transitions are 200 to 300ms, ease-out. Data arriving on a page is slower on purpose (`load-reveal`, #212): the animated Coinroof mark while loading, then cards fade in (500ms) and rows fade up 8px over 700ms, 90ms apart, after 200ms. Respect reduced motion (a 150ms plain fade).
@@ -129,7 +129,7 @@ How to design or redesign any Coinroof screen ([#180](https://github.com/Kolla19
 Then draft 2–3 options with at least one mix, as CLAUDE.md §0 asks.
 
 ## Reference
-Full style guide: `docs/03 Design/Reference/tallyn-style-guide.pdf` (HTML copy alongside). Screens: [[Design Comps]]. Patterns: [[UI Patterns]].
+Tallyn-era style guide (before the Coinroof rename, kept as history): `docs/03 Design/Reference/tallyn-style-guide.pdf` (HTML copy alongside). Screens: [[Design Comps]]. Patterns: [[UI Patterns]].
 
 > [!todo] Missing screens
 > Budgets (#13), empty and error states, and dark mode. Sign-in, 2FA, password reset and recovery are built (#25, #108, #22, #23), as are Home, Transactions, Accounts, Debts, Family and Settings (#39, #42, #27). Adding a bank happens in Plaid's own window.

@@ -13,10 +13,10 @@ import SpendingRing from '@/components/kokonutui/spending-ring'
 import { STYLES, DESIGNS } from './themes.js'
 import * as D from './data.js'
 import './home.css'
-import lockupLight from '../../../../brand/logo/svg/tallyn-lockup-horizontal-light.svg?url'
-import lockupDark from '../../../../brand/logo/svg/tallyn-lockup-horizontal-dark.svg?url'
-import markLight from '../../../../brand/logo/svg/tallyn-mark-light.svg?url'
-import markDark from '../../../../brand/logo/svg/tallyn-mark-dark.svg?url'
+import lockupLight from '../../../../brand/archive/tallyn/logo/svg/tallyn-lockup-horizontal-light.svg?url'
+import lockupDark from '../../../../brand/archive/tallyn/logo/svg/tallyn-lockup-horizontal-dark.svg?url'
+import markLight from '../../../../brand/archive/tallyn/logo/svg/tallyn-mark-light.svg?url'
+import markDark from '../../../../brand/archive/tallyn/logo/svg/tallyn-mark-dark.svg?url'
 
 const reduced = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
 

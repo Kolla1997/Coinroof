@@ -2,26 +2,13 @@
 type: guide
 status: draft
 owner: Dinesh
-updated: 2026-10-29
-issues: [10, 66, 200]
+updated: 2026-11-15
+issues: [10, 66, 200, 324]
 tags: [brand, motion]
 ---
 # Animation Guide
 
-The logo intro: leaves wobble in (1.6s), the dot pops (0.6s, from 1.0s), "Coinroof" fades up letter by letter, then the tagline. The leaves then breathe gently (2.6s loop).
-
-| Use | File in `brand/animation/` |
-|---|---|
-| Web app loading (#66) | `SVG/tallyn-mark-animated-light.svg` in `web/src/components/CoinroofLoader.jsx`, with "Adding it all up" and dots that appear one by one |
-| App splash and loading (iOS, Android) | `Lottie/tallyn-mark-intro-*.json`, then `Lottie/tallyn-mark-breathe-*.json` |
-| Website | `SVG/tallyn-lockup-animated-*.svg` or `SVG/tallyn-mark-animated-*.svg` |
-| Preview in a browser | `HTML/tallyn-logo-intro-*.html` |
-| Social, presentations | `Video/*.mp4`, `GIF/*.gif` |
-
-Files exist in `light` and `dark`. The Lottie files animate the mark only.
-
-> [!warning] Not tested on devices
-> The Lottie files were loaded and rendered with python-lottie, not on a phone. Test in your target players.
+The Coinroof logo animation is **Ripple**, with its files in `brand/coinroof/animation/` (below). The Tallyn-era leaves animation and its Lottie files are in `brand/archive/tallyn/animation/`.
 
 Always show the last frame instead of animating when the user prefers reduced motion. See [[Brand Guide]].
 

@@ -2,16 +2,17 @@
 type: guide
 status: draft
 owner: Dinesh
-updated: 2026-10-29
+updated: 2026-11-15
 issue: 10
 tags: [brand]
 ---
 # Brand Guide
 
 ## Idea
-**Coinroof** is a family finance app. People connect bank accounts in any currency, see one total, track spending and savings, and open joint accounts for partners, kids and parents. The name joins *tally* (counting) and *kin* (family). Tagline: **It all adds up.** Promise: your money, your family, everything adds up. See [[Vision]].
+**Coinroof** is a family finance app. People connect bank accounts in any currency, see one total, track spending and savings, and open joint accounts for partners, kids and parents. > [!todo] Unknown. Ask Dinesh: what the name Coinroof stands for.
+ Tagline: **It all adds up.** Promise: your money, your family, everything adds up. See [[Vision]].
 
-Write the name **Coinroof**: capital T, never all-caps in body text.
+Write the name **Coinroof**: capital C, never all-caps in body text (the logo's COINROOF is the wordmark, not text).
 
 ## Personality
 Warm, trustworthy, modern, family-friendly, smart, simple, premium but approachable. Financial without feeling like a traditional bank.
@@ -40,7 +41,7 @@ Rough balance: 60% cream or white, 30% cocoa and sand, 10% clay and sage.
 | Headlines, card titles, currency amounts | Space Grotesk 700 |
 | Body | Montserrat 400/500 |
 | Buttons, navigation | Bricolage Grotesque 700 |
-| Wordmark | Jedira, outlined (see [[Logo Guide]]) |
+| Wordmark | Monr, outlined (see [[Logo Guide]]) |
 
 Currency amounts always use tabular figures. Font files are in `brand/fonts/` (SIL OFL). The app uses WOFF2 copies in `brand/fonts/web/`, made from those masters by `scripts/build_fonts.py`; they look the same (#99).
 
@@ -63,5 +64,5 @@ Before anything goes out (site, social, deck, email, app store):
 | 2026-10-08 | Mark is a dot above two leaves | A person and a sprout; reads at 16px |
 | 2026-10-08 | Add Clay Deep and Sage Deep | Clay with white text is 4.4:1, below AA for small text |
 | 2026-10-08 | Currency amounts fixed to Space Grotesk | Consistent, tabular numbers |
-| 2026-10-29 | Rename to **Coinroof**; logo is Dinesh's Canva striped tile + COINROOF wordmark; palette green #067B00, red #CB0900, ink #1B1B1B. Kit in `brand/coinroof/` (#195). This guide still describes Coinroof until the app switches | Another product already uses the Coinroof name |
+| 2026-10-29 | Rename to **Coinroof**; logo is Dinesh's Canva striped tile + COINROOF wordmark; palette green #067B00, red #CB0900, ink #1B1B1B. Kit in `brand/coinroof/` (#195). The app has since switched (#200, #201) | Another product already uses the Tallyn name |
 | 2026-10-29 | In the app, the plain Coinroof lockup (no bar) on sign-in, the rail and the phone header; the logo animation is **Ripple** (#200, [[Animation Guide]]) | Dinesh picked A for both from drafts |

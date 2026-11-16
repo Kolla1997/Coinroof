@@ -2,42 +2,51 @@
 type: guide
 status: draft
 owner: Dinesh
-updated: 2026-10-12
-issues: [10, 25]
+updated: 2026-11-15
+issues: [10, 25, 195, 200, 324]
 tags: [brand, logo]
 ---
 # Logo Guide
 
 > [!todo] Unknown. Ask Dinesh
-> Confirm the **Jedira** licence allows logo and commercial use. The supplied font zip had no licence file. The font file is not in the repo; the wordmark is vector outlines only.
+> The wordmark font **Monr** (and Monare) came as personal-use demo licences. A commercial licence is needed before Coinroof goes public. The font file is not in the repo; the wordmark is vector outlines only.
 
 ## The mark
-A dot above two leaves: a person and a sprout. Left leaf Sage, right leaf Clay, dot Cocoa (Cream on dark).
+A striped tile: coin-rim arcs in green and red rising from the top-right corner, with level stripes across it. Beside it, **COINROOF** in Monr. From Dinesh's Canva design (2026-10-29, #195). Palette: green #067B00, red #CB0900, ink #1B1B1B.
 
 ## Files
-Always use the files, never retype the wordmark. Never redraw, recolour or stretch the logo.
+Always use the files in `brand/coinroof/`, never retype the wordmark. Never redraw, recolour or stretch the logo.
 
-| Need | File |
+| Need | File in `brand/coinroof/logo/` |
 |---|---|
-| Default, light backgrounds | `brand/logo/svg/tallyn-lockup-horizontal-light.svg` |
-| Default, dark backgrounds | `brand/logo/svg/tallyn-lockup-horizontal-dark.svg` |
-| With tagline | `brand/logo/svg/tallyn-lockup-horizontal-tagline-light.svg` and `-dark.svg` |
-| Square spaces | `brand/logo/svg/tallyn-lockup-stacked-light.svg` and `-dark.svg` |
-| Mark only | `brand/logo/svg/tallyn-mark-light.svg` and `-dark.svg` |
-| Mono | `-mono-brown.svg` and `-mono-cream.svg` variants of each |
-| Mark and name in one straight line (PNG) | `brand/logo/aligned/tallyn-logo-aligned-light.png` and `-dark.png` |
-| Same, larger mark | `brand/logo/aligned/tallyn-logo-large-mark-light.png` and `-dark.png` |
+| In the app (sign-in, rail, phone header) | `svg/coinroof-lockup-plain-light.svg` and `-dark.svg` (#200) |
+| Lockup on a coloured bar | `svg/coinroof-lockup-red-fade.svg`, `-green-fade.svg`, `-black.svg`, `-white.svg` |
+| Square spaces | `svg/coinroof-lockup-stacked-light.svg` and `-dark.svg` |
+| Mark only | `svg/coinroof-mark.svg`; small sizes `coinroof-mark-small.svg`; outline `coinroof-mark-outline.svg` |
+| One colour | `svg/coinroof-mark-mono-black.svg` and `-mono-white.svg` |
+| Wordmark only | `svg/coinroof-wordmark-ink.svg` and `-white.svg` |
+| PNG copies | `png/` (lockups 2000px wide, stacked 1600px, mark 1024px) |
 
-App icons are in `brand/icons/`, social images and splash screens in `brand/social/`.
+App icons are in `brand/coinroof/icons/`, social images in `brand/coinroof/social/`, animations in `brand/coinroof/animation/` ([[Animation Guide]]).
 
 ## Rules
-* Clear space: the width of the dot on every side.
-* Minimum width: mark 16px, horizontal lockup 96px, stacked lockup 72px. Below that, use the mark only.
-* Wordmark on its own: at least 20px tall (about 49px wide), as in the page footer (#25).
-* Mono Cream goes on Clay, Sage and photos.
 * Do not stretch, rotate, recolour, outline or add shadows and effects.
+* Use the plain lockup on app screens; the bar versions are for marketing and social.
+* When a lockup gets too small to read, use the mark only.
+
+> [!todo] Unknown. Ask Dinesh
+> Clear space and minimum sizes for the Coinroof logo haven't been set.
 
 ## Decisions
+| Date | Decision | Why |
+|---|---|---|
+| 2026-10-29 | Logo is Dinesh's Canva striped tile + COINROOF in Monr; kit in `brand/coinroof/` (#195) | Rename to Coinroof (market name clash) |
+| 2026-10-29 | The app uses the plain lockup (no bar); logo animation is Ripple (#200) | Dinesh picked A from drafts |
+| 2026-11-15 | Tallyn logo, colours, animation, icons and social files moved to `brand/archive/tallyn/` (#324) | So nobody uses the old logo by mistake; kept as history |
+
+## Tallyn era (history)
+Before the rename, the mark was a dot above two leaves (Sage and Clay) with a Jedira wordmark. Its files are in `brand/archive/tallyn/`. Old decisions:
+
 | Date | Decision | Why |
 |---|---|---|
 | 2026-10-08 | Wordmark set in Jedira with a Clay "y" | Elegant and premium, a swash "a" gives it character |
