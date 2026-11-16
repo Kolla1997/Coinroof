@@ -52,7 +52,7 @@ Home → **Sharing**: your display name; one box per family member with three sw
 [[0007-consent-based-visibility]]. `migrations/0007_sharing.sql`: `shares` table, `can_see_member_data(household, owner, category)` used by every bank, account, transaction and location policy; `can_unlink()`. `GET/PUT /api/sharing`, `PUT /api/me`.
 
 ## Rollout
-Run 0007 on `tallyn-dev`. Testing with two people needs a second account added to the household by hand until invitations (#12).
+Run 0007 on `coinroof-dev`. Testing with two people needs a second account added to the household by hand until invitations (#12).
 
 ## Open questions
 - Should people be notified when someone starts or stops sharing with them?
