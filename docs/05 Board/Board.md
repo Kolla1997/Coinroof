@@ -17,6 +17,9 @@ kanban-plugin: board
 - [ ] [#126 Bill reminders: pop-up to record bills due](https://github.com/Kolla1997/Coinroof/issues/126) #type/feature #area/frontend
 - [ ] [#33 Give every dollar of available cash a job (Home card)](https://github.com/Kolla1997/Coinroof/issues/33) #type/feature #area/frontend #area/backend #priority/p1
 - [ ] [#334 Run the bank sync from an outside timer](https://github.com/Kolla1997/Coinroof/issues/334) #type/feature #area/backend #priority/p1
+- [ ] [#335 Production database: coinroof-prod](https://github.com/Kolla1997/Coinroof/issues/335) #type/feature #area/infra #priority/p1
+- [ ] [#336 Host Coinroof on Google Cloud Run](https://github.com/Kolla1997/Coinroof/issues/336) #type/feature #area/infra #priority/p1
+- [ ] [#337 Domain, Plaid Trial and email on coinroof.us](https://github.com/Kolla1997/Coinroof/issues/337) #type/feature #area/infra #priority/p1
 
 
 ## In Progress
