@@ -43,10 +43,10 @@ import MetricCard from '@/components/kokonutui/metric-card'
 import SmoothTab from '@/components/kokonutui/smooth-tab'
 import { Gauge } from '@/components/charts/gauge'
 import * as D from './data.js'
-import lockupLight from '../../../../brand/logo/svg/tallyn-lockup-horizontal-light.svg?url'
-import lockupDark from '../../../../brand/logo/svg/tallyn-lockup-horizontal-dark.svg?url'
-import markLight from '../../../../brand/logo/svg/tallyn-mark-light.svg?url'
-import markDark from '../../../../brand/logo/svg/tallyn-mark-dark.svg?url'
+import lockupLight from '../../../../brand/archive/tallyn/logo/svg/tallyn-lockup-horizontal-light.svg?url'
+import lockupDark from '../../../../brand/archive/tallyn/logo/svg/tallyn-lockup-horizontal-dark.svg?url'
+import markLight from '../../../../brand/archive/tallyn/logo/svg/tallyn-mark-light.svg?url'
+import markDark from '../../../../brand/archive/tallyn/logo/svg/tallyn-mark-dark.svg?url'
 
 // One accent: red for the one action and for what is owed. Green only for money in and goal progress.
 // Everything else is black, white and grey. Text shades pass AA on their ground.

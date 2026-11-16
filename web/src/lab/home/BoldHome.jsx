@@ -14,8 +14,8 @@ import ReceiptPrinter from '@/components/kokonutui/receipt-printer'
 import { SankeyChart, SankeyLink, SankeyNode, SankeyTooltip } from '@/components/charts/sankey'
 import { Gauge } from '@/components/charts/gauge'
 import * as D from './data.js'
-import lockupLight from '../../../../brand/logo/svg/tallyn-lockup-horizontal-light.svg?url'
-import lockupDark from '../../../../brand/logo/svg/tallyn-lockup-horizontal-dark.svg?url'
+import lockupLight from '../../../../brand/archive/tallyn/logo/svg/tallyn-lockup-horizontal-light.svg?url'
+import lockupDark from '../../../../brand/archive/tallyn/logo/svg/tallyn-lockup-horizontal-dark.svg?url'
 
 // Palettes to test: each sets the accent the libraries use. Light and dark come from Tailwind's dark variant.
 const PALETTES = {

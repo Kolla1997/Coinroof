@@ -45,10 +45,10 @@ import SmoothTab from '@/components/kokonutui/smooth-tab'
 import { SankeyChart, SankeyLink, SankeyNode, SankeyTooltip } from '@/components/charts/sankey'
 import { Gauge } from '@/components/charts/gauge'
 import * as D from './data.js'
-import lockupLight from '../../../../brand/logo/svg/tallyn-lockup-horizontal-light.svg?url'
-import lockupDark from '../../../../brand/logo/svg/tallyn-lockup-horizontal-dark.svg?url'
-import markLight from '../../../../brand/logo/svg/tallyn-mark-light.svg?url'
-import markDark from '../../../../brand/logo/svg/tallyn-mark-dark.svg?url'
+import lockupLight from '../../../../brand/archive/tallyn/logo/svg/tallyn-lockup-horizontal-light.svg?url'
+import lockupDark from '../../../../brand/archive/tallyn/logo/svg/tallyn-lockup-horizontal-dark.svg?url'
+import markLight from '../../../../brand/archive/tallyn/logo/svg/tallyn-mark-light.svg?url'
+import markDark from '../../../../brand/archive/tallyn/logo/svg/tallyn-mark-dark.svg?url'
 
 // Red lead. Red is the brand and the one action; green is money in; red also marks what is owed.
 const PAL = {

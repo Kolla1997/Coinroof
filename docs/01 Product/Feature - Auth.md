@@ -51,7 +51,7 @@ Every API call that touches family data comes from a person who signed in with e
 ## Design
 Screens, in order: **Sign in / Create account** → **Check your email** → **Set up your authenticator app** (QR code, secret, code field) → **Enter your code** (on later log-ins) → home (shows `/api/me`, Sign out).
 
-Uses tokens from `design-tokens.json`: Cream page, white 22px cards with a Border outline, 14px inputs, Clay Deep pill primary button, Error for error text. Logo: `brand/logo/svg/tallyn-lockup-horizontal-light.svg`. Copy follows [[Voice and Tone]]: calm and clear.
+Uses tokens from `design-tokens.json`: Cream page, white 22px cards with a Border outline, 14px inputs, Clay Deep pill primary button, Error for error text. Logo: `brand/coinroof/logo/svg/coinroof-lockup-plain-light.svg` (and `-dark`). Copy follows [[Voice and Tone]]: calm and clear.
 
 ## Tech notes
 How sign-in works: [[0003-browser-sign-in-with-supabase-js]].

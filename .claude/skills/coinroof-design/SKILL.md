@@ -1,5 +1,5 @@
 ---
-name: tallyn-design
+name: coinroof-design
 description: >-
   How to design, redesign, draft or review any Coinroof screen, card, chart or layout in web/ (React)
   or a design draft. Use before any Coinroof visual work, before design-taste-frontend or hallmark.
