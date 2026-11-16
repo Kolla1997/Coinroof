@@ -369,3 +369,33 @@ func TestCardDetailsState(t *testing.T) {
 		}
 	}
 }
+
+// With no interval (JOBS=external, #334) Run doesn't sync every bank by
+// itself: the outside timer calls SyncAll. A bank asked for still syncs.
+func TestRunWithoutTimerOnlySyncsRequests(t *testing.T) {
+	captureLog(t)
+	store := newStore(bank("bank-1"), bank("bank-2"))
+	s := New(store, &fakePlaid{results: map[string][]result{}}, fakeTokens{}, 0)
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+	go s.Run(ctx)
+	time.Sleep(50 * time.Millisecond)
+	store.mu.Lock()
+	early := len(store.saved)
+	store.mu.Unlock()
+	if early != 0 {
+		t.Fatalf("synced %d banks without being asked", early)
+	}
+	s.SyncNow("bank-2")
+	deadline := time.Now().Add(2 * time.Second)
+	for time.Now().Before(deadline) {
+		store.mu.Lock()
+		got := append([]string(nil), store.saved...)
+		store.mu.Unlock()
+		if len(got) == 1 && strings.HasPrefix(got[0], "bank-2@") {
+			return
+		}
+		time.Sleep(5 * time.Millisecond)
+	}
+	t.Fatalf("bank-2 never synced on request: saved = %v", store.saved)
+}

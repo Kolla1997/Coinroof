@@ -115,6 +115,23 @@ func main() {
 	// its own login, DATABASE_URL_SYNC as coinroof_sync (#30), and is the only
 	// code that gets the system database access (db.System).
 	var syncNow, reconnected func(string)
+	// JOBS (#334): "timers" (default) runs the sync, emails and daily work on
+	// timers inside the server, as on a laptop. "external" leaves them to an
+	// outside timer (Cloud Scheduler) calling POST /jobs/{sync,email,daily}
+	// with JOBS_SECRET, because Cloud Run only runs the server while it answers.
+	var jobs api.Jobs
+	external := false
+	switch m := getenv("JOBS", "timers"); m {
+	case "timers":
+	case "external":
+		external = true
+		jobs.Secret = os.Getenv("JOBS_SECRET")
+		if len(jobs.Secret) < 32 {
+			log.Fatalf("coinroof: JOBS=external needs JOBS_SECRET of at least 32 characters")
+		}
+	default:
+		log.Fatalf("coinroof: JOBS must be timers or external (got %q)", m)
+	}
 	syncURL := os.Getenv("DATABASE_URL_SYNC")
 	switch {
 	case syncURL == "":
@@ -131,13 +148,26 @@ func main() {
 			log.Fatalf("coinroof: %v", err)
 		}
 		defer system.Close()
+		mails := emailJob(system, linkKey, mailer)
+		if external {
+			every = 0 // Run then only handles single-bank requests
+		}
 		syncer := banksync.New(system, plaidClient, box, every)
 		syncNow = syncer.SyncNow
 		reconnected = syncer.Reconnected
 		go syncer.Run(ctx)
-		go purgeClosingRecords(ctx, system)
-		go emailJob(system, linkKey, mailer).Run(ctx)
-		log.Printf("coinroof: bank sync every %s", every)
+		if external {
+			jobs.Run = map[string]func(context.Context){
+				"sync":  func(ctx context.Context) { syncer.SyncAll(ctx) },
+				"email": func(ctx context.Context) { mails.Once(ctx, time.Now().UTC()) },
+				"daily": func(ctx context.Context) { dailyWork(ctx, system) },
+			}
+			log.Printf("coinroof: background jobs wait for the outside timer (POST /jobs/...)")
+		} else {
+			go purgeClosingRecords(ctx, system)
+			go mails.Run(ctx)
+			log.Printf("coinroof: bank sync every %s", every)
+		}
 	}
 
 	srv := &http.Server{
@@ -163,6 +193,7 @@ func main() {
 			Mailer:          mailer,
 			AppURL:          appURL(),
 			Logo:            os.Getenv("EMAIL_LOGO_URL"),
+			Jobs:            jobs,
 		}),
 		ReadHeaderTimeout: 10 * time.Second,
 		// #24: slow or stuck clients can't hold connections open.
@@ -233,20 +264,26 @@ func purgeClosingRecords(ctx context.Context, system *db.System) {
 	t := time.NewTicker(24 * time.Hour)
 	defer t.Stop()
 	for {
-		if n, err := system.PurgeClosedAccounts(ctx, db.ClosingRecordsKept); err != nil {
-			log.Printf("coinroof: purge closing records: %v", err)
-		} else if n > 0 {
-			log.Printf("coinroof: purged %d closing records older than 3 years", n)
-		}
-		// Savings goals (#14): this month's amount for goals that follow an
-		// account, for the forecast and "this month".
-		if _, err := system.SnapshotGoals(ctx, time.Now().UTC()); err != nil {
-			log.Printf("coinroof: goal snapshots: %v", err)
-		}
+		dailyWork(ctx, system)
 		select {
 		case <-ctx.Done():
 			return
 		case <-t.C:
 		}
+	}
+}
+
+// dailyWork is the once-a-day job: on a timer (purgeClosingRecords) or from
+// the outside timer's POST /jobs/daily (#334).
+func dailyWork(ctx context.Context, system *db.System) {
+	if n, err := system.PurgeClosedAccounts(ctx, db.ClosingRecordsKept); err != nil {
+		log.Printf("coinroof: purge closing records: %v", err)
+	} else if n > 0 {
+		log.Printf("coinroof: purged %d closing records older than 3 years", n)
+	}
+	// Savings goals (#14): this month's amount for goals that follow an
+	// account, for the forecast and "this month".
+	if _, err := system.SnapshotGoals(ctx, time.Now().UTC()); err != nil {
+		log.Printf("coinroof: goal snapshots: %v", err)
 	}
 }

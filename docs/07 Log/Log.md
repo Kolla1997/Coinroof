@@ -11,6 +11,7 @@ tags: [log]
 Newest first. One entry per working session or decision.
 
 ## 2026-11-15
+- #334 Background jobs from an outside timer: `JOBS=external` turns off the server's own timers and adds `POST /jobs/sync`, `/jobs/email`, `/jobs/daily`, guarded by `JOBS_SECRET` (wrong key = 404, one run at a time). Emails go every 15 minutes there instead of 5. Created hosting tickets #334–#337 (Cloud Run, coinroof-prod, domain, Plaid Trial) at minimal cost.
 - #324 Phase D: 0034 copies every grant and policy of `tallyn_api`/`tallyn_sync` to new `coinroof_api`/`coinroof_sync` and empties the old roles (roles are server-wide, so a plain rename breaks the test databases). Go checks, tests, `.env.example` and docs use the new names; ADR 0020.
 - #324 Tidied the rename's leftovers: Tallyn logo, colours, animation, icons and social files moved to `brand/archive/tallyn/` (lab drafts and old comps point there); Logo Guide rewritten for the Coinroof kit, Animation Guide points at `brand/coinroof/animation/`; Brand Guide fixes from the word swap (capital C, Monr, "Tallyn name"); skill renamed `coinroof-design`. Open: what the name stands for, Coinroof clear space and minimum sizes, Monr commercial licence, Coinroof Lottie files.
 - #324 GitHub renamed with Dinesh's OK: repo `Kolla1997/Coinroof` (the old URL redirects), Projects "Coinroof Board" and "Coinroof Ideas" (same numbers, 1 and 2). Docs, scripts and issue links updated; board mirrors regenerated.

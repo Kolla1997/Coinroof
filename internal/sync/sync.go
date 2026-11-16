@@ -95,15 +95,22 @@ func New(store Store, p Plaid, tokens Tokens, every time.Duration) *Syncer {
 // request (SyncNow), until ctx ends. Everything runs on this one goroutine, so
 // two syncs of the same bank never overlap in this process. Across processes,
 // SaveSync's cursor check drops the slower one.
+//
+// With every <= 0 (JOBS=external, #334) there's no timer: an outside timer
+// calls SyncAll instead, and Run only handles single-bank requests.
 func (s *Syncer) Run(ctx context.Context) {
-	ticker := time.NewTicker(s.every)
-	defer ticker.Stop()
-	s.SyncAll(ctx)
+	var tick <-chan time.Time
+	if s.every > 0 {
+		ticker := time.NewTicker(s.every)
+		defer ticker.Stop()
+		tick = ticker.C
+		s.SyncAll(ctx)
+	}
 	for {
 		select {
 		case <-ctx.Done():
 			return
-		case <-ticker.C:
+		case <-tick:
 			s.SyncAll(ctx)
 		case r := <-s.now:
 			s.syncRequested(ctx, r)
