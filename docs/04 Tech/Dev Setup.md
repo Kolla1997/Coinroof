@@ -62,6 +62,19 @@ The app never logs in as `postgres` (ADR 0006). The logins are `coinroof_api` an
 3. For testing, `SYNC_EVERY=2m` in `.env` makes it sync more often (minimum 1m)
 4. A new link syncs within a minute or two; the log shows counts only (`sync: bank <id>: 16 added or changed, ...`)
 
+### Background jobs on a host (#334)
+On your laptop the server runs its jobs on timers (`JOBS=timers`, the default): the bank sync every 6 hours, emails every 5 minutes and the daily work (closing records, goal amounts). On Cloud Run the server only runs while it answers a request, so set:
+- `JOBS=external` and `JOBS_SECRET` (at least 32 characters: `openssl rand -hex 32`, kept in the host's secret store and your password manager)
+- three Cloud Scheduler jobs, each a `POST` with the header `X-Coinroof-Jobs-Key: <JOBS_SECRET>`:
+
+| Job | Address | How often |
+|---|---|---|
+| Bank sync | `/jobs/sync` | every 6 hours |
+| Emails | `/jobs/email` | every 15 minutes |
+| Daily | `/jobs/daily` | once a day |
+
+A wrong or missing key gets `404`; a job already running answers `409 already_running`; a finished job answers `204`. A job may run for up to 30 minutes.
+
 ## Savings goals (#14)
 1. Run `migrations/0018_goals.sql` on the Supabase project, after 0001–0017
 2. Goals that follow an account get their monthly history from the bank sync's daily job, so `DATABASE_URL_SYNC` must be set where it should run. The forecast shows after a goal's second month

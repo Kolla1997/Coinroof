@@ -122,6 +122,9 @@ type Deps struct {
 	Mailer email.Sender
 	AppURL string // e.g. https://coinroof.us
 	Logo   string // EMAIL_LOGO_URL; defaults to AppURL's
+
+	// Background jobs run by an outside timer (#334). Empty: no /jobs routes.
+	Jobs Jobs
 }
 
 // NewRouter returns the server's handler: JSON API under /api/ and the
@@ -231,6 +234,10 @@ func NewRouter(d Deps) http.Handler {
 		mux.Handle("POST /api/email/unsubscribe", noStore(http.HandlerFunc(u.set)))
 	} else {
 		mux.Handle("/api/email/unsubscribe", noStore(unavailable("unsubscribe_unavailable")))
+	}
+	// Background jobs for the outside timer (#334): a shared key, not a sign-in.
+	if d.Jobs.Secret != "" && len(d.Jobs.Run) > 0 {
+		mux.Handle("POST /jobs/{name}", noStore(jobsHandler(d.Jobs)))
 	}
 	// API answers are never cached; limits count per signed-in person (#24).
 	mux.Handle("/api/", noStore(requireAuth(limited(lim.all, api))))

@@ -2,7 +2,7 @@
 type: guide
 status: draft
 owner: Dinesh
-updated: 2026-10-12
+updated: 2026-11-15
 issues: [6, 7, 8, 9, 30]
 tags: [tech, architecture]
 ---
@@ -29,7 +29,7 @@ One Go service, one deployment: it serves the API and the built React app (`web/
 | plaid | Plaid client: Link tokens, token exchange, accounts, item removal | `internal/plaid` |
 | tokencrypt | Encrypts Plaid access tokens | `internal/tokencrypt` |
 | money | Exact conversion to minor units | `internal/money` |
-| sync | Bank sync every 6 hours and after linking; the only user of the system database role | `internal/sync` |
+| sync | Bank sync every 6 hours and after linking; the only user of the system database role. On a host, an outside timer starts it (`JOBS=external`, `POST /jobs/sync`, #334) | `internal/sync` |
 | db | Database access | `internal/db` |
 | auth | Verify Supabase sessions and require 2FA (roles are enforced by RLS) | `internal/auth` |
 | api | HTTP handlers | `internal/api` |
