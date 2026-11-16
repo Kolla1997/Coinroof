@@ -25,7 +25,7 @@ type DB struct {
 }
 
 // Open connects to databaseURL (DATABASE_URL) and checks the connection.
-// In the running app it must be the tallyn_api login: see CheckAPILogin.
+// In the running app it must be the coinroof_api login: see CheckAPILogin.
 func Open(ctx context.Context, databaseURL string) (*DB, error) {
 	pool, err := openPool(ctx, "DATABASE_URL", databaseURL)
 	if err != nil {
@@ -65,7 +65,7 @@ type loginInfo struct {
 	name                  string
 	superuser, bypassRLS  bool
 	canBeAuthenticated    bool // may SET ROLE authenticated
-	canBeSync             bool // may SET ROLE tallyn_sync
+	canBeSync             bool // may SET ROLE coinroof_sync
 	inheritsAuthenticated bool
 }
 
@@ -74,7 +74,7 @@ func describeLogin(ctx context.Context, pool *pgxpool.Pool) (loginInfo, error) {
 	err := pool.QueryRow(ctx, `
 		select r.rolname, r.rolsuper, r.rolbypassrls,
 		       pg_has_role(session_user, 'authenticated', 'SET'),
-		       pg_has_role(session_user, 'tallyn_sync', 'SET'),
+		       pg_has_role(session_user, 'coinroof_sync', 'SET'),
 		       pg_has_role(session_user, 'authenticated', 'USAGE')
 		from pg_roles r where r.rolname = session_user`).
 		Scan(&l.name, &l.superuser, &l.bypassRLS, &l.canBeAuthenticated, &l.canBeSync, &l.inheritsAuthenticated)
@@ -96,11 +96,11 @@ func (d *DB) CheckAPILogin(ctx context.Context) error {
 	}
 	switch {
 	case l.superuser || l.bypassRLS:
-		return fmt.Errorf("%w: DATABASE_URL logs in as %q, which can bypass row-level security; use the tallyn_api login", ErrUnsafeLogin, l.name)
+		return fmt.Errorf("%w: DATABASE_URL logs in as %q, which can bypass row-level security; use the coinroof_api login", ErrUnsafeLogin, l.name)
 	case l.canBeSync:
-		return fmt.Errorf("%w: DATABASE_URL login %q can become tallyn_sync; use the tallyn_api login", ErrUnsafeLogin, l.name)
+		return fmt.Errorf("%w: DATABASE_URL login %q can become coinroof_sync; use the coinroof_api login", ErrUnsafeLogin, l.name)
 	case !l.canBeAuthenticated:
-		return fmt.Errorf("%w: DATABASE_URL login %q can't become authenticated; use the tallyn_api login", ErrUnsafeLogin, l.name)
+		return fmt.Errorf("%w: DATABASE_URL login %q can't become authenticated; use the coinroof_api login", ErrUnsafeLogin, l.name)
 	case l.inheritsAuthenticated:
 		return fmt.Errorf("%w: DATABASE_URL login %q inherits authenticated's rights outside AsUser; grant it WITH INHERIT FALSE", ErrUnsafeLogin, l.name)
 	}

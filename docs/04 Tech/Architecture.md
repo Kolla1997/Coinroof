@@ -49,9 +49,9 @@ The React app signs in with `supabase-js` (publishable key only) and sends the a
 - Linking banks: US only, Transactions plus optional Liabilities ([[0010-plaid-liabilities-for-credit-cards]]), owners and adults for themselves only. Writes go through checked database functions
 - **RLS on every Supabase table**
 - Only the backend connects to the database, and it runs user requests as the user (`internal/db` `AsUser`), not as the service role
-- The API and the sync log in with their own narrow roles (`tallyn_api`, `tallyn_sync`); the app never uses `postgres` and refuses to start with a login that can bypass RLS. All SQL is constant, enforced by a test: [[0006-separate-database-logins]]
+- The API and the sync log in with their own narrow roles (`coinroof_api`, `coinroof_sync`); the app never uses `postgres` and refuses to start with a login that can bypass RLS. All SQL is constant, enforced by a test: [[0006-separate-database-logins]]
 - Every `/api/` route needs a verified Supabase session with 2FA; new routes are protected by default
-- The bank sync writes through a narrow system role (`tallyn_sync`), never used by request handlers. Transaction time and location have their own, stricter visibility: [[0005-bank-sync-system-role]]
+- The bank sync writes through a narrow system role (`coinroof_sync`), never used by request handlers. Transaction time and location have their own, stricter visibility: [[0005-bank-sync-system-role]]
 - Secrets live in environment variables, never in the repo
 
 ## Environments

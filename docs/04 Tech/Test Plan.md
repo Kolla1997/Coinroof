@@ -118,6 +118,7 @@ Coinroof has a solid base of tests, but nothing says which use cases they cover 
 | Unlink a bank, and who may | P0 | — | Yes | No | `TestUnlink` (db, api), `TestUnlinkRules` |
 | Scheduled sync: transactions, cards, loans; one bad bank doesn't stop the others | P1 | Yes | Yes | — | `sync_test.go` (9), `plaid/transactions_test.go`, `liabilities_test.go`, `system_test.go` |
 | The sync login can't reach what it shouldn't | P0 | — | Yes | — | `logins_test.go`, `system_test.go` (`TestSyncRoleLimits`) |
+| The logins are `coinroof_api` and `coinroof_sync` (#324, 0034): they hold exactly what `tallyn_*` held, and `tallyn_*` are left with no grants, no policies and no way to become `authenticated` | P0 | — | Yes | — | `logins_test.go` (`TestOldTallynRolesAreEmpty`, and every login test now runs as `coinroof_*`) |
 | Connect a bank isn't blocked by the Plaid rate limit after normal browsing | P1 | Yes | — | No | `Banks.test.jsx` (#115: no token until clicked, one per click, closing Plaid and retrying, rate-limit message); fixed in [#115](https://github.com/Kolla1997/Coinroof/issues/115) |
 
 ### Money, transactions and debts
@@ -235,6 +236,7 @@ Coinroof has a solid base of tests, but nothing says which use cases they cover 
 
 ## Release checklist (manual, before each release)
 - [ ] **Monthly payments step (#307):** create a new account and household. The step shows once, with no site footer; add rent and a car loan, **Save and continue**, then check both on Bills and the loan under Debts → Other loans. A second new account: **Skip for now** goes straight to Home.
+- [ ] **Database logins (#324):** after 0034 on a project, the server starts with the `coinroof_*` logins in `.env`, and logging in as `tallyn_api` can't read anything.
 - [ ] **Cash card (#33):** as an owner on Home, check Today's cash adds up (checking − due − buffer = free, jobs = free) against Accounts and Bills; change payday and the split and see it update; sign in as an adult and see no card.
 - [ ] **Bills tab form (#315):** Bills → **Add a bill**: add Water, an Insurance every 3 months (More options) and a Personal loan in one go, **Save 3**; check the calendar, the loan in Debts → Other loans, then edit one bill and pause it. It shows under **Paused** in the side card (not counted); **Resume** brings it back this month (#319).
 - [ ] Sign up with a new email, confirm it, set up 2FA with a real authenticator app.

@@ -34,8 +34,8 @@ const (
 )
 
 type fixture struct {
-	db        *DB     // logs in as tallyn_api, like the running app
-	sys       *System // logs in as tallyn_sync, like the bank sync
+	db        *DB     // logs in as coinroof_api, like the running app
+	sys       *System // logs in as coinroof_sync, like the bank sync
 	apiURL    string
 	admin     *pgx.Conn // superuser, bypasses RLS: only for seeding and checks
 	testHH    string
@@ -99,7 +99,7 @@ func setup(t *testing.T) *fixture {
 	}
 
 	// Log in the way the running app does (0006, ADR 0006): the API as
-	// tallyn_api, the sync as tallyn_sync. Test-only passwords, local
+	// coinroof_api, the sync as coinroof_sync. Test-only passwords, local
 	// throwaway database.
 	loginURL := func(role string) string {
 		mustExec(t, admin, `alter role `+role+` with login password 'test-only-password'`)
@@ -107,7 +107,7 @@ func setup(t *testing.T) *fixture {
 		lu.User = url.UserPassword(role, "test-only-password")
 		return lu.String()
 	}
-	apiURL, syncURL := loginURL("tallyn_api"), loginURL("tallyn_sync")
+	apiURL, syncURL := loginURL("coinroof_api"), loginURL("coinroof_sync")
 
 	d, err := Open(ctx, apiURL)
 	if err != nil {
